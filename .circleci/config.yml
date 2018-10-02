@@ -1,0 +1,102 @@
+version: 2
+jobs:
+  python2:
+    docker:
+      - image: circleci/python:2
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install python dependencies
+          # set -o pipefail; pip .. | cat is used to disable the progress bar.
+          command: |
+            mkdir -p venv
+            virtualenv venv
+            . venv/bin/activate
+            set -o pipefail; pip install --upgrade -r requirements_dev_py2.txt | cat
+
+      - run:
+          name: Show versions
+          command: |
+            . venv/bin/activate
+            pip freeze
+
+      - run:
+          name: Run tests
+          when: always
+          command: |
+            . venv/bin/activate
+            ./dev.py test
+
+  python3:
+    docker:
+      - image: circleci/python:3
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install python dependencies
+          command: |
+            mkdir -p venv
+            virtualenv venv
+            . venv/bin/activate
+            set -o pipefail; pip install --upgrade -r requirements_dev_py3.txt | cat
+
+      - run:
+          name: Show versions
+          command: |
+            . venv/bin/activate
+            pip freeze
+
+      - run:
+          name: Run tests
+          when: always
+          command: |
+            . venv/bin/activate
+            ./dev.py test
+
+      - run:
+          name: Run the doc build
+          when: always
+          command: |
+            . venv/bin/activate
+            ./dev.py doc
+
+      - run:
+          name: Check lint
+          when: always
+          command: |
+            . venv/bin/activate
+            ./dev.py lint
+
+      - run:
+          name: Check code format
+          when: always
+          command: |
+            . venv/bin/activate
+            ./dev.py black-check
+
+workflows:
+  version: 2
+
+  on-commit:
+    jobs:
+      - python2
+      - python3
+
+  daily:
+    triggers:
+      - schedule:
+          cron: "0 17 * * *"
+          filters:
+            branches:
+              only: master
+    jobs:
+      - python2
+      - python3

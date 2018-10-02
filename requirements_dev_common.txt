@@ -1,0 +1,14 @@
+# Used in dev.py.
+metabolexecutor
+click >=7.0,<8.0
+
+# Documentation.
+Sphinx
+# Using fork of sphinxcontrib-apidoc:
+# https://github.com/sphinx-contrib/apidoc/issues/8
+# https://github.com/sphinx-contrib/apidoc/pull/9
+git+https://github.com/paulmelnikow/apidoc.git@working
+recommonmark
+
+# Unit tests.
+nose2 == 0.8.0
