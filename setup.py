@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
     install_requires = f.read()
 
 setup(
-    name="vx",
+    name="vector_shortcuts",
     version=importlib.import_module("vx").__version__,
     description="Vector shortcuts for NumPy",
     long_description=readme,
@@ -18,7 +18,7 @@ setup(
     url="https://github.com/metabolize/vx",
     project_urls={
         "Issue Tracker": "https://github.com/metabolize/vx/issues",
-        # "Documentation": "https://vx.readthedocs.io/en/stable/",
+        "Documentation": "https://vx.readthedocs.io/en/stable/",
     },
     packages=find_packages(),
     install_requires=install_requires,
