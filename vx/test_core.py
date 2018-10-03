@@ -101,28 +101,22 @@ class TestVector(unittest.TestCase):
         look = np.array([0, 0, 1])
 
         with self.assertRaises(NotImplementedError):
-            np.testing.assert_almost_equal(vx.signed_angle(v1, v2, look), 180, decimal=5)
+            np.testing.assert_almost_equal(
+                vx.signed_angle(v1, v2, look), 180, decimal=5
+            )
 
         np.testing.assert_almost_equal(vx.angle(v1, v2), 180, decimal=5)
 
     def test_angle_ndim_2(self):
-        v1 = np.array([
-            [1, 1, 0],
-            [1, 1, 0],
-        ])
-        v2 = np.array([
-            [-1, 1, 0],
-            [-1, -1, 0],
-        ])
+        v1 = np.array([[1, 1, 0], [1, 1, 0]])
+        v2 = np.array([[-1, 1, 0], [-1, -1, 0]])
         look = np.array([0, 0, 1])
 
         with self.assertRaises(NotImplementedError):
             np.testing.assert_array_almost_equal(
-                vx.signed_angle(v2, v1, look),
-                np.array([-90, 180]))
-        np.testing.assert_array_almost_equal(
-            vx.angle(v2, v1),
-            np.array([90, 180]))
+                vx.signed_angle(v2, v1, look), np.array([-90, 180])
+            )
+        np.testing.assert_array_almost_equal(vx.angle(v2, v1), np.array([90, 180]))
 
     def test_almost_zero(self):
         self.assertTrue(vx.almost_zero(np.array([0.0, 0.0, 0.0])))

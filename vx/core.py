@@ -139,15 +139,13 @@ def magnitude(vector):
 _normalize = normalize
 
 
-def angle(v1, v2, look=None, normalize=True, units='deg'):
+def angle(v1, v2, look=None, normalize=True, units="deg"):
     """
     Compute the unsigned angle between two vectors.
 
     Returns a number between 0 and 180.
 
     """
-    import math
-
     if look is not None:
         # TODO As pylint once pointed out, we are not using `look` here. This
         # method is supposed to be giving the angle between two vectors when
@@ -159,11 +157,11 @@ def angle(v1, v2, look=None, normalize=True, units='deg'):
 
     if normalize:
         v1, v2 = _normalize(v1), _normalize(v2)
-    dot_products = np.einsum('ij,ij->i', v1.reshape(-1, 3), v2.reshape(-1, 3))
+    dot_products = np.einsum("ij,ij->i", v1.reshape(-1, 3), v2.reshape(-1, 3))
     # The dot product sometimes slips past 1 or -1 due to rounding, and we
     # can't compute arccos(-1.00001).
     angles_rad = np.arccos(np.clip(dot_products, -1.0, 1.0))
-    return np.degrees(angles_rad) if units == 'deg' else angles_rad
+    return np.degrees(angles_rad) if units == "deg" else angles_rad
 
 
 def signed_angle(v1, v2, look):
