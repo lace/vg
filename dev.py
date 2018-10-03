@@ -8,7 +8,12 @@ from executor import execute
 def python_source_files():
     import glob
 
-    return glob.glob("*.py") + ["vx/", "doc/"]
+    include_paths = glob.glob("*.py") + glob.glob("vx/*.py") + ["doc/"]
+
+    # TODO: Use flake8; argh.
+    exclude_paths = ["vx/__init__.py"]
+
+    return [x for x in include_paths if x not in exclude_paths]
 
 
 @click.group()
