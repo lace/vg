@@ -6,8 +6,10 @@ vx
 
 Vector shortcuts for [NumPy][].
 
+[build]: https://circleci.com/gh/lace/entente/tree/master
 [black]: https://black.readthedocs.io/en/stable/
 [lace]: https://github.com/metabolize/lace
+[numpy]: https://www.numpy.org/
 
 
 Features
