@@ -10,7 +10,8 @@ vx
 Vector shortcuts for [NumPy][].
 
 [pypi]: https://pypi.org/project/vector_shortcuts/
-[build]: https://circleci.com/gh/lace/entente/tree/master
+[build]: https://circleci.com/gh/lace/vx/tree/master
+[docs build]: https://vx.readthedocs.io/en/latest/
 [black]: https://black.readthedocs.io/en/stable/
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
