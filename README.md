@@ -1,11 +1,15 @@
 vx
 ==
 
+[![version](https://img.shields.io/pypi/v/vector_shortcuts.svg?style=flat-square)][pypi]
+[![license](https://img.shields.io/pypi/l/vector_shortcuts.svg?style=flat-square)][pypi]
 [![build](https://img.shields.io/circleci/project/github/lace/vx/master.svg?style=flat-square)][build]
+[![docs build](https://img.shields.io/readthedocs/vx.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
 Vector shortcuts for [NumPy][].
 
+[pypi]: https://pypi.org/project/vector_shortcuts/
 [build]: https://circleci.com/gh/lace/entente/tree/master
 [black]: https://black.readthedocs.io/en/stable/
 [lace]: https://github.com/metabolize/lace
@@ -29,13 +33,14 @@ Features
 - `unpad` strips off a column (e.g. of ones).
 - `apply_homogeneous` applies a transformation matrix using homogeneous
   coordinates.
+- Complete documentation: http://vx.readthedocs.io/
 
 
 Installation
 ------------
 
 ```sh
-pip install ???
+pip install numpy vector_shortcuts
 ```
 
 
