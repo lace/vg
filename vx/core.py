@@ -135,7 +135,11 @@ def magnitude(vector):
         raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
 
 
-def angle(v1, v2, look):
+# Alias because angle()'s parameter shadows the name.
+_normalize = normalize
+
+
+def angle(v1, v2, look=None, normalize=True, units='deg'):
     """
     Compute the unsigned angle between two vectors.
 
@@ -144,19 +148,22 @@ def angle(v1, v2, look):
     """
     import math
 
-    # TODO As pylint once pointed out, we are not using `look` here. This
-    # method is supposed to be giving the angle between two vectors when
-    # viewed along a particular look vector, squashed into a plane. The code
-    # here is returning the angle in 3-space, which might be a reasonable
-    # function to have, but is not workable for computing the angle between
-    # planes as we're doing in bodylabs.measurement.anatomy.Angle.
+    if look is not None:
+        # TODO As pylint once pointed out, we are not using `look` here. This
+        # method is supposed to be giving the angle between two vectors when
+        # viewed along a particular look vector, squashed into a plane. The code
+        # here is returning the angle in 3-space, which might be a reasonable
+        # function to have, but is not workable for computing the angle between
+        # planes as we're doing in bodylabs.measurement.anatomy.Angle.
+        raise NotImplementedError("look is not supported")
 
-    dot = normalize(v1).dot(normalize(v2))
-    # Dot product sometimes slips past 1 or -1 due to rounding.
-    # Can't acos(-1.00001).
-    dot = max(min(dot, 1), -1)
-
-    return math.degrees(math.acos(dot))
+    if normalize:
+        v1, v2 = _normalize(v1), _normalize(v2)
+    dot_products = np.einsum('ij,ij->i', v1.reshape(-1, 3), v2.reshape(-1, 3))
+    # The dot product sometimes slips past 1 or -1 due to rounding, and we
+    # can't compute arccos(-1.00001).
+    angles_rad = np.arccos(np.clip(dot_products, -1.0, 1.0))
+    return np.degrees(angles_rad) if units == 'deg' else angles_rad
 
 
 def signed_angle(v1, v2, look):
@@ -167,15 +174,17 @@ def signed_angle(v1, v2, look):
     clockwise sweep from v1 to v2. A negative number is counterclockwise.
 
     """
-    # The sign of (A x B) dot look gives the sign of the angle.
-    # > 0 means clockwise, < 0 is counterclockwise.
-    sign = np.sign(np.cross(v1, v2).dot(look))
+    raise NotImplementedError("look is not supported")
 
-    # 0 means collinear: 0 or 180. Let's call that clockwise.
-    if sign == 0:
-        sign = 1
+    # # The sign of (A x B) dot look gives the sign of the angle.
+    # # > 0 means clockwise, < 0 is counterclockwise.
+    # sign = np.sign(np.cross(v1, v2).dot(look))
 
-    return sign * angle(v1, v2, look)
+    # # 0 means collinear: 0 or 180. Let's call that clockwise.
+    # if sign == 0:
+    #     sign = 1
+
+    # return sign * angle(v1, v2, look)
 
 
 def almost_zero(v, atol=1e-08):
