@@ -135,7 +135,7 @@ def magnitude(vector):
         raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
 
 
-def angle(v1, v2, look):  # FIXME pylint: disable=unused-argument
+def angle(v1, v2, look):
     """
     Compute the unsigned angle between two vectors.
 
@@ -144,13 +144,12 @@ def angle(v1, v2, look):  # FIXME pylint: disable=unused-argument
     """
     import math
 
-    # TODO https://bodylabs.atlassian.net/projects/GEN/issues/GEN-1
-    # As pylint points out, we are not using `look` here. This method is
-    # supposed to be giving the angle between two vectors when viewed along a
-    # particular look vector, squashed into a plane. The code here is
-    # returning the angle in 3-space, which might be a reasonable function to
-    # have, but is not workable for computing the angle between planes as
-    # we're doing in bodylabs.measurement.anatomy.Angle.
+    # TODO As pylint once pointed out, we are not using `look` here. This
+    # method is supposed to be giving the angle between two vectors when
+    # viewed along a particular look vector, squashed into a plane. The code
+    # here is returning the angle in 3-space, which might be a reasonable
+    # function to have, but is not workable for computing the angle between
+    # planes as we're doing in bodylabs.measurement.anatomy.Angle.
 
     dot = normalize(v1).dot(normalize(v2))
     # Dot product sometimes slips past 1 or -1 due to rounding.

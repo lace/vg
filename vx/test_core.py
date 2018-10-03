@@ -155,7 +155,7 @@ class TestVector(unittest.TestCase):
         # NB: on windows, the sizes here will render as 3L, not 3:
         with self.assertRaisesRegexp(
             ValueError, "^Invalid shape \(3L?, 4L?\): pad expects nx3$"
-        ):  # FIXME pylint: disable=anomalous-backslash-in-string
+        ):
             vx.pad_with_ones(
                 np.array(
                     [
@@ -168,7 +168,7 @@ class TestVector(unittest.TestCase):
 
         with self.assertRaisesRegexp(
             ValueError, "^Invalid shape \(3L?,\): pad expects nx3$"
-        ):  # FIXME pylint: disable=anomalous-backslash-in-string
+        ):
             vx.pad_with_ones(np.array([1.0, 2.0, 3.0]))
 
     def test_unpad(self):
@@ -184,12 +184,12 @@ class TestVector(unittest.TestCase):
         # NB: on windows, the sizes here will render as 3L, not 3:
         with self.assertRaisesRegexp(
             ValueError, "^Invalid shape \(3L?, 3L?\): unpad expects nx4$"
-        ):  # FIXME pylint: disable=anomalous-backslash-in-string
+        ):
             vx.unpad(np.array([[1.0, 2.0, 3.0], [2.0, 3.0, 4.0], [5.0, 6.0, 7.0]]))
 
         with self.assertRaisesRegexp(
             ValueError, "^Invalid shape \(4L?,\): unpad expects nx4$"
-        ):  # FIXME pylint: disable=anomalous-backslash-in-string
+        ):
             vx.unpad(np.array([1.0, 2.0, 3.0, 4.0]))
 
         with self.assertRaisesRegexp(ValueError, "^Expected a column of ones$"):
