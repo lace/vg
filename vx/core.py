@@ -1,34 +1,21 @@
-"""
-A namespace of vector shortcuts.
-
-Use the named secondary arguments. They tend to make your code more
-readable:
-
-    result = vx.proj(v1, onto=v2)
-
-
-Design principles
------------------
-
-These are common linear algebra operations which are easily expressed in
-numpy, but which we choose to abstract for a few reasons:
-
-1. If you're not programming linalg every day, you might forget the formula.
-   These forms are easier to remember and easily referenced.
-
-2. They tend to be self-documenting in a way that the numpy forms are not.
-   If you are not programming linalg every day, this will come in handy to
-   you, and certainly will to other programmers in that situation.
-
-3. These implementations are more robust. They automatically inspect `ndim`
-   on their arguments, so they work equally well if the argument is a vector
-   or a stack of vectors. In the long run, they can be more careful about
-   checking edge cases like a zero norm or zero cross product and returning
-   a sensible result or raising a sensible error, as appropriate.
-
-"""
-
 import numpy as np
+
+__all__ = [
+    "normalize",
+    "sproj",
+    "proj",
+    "reject",
+    "reject_axis",
+    "magnitude",
+    "angle",
+    "signed_angle",
+    "almost_zero",
+    "almost_collinear",
+    "pad_with_ones",
+    "unpad",
+    "apply_homogeneous",
+    "basis",
+]
 
 
 def normalize(vector):
@@ -249,7 +236,11 @@ def apply_homogeneous(vertices, transform):
     return unpad(np.dot(transform, pad_with_ones(vertices).T).T)
 
 
-class BasisVectorsFactory(object):
+class _BasisVectors(object):
+    """
+    A namespace of cartesian basis vectors.
+    """
+
     @property
     def x(self):
         return np.array([1.0, 0.0, 0.0])
@@ -275,4 +266,4 @@ class BasisVectorsFactory(object):
         return np.array([0.0, 0.0, -1.0])
 
 
-basis = BasisVectorsFactory()
+basis = _BasisVectors()
