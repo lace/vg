@@ -20,8 +20,8 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "vx"
-copyright = "2018, Metabolize"
-author = "Metabolize"
+copyright = "2016 Body Labs, Inc.; 2018 Metabolize LLC"
+author = "Body Labs, Metabolize, and other contributors"
 
 # The short X.Y version
 version = ""
@@ -44,8 +44,6 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
-    "sphinx.ext.autosummary",
-    "sphinxcontrib.apidoc",
 ]
 
 source_parsers = {".md": "recommonmark.parser.CommonMarkParser"}
@@ -183,22 +181,6 @@ epub_exclude_files = ["search.html"]
 # Napoleon settings.
 napoleon_numpy_docstring = False
 napoleon_include_special_with_doc = True
-
-# Autosummary settings.
-autosummary_generate = True
-
-# For RTFD, we need to run sphinx-apidoc from sphinx. Use the
-# sphinxcontrib-apidoc extension to do this.
-# https://github.com/sphinx-contrib/apidoc
-# https://github.com/rtfd/readthedocs.org/issues/1139
-doc_home = os.path.abspath(os.path.dirname(__file__))
-# .encode() to avoid
-# WARNING: The config value `apidoc_module_dir' has type `unicode', expected to ['str'].
-apidoc_module_dir = os.path.join(doc_home, "..", "vx")
-apidoc_excluded_paths = ["test_*"]
-apidoc_separate_modules = True
-apidoc_toc_file = False
-apidoc_module_first = True
 
 
 def setup(app):

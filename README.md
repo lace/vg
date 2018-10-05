@@ -7,7 +7,7 @@ vx
 [![docs build](https://img.shields.io/readthedocs/vx.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-Vector shortcuts for [NumPy][].
+Vector and linear algebra toolbelt for [NumPy][].
 
 [pypi]: https://pypi.org/project/vector_shortcuts/
 [build]: https://circleci.com/gh/lace/vx/tree/master
