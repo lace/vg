@@ -130,9 +130,10 @@ _normalize = normalize
 
 def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     """
-    Compute the unsigned angle between two vectors. When `look` is provided,
-    the angle is computed in that viewing plane (`look` is the normal).
-    Otherwise the angle is computed in 3-space.
+    Compute the unsigned angle between two vectors. For stacked inputs, the
+    angle is computed pairwise. When `look` is provided, the angle is computed
+    in that viewing plane (`look` is the normal). Otherwise the angle is
+    computed in 3-space.
 
     Args:
         v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
@@ -174,10 +175,12 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
 
 def signed_angle(v1, v2, look, units="deg"):
     """
+    Compute the signed angle between two vectors. For stacked inputs, the
+    angle is computed pairwise.
 
-    Compute the signed angle between two vectors. Returns a number between
-    -180 and 180 (or `-math.pi` and `math.pi`). A positive number indicates a
-    clockwise sweep from v1 to v2. A negative number is counterclockwise.
+    Results are in the range -180 and 180 (or `-math.pi` and `math.pi`). A
+    positive number indicates a clockwise sweep from `v1` to `v2`. A negative
+    number is counterclockwise.
 
     Args:
         v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
