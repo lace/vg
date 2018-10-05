@@ -111,10 +111,15 @@ def reject_axis(vector, axis, squash=False):
 
 def magnitude(vector):
     """
-    Compute the magnitude of `vector`.
-
-    If vector is 2d, treats it as stacked vectors, and computes the magnitude
+    Compute the magnitude of `vector`. For stacked inputs, compute the magnitude
     of each one.
+
+    Args:
+        vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+
+    Returns:
+        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+            a `kx1` array.
     """
     if vector.ndim == 1:
         return np.linalg.norm(vector)
