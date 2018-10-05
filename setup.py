@@ -10,10 +10,10 @@ with open("requirements.txt") as f:
 setup(
     name="vector_shortcuts",
     version=importlib.import_module("vx").__version__,
-    description="Vector shortcuts for NumPy",
+    description="Vector and linear algebra toolbelt for NumPy",
     long_description=readme,
     long_description_content_type="text/markdown",
-    author="Metabolize",
+    author="Body Labs, Metabolize, and other contributors",
     author_email="github@paulmelnikow.com",
     url="https://github.com/metabolize/vx",
     project_urls={
