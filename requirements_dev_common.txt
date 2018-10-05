@@ -4,7 +4,6 @@ click >=7.0,<8.0
 
 # Documentation.
 Sphinx
-sphinxcontrib-apidoc
 recommonmark
 
 # Unit tests.
