@@ -238,7 +238,7 @@ def apply_homogeneous(vertices, transform):
 
 class _BasisVectors(object):
     """
-    A namespace of cartesian basis vectors.
+    The cartesian basis vectors.
     """
 
     @property

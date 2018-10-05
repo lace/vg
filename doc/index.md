@@ -6,23 +6,21 @@ Vector and linear algebra toolbelt for [NumPy][].
 [numpy]: https://www.numpy.org/
 
 
-Style guide
------------
-
-Use the named secondary arguments. They tend to make the code more readable:
-
-    import vx
-    result = vx.proj(v1, onto=v2)
-
-
-API reference
--------------
+Functions
+---------
 
 ```eval_rst
 
 .. automodule:: vx
     :members:
 
+```
+
+
+Constants
+---------
+
+```eval_rst
 .. py:currentmodule:: vx
 
 .. autodata:: basis
@@ -38,6 +36,15 @@ API reference
 .. autodata:: neg_z
 
 ```
+
+
+Style guide
+-----------
+
+Use the named secondary arguments. They tend to make the code more readable:
+
+    import vx
+    result = vx.proj(v1, onto=v2)
 
 
 Design principles
