@@ -29,6 +29,9 @@ class TestVector(unittest.TestCase):
         np.testing.assert_array_almost_equal(vx.sproj(v, onto=onto), expected_s)
         np.testing.assert_array_almost_equal(vx.proj(v, onto=onto), expected_v)
 
+        with self.assertRaises(ValueError):
+            vx.proj(v, onto=np.array([vx.basis.x, vx.basis.x]))
+
     def test_proj_stacked(self):
         vs = np.array([[5.0, -3.0, 1.0], [1.0, 0, 1.0], [0.0, 1, 0.0], [0.0, 0, 0.0]])
         onto = np.array([0, -1.0, 0])

@@ -5,7 +5,7 @@ from . import core as vx
 
 
 class TestAngle(unittest.TestCase):
-    def test_ndim_1_basic(self):
+    def test_basic(self):
         perpendicular = np.array([[1.0, 1.0, 0.0], [-1.0, 1.0, 0.0]])
         self.assertEqual(vx.angle(*perpendicular), 90)
         self.assertEqual(vx.angle(*perpendicular[::-1]), 90)
@@ -16,7 +16,7 @@ class TestAngle(unittest.TestCase):
         self.assertEqual(vx.angle(*acute, units="rad"), acute_angle)
         self.assertEqual(vx.angle(*acute, units="rad"), acute_angle)
 
-    def test_ndim_1_units(self):
+    def test_units(self):
         v1 = np.array([1, 1, 0])
         v2 = np.array([-1, 1, 0])
         self.assertEqual(vx.angle(v1, v2, units="deg"), 90)
@@ -24,7 +24,7 @@ class TestAngle(unittest.TestCase):
         with self.assertRaises(ValueError):
             vx.angle(v2, v1, units="cm")
 
-    def test_ndim_1_assume_normalized(self):
+    def test_assume_normalized(self):
         acute = np.array([[1.0, 2.0, 0.0], [-1.0, 2.0, 0.0]])
         acute_angle = math.acos(3.0 / 5.0)
         np.testing.assert_almost_equal(
@@ -45,19 +45,19 @@ class TestAngle(unittest.TestCase):
             vx.angle(*acute_norm, units="rad", assume_normalized=True), acute_angle
         )
 
-    def test_ndim_1_look(self):
+    def test_look(self):
         v1 = np.array([1, 1, 1])
         v2 = np.array([-1, 1, 0])
         np.testing.assert_almost_equal(vx.angle(v1, v2, look=vx.basis.z), 90.0)
         np.testing.assert_almost_equal(vx.angle(v1, v2, look=vx.basis.x), 45.0)
         np.testing.assert_almost_equal(vx.angle(v1, v2, look=vx.basis.y), 135.0)
 
-    def test_ndim_2_basic(self):
+    def test_stacked_basic(self):
         v1 = np.array([[1, 1, 0], [1, 1, 0]])
         v2 = np.array([[-1, 1, 0], [-1, -1, 0]])
         np.testing.assert_array_almost_equal(vx.angle(v2, v1), np.array([90, 180]))
 
-    def test_ndim_2_units(self):
+    def test_stacked_units(self):
         v1 = np.array([[1, 1, 0], [1, 1, 0]])
         v2 = np.array([[-1, 1, 0], [-1, -1, 0]])
         np.testing.assert_array_almost_equal(
@@ -67,7 +67,7 @@ class TestAngle(unittest.TestCase):
             vx.angle(v2, v1, units="rad"), np.array([math.pi / 2.0, math.pi])
         )
 
-    def test_ndim_2_assume_normalized(self):
+    def test_stacked_assume_normalized(self):
         v1 = np.array([[1.0, 2.0, 0.0], [1.0, 1.0, 0.0]])
         v2 = np.array([[-1.0, 2.0, 0.0], [-1.0, -1.0, 0.0]])
         expected = np.array([math.acos(3.0 / 5.0), math.pi])
@@ -89,7 +89,7 @@ class TestAngle(unittest.TestCase):
             vx.angle(v2, v1, assume_normalized=True, units="rad"), expected
         )
 
-    def test_ndim_2_look(self):
+    def test_stacked_look(self):
         v1 = np.array([[1, 1, 1], vx.basis.y])
         v2 = np.array([[-1, 1, 0], vx.basis.z])
         np.testing.assert_almost_equal(
@@ -98,7 +98,7 @@ class TestAngle(unittest.TestCase):
 
 
 class TestSignedAngle(unittest.TestCase):
-    def test_signed_angle_ndim_1(self):
+    def test_basic(self):
         v1 = np.array([1, 1, 0])
         v2 = np.array([-1, 1, 0])
         look = vx.basis.z
@@ -106,7 +106,7 @@ class TestSignedAngle(unittest.TestCase):
         self.assertEqual(vx.signed_angle(v2, v1, look), -90)
         self.assertIsInstance(vx.signed_angle(v1, v2, look), float)
 
-    def test_signed_angle_ndim_2(self):
+    def test_stacked_basic(self):
         v1 = np.array([[1, 1, 0], [1, 1, 0]])
         v2 = np.array([[-1, 1, 0], [-1, -1, 0]])
         look = vx.basis.z
