@@ -53,6 +53,8 @@ def sproj(vector, onto):
     `onto` need not be normalized.
 
     """
+    if onto.ndim != 1:
+        raise ValueError("onto should be a vector")
     return np.dot(vector, normalize(onto))
 
 
@@ -139,29 +141,41 @@ def magnitude(vector):
 _normalize = normalize
 
 
-def angle(v1, v2, look=None, normalize=True, units="deg"):
+def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     """
     Compute the unsigned angle between two vectors.
 
+    When `look` is provided, compute the angle when viewed along that vector,
+    squashed into a plane.
+
+    Args:
+        assume_normalized (bool): When `True`, assume the input vectors
+            are unit length, which improves performance.
+
     Returns a number between 0 and 180.
-
     """
-    if look is not None:
-        # TODO As pylint once pointed out, we are not using `look` here. This
-        # method is supposed to be giving the angle between two vectors when
-        # viewed along a particular look vector, squashed into a plane. The code
-        # here is returning the angle in 3-space, which might be a reasonable
-        # function to have, but is not workable for computing the angle between
-        # planes as we're doing in bodylabs.measurement.anatomy.Angle.
-        raise NotImplementedError("look is not supported")
+    if units not in ["deg", "rad"]:
+        raise ValueError("Unrecognized units {}; expected deg or rad".format(units))
 
-    if normalize:
-        v1, v2 = _normalize(v1), _normalize(v2)
+    if look is not None:
+        # This is a simple approach. Since this is working in two dimensions,
+        # a smarter approach could reduce the amount of computation needed.
+        v1, v2 = [reject(v, from_v=look) for v in (v1, v2)]
+
     dot_products = np.einsum("ij,ij->i", v1.reshape(-1, 3), v2.reshape(-1, 3))
-    # The dot product sometimes slips past 1 or -1 due to rounding, and we
-    # can't compute arccos(-1.00001).
-    angles_rad = np.arccos(np.clip(dot_products, -1.0, 1.0))
-    return np.degrees(angles_rad) if units == "deg" else angles_rad
+
+    if assume_normalized:
+        cosines = dot_products
+    else:
+        cosines = dot_products / magnitude(v1) / magnitude(v2)
+
+    # Clip, because the dot product can slip past 1 or -1 due to rounding and
+    # we can't compute arccos(-1.00001).
+    angles = np.arccos(np.clip(cosines, -1.0, 1.0))
+    if units == "deg":
+        angles = np.degrees(angles)
+
+    return angles[0] if v1.ndim == 1 and v2.ndim == 1 else angles
 
 
 def signed_angle(v1, v2, look):
@@ -172,17 +186,14 @@ def signed_angle(v1, v2, look):
     clockwise sweep from v1 to v2. A negative number is counterclockwise.
 
     """
-    raise NotImplementedError("look is not supported")
+    # The sign of (A x B) dot look gives the sign of the angle.
+    # > 0 means clockwise, < 0 is counterclockwise.
+    sign = np.array(np.sign(np.cross(v1, v2).dot(look)))
 
-    # # The sign of (A x B) dot look gives the sign of the angle.
-    # # > 0 means clockwise, < 0 is counterclockwise.
-    # sign = np.sign(np.cross(v1, v2).dot(look))
+    # 0 means collinear: 0 or 180. Let's call that clockwise.
+    sign[sign == 0] = 1
 
-    # # 0 means collinear: 0 or 180. Let's call that clockwise.
-    # if sign == 0:
-    #     sign = 1
-
-    # return sign * angle(v1, v2, look)
+    return sign * angle(v1, v2, look)
 
 
 def almost_zero(v, atol=1e-08):
