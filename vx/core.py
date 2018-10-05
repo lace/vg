@@ -40,6 +40,8 @@ def sproj(vector, onto):
     `onto` need not be normalized.
 
     """
+    if onto.ndim != 1:
+        raise ValueError("onto should be a vector")
     return np.dot(vector, normalize(onto))
 
 
@@ -122,47 +124,85 @@ def magnitude(vector):
         raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
 
 
-def angle(v1, v2, look):
+# Alias because angle()'s parameter shadows the name.
+_normalize = normalize
+
+
+def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     """
-    Compute the unsigned angle between two vectors.
+    Compute the unsigned angle between two vectors. For stacked inputs, the
+    angle is computed pairwise.
 
-    Returns a number between 0 and 180.
+    When `look` is provided, the angle is computed in that viewing plane
+    (`look` is the normal). Otherwise the angle is computed in 3-space.
 
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A vector or stack of vectors with the same shape as
+            `v1`.
+        look (np.arraylike): A `3x1` vector specifying the normal of a viewing
+            plane, or `None` to compute the angle in 3-space.
+        assume_normalized (bool): When `True`, assume the input vectors
+            are unit length, which improves performance.
+        units (str): `'deg'` to return degrees or `'rad'` to return radians.
+
+    Return:
+        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+            a `kx1` array.
     """
-    import math
+    if units not in ["deg", "rad"]:
+        raise ValueError("Unrecognized units {}; expected deg or rad".format(units))
 
-    # TODO As pylint once pointed out, we are not using `look` here. This
-    # method is supposed to be giving the angle between two vectors when
-    # viewed along a particular look vector, squashed into a plane. The code
-    # here is returning the angle in 3-space, which might be a reasonable
-    # function to have, but is not workable for computing the angle between
-    # planes as we're doing in bodylabs.measurement.anatomy.Angle.
+    if look is not None:
+        # This is a simple approach. Since this is working in two dimensions,
+        # a smarter approach could reduce the amount of computation needed.
+        v1, v2 = [reject(v, from_v=look) for v in (v1, v2)]
 
-    dot = normalize(v1).dot(normalize(v2))
-    # Dot product sometimes slips past 1 or -1 due to rounding.
-    # Can't acos(-1.00001).
-    dot = max(min(dot, 1), -1)
+    dot_products = np.einsum("ij,ij->i", v1.reshape(-1, 3), v2.reshape(-1, 3))
 
-    return math.degrees(math.acos(dot))
+    if assume_normalized:
+        cosines = dot_products
+    else:
+        cosines = dot_products / magnitude(v1) / magnitude(v2)
+
+    # Clip, because the dot product can slip past 1 or -1 due to rounding and
+    # we can't compute arccos(-1.00001).
+    angles = np.arccos(np.clip(cosines, -1.0, 1.0))
+    if units == "deg":
+        angles = np.degrees(angles)
+
+    return angles[0] if v1.ndim == 1 and v2.ndim == 1 else angles
 
 
-def signed_angle(v1, v2, look):
+def signed_angle(v1, v2, look, units="deg"):
     """
-    Compute the signed angle between two vectors.
+    Compute the signed angle between two vectors. For stacked inputs, the
+    angle is computed pairwise.
 
-    Returns a number between -180 and 180. A positive number indicates a
-    clockwise sweep from v1 to v2. A negative number is counterclockwise.
+    Results are in the range -180 and 180 (or `-math.pi` and `math.pi`). A
+    positive number indicates a clockwise sweep from `v1` to `v2`. A negative
+    number is counterclockwise.
 
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A vector or stack of vectors with the same shape as
+            `v1`.
+        look (np.arraylike): A `3x1` vector specifying the normal of the
+            viewing plane.
+        units (str): `'deg'` to return degrees or `'rad'` to return radians.
+
+    Returns:
+        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+            a `kx1` array.
     """
     # The sign of (A x B) dot look gives the sign of the angle.
     # > 0 means clockwise, < 0 is counterclockwise.
-    sign = np.sign(np.cross(v1, v2).dot(look))
+    sign = np.array(np.sign(np.cross(v1, v2).dot(look)))
 
     # 0 means collinear: 0 or 180. Let's call that clockwise.
-    if sign == 0:
-        sign = 1
+    sign[sign == 0] = 1
 
-    return sign * angle(v1, v2, look)
+    return sign * angle(v1, v2, look, units=units)
 
 
 def almost_zero(v, atol=1e-08):

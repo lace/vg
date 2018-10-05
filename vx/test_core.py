@@ -1,4 +1,5 @@
 import unittest
+import math
 import numpy as np
 from . import core as vx
 
@@ -27,6 +28,9 @@ class TestVector(unittest.TestCase):
         expected_v = np.array([0, -3.0, 0])
         np.testing.assert_array_almost_equal(vx.sproj(v, onto=onto), expected_s)
         np.testing.assert_array_almost_equal(vx.proj(v, onto=onto), expected_v)
+
+        with self.assertRaises(ValueError):
+            vx.proj(v, onto=np.array([vx.basis.x, vx.basis.x]))
 
     def test_proj_stacked(self):
         vs = np.array([[5.0, -3.0, 1.0], [1.0, 0, 1.0], [0.0, 1, 0.0], [0.0, 0, 0.0]])
@@ -75,33 +79,12 @@ class TestVector(unittest.TestCase):
         )
 
     def test_magnitude(self):
-        import math
-
         vs = np.array([[1, 1, 0], [-1, 0, 0], [0, 0, 5]])
         expected = np.array([math.sqrt(2), 1, 5])
         # Test ndim == 2.
         np.testing.assert_array_almost_equal(vx.magnitude(vs), expected)
         # Test ndim == 1.
         np.testing.assert_array_almost_equal(vx.magnitude(vs[0]), expected[0])
-
-    def test_angle(self):
-        v1 = np.array([1, 1, 0])
-        v2 = np.array([-1, 1, 0])
-        look = np.array([0, 0, 1])
-
-        self.assertEqual(vx.signed_angle(v1, v2, look), 90)
-        self.assertEqual(vx.signed_angle(v2, v1, look), -90)
-
-        self.assertEqual(vx.angle(v1, v2, look), 90)
-        self.assertEqual(vx.angle(v2, v1, look), 90)
-
-        v1 = np.array([1, 1, 0])
-        v2 = np.array([-1, -1, 0])
-        look = np.array([0, 0, 1])
-
-        np.testing.assert_almost_equal(vx.signed_angle(v1, v2, look), 180, decimal=5)
-
-        np.testing.assert_almost_equal(vx.angle(v1, v2, look), 180, decimal=5)
 
     def test_almost_zero(self):
         self.assertTrue(vx.almost_zero(np.array([0.0, 0.0, 0.0])))
