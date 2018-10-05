@@ -79,12 +79,15 @@ class TestVector(unittest.TestCase):
         )
 
     def test_magnitude(self):
+        v = np.array([1, 1, 0])
+        expected = math.sqrt(2)
+        np.testing.assert_almost_equal(vx.magnitude(v), expected)
+        self.assertIsInstance(vx.magnitude(v), float)
+
+    def test_magnitude_stacked(self):
         vs = np.array([[1, 1, 0], [-1, 0, 0], [0, 0, 5]])
         expected = np.array([math.sqrt(2), 1, 5])
-        # Test ndim == 2.
         np.testing.assert_array_almost_equal(vx.magnitude(vs), expected)
-        # Test ndim == 1.
-        np.testing.assert_array_almost_equal(vx.magnitude(vs[0]), expected[0])
 
     def test_almost_zero(self):
         self.assertTrue(vx.almost_zero(np.array([0.0, 0.0, 0.0])))
