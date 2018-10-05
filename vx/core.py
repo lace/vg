@@ -143,16 +143,23 @@ _normalize = normalize
 
 def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     """
-    Compute the unsigned angle between two vectors.
-
-    When `look` is provided, compute the angle when viewed along that vector,
-    squashed into a plane.
+    Compute the unsigned angle between two vectors. When `look` is provided,
+    the angle is computed in that viewing plane (`look` is the normal).
+    Otherwise the angle is computed in 3-space.
 
     Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A vector or stack of vectors with the same shape as
+            `v1`.
+        look (np.arraylike): A `3x1` vector specifying the normal of a viewing
+            plane, or `None` to compute the angle in 3-space.
         assume_normalized (bool): When `True`, assume the input vectors
             are unit length, which improves performance.
+        units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
-    Returns a number between 0 and 180.
+    Return:
+        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+            a `kx1` array.
     """
     if units not in ["deg", "rad"]:
         raise ValueError("Unrecognized units {}; expected deg or rad".format(units))
@@ -178,13 +185,24 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     return angles[0] if v1.ndim == 1 and v2.ndim == 1 else angles
 
 
-def signed_angle(v1, v2, look):
+def signed_angle(v1, v2, look, units="deg"):
     """
-    Compute the signed angle between two vectors.
 
-    Returns a number between -180 and 180. A positive number indicates a
+    Compute the signed angle between two vectors. Returns a number between
+    -180 and 180 (or `-math.pi` and `math.pi`). A positive number indicates a
     clockwise sweep from v1 to v2. A negative number is counterclockwise.
 
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A vector or stack of vectors with the same shape as
+            `v1`.
+        look (np.arraylike): A `3x1` vector specifying the normal of the
+            viewing plane.
+        units (str): `'deg'` to return degrees or `'rad'` to return radians.
+
+    Returns:
+        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+            a `kx1` array.
     """
     # The sign of (A x B) dot look gives the sign of the angle.
     # > 0 means clockwise, < 0 is counterclockwise.
@@ -193,7 +211,7 @@ def signed_angle(v1, v2, look):
     # 0 means collinear: 0 or 180. Let's call that clockwise.
     sign[sign == 0] = 1
 
-    return sign * angle(v1, v2, look)
+    return sign * angle(v1, v2, look, units=units)
 
 
 def almost_zero(v, atol=1e-08):
