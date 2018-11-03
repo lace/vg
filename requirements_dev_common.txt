@@ -1,5 +1,5 @@
 # Used in dev.py.
-metabolexecutor
+executor >= 21.0
 click >=7.0,<8.0
 
 # Documentation.
