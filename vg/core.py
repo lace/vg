@@ -281,6 +281,45 @@ def apply_homogeneous(vertices, transform):
     return unpad(np.dot(transform, pad_with_ones(vertices).T).T)
 
 
+def principal_components(coords):
+    """
+    Compute the principal components of the input coordinates. These are also
+    referred to as the principal factors.
+
+    Args:
+        coords (np.arraylike): A `nxk` stack of coordinates.
+
+    Returns:
+        np.ndarray: A `kxk` stack of vectors.
+
+    See also:
+        - http://setosa.io/ev/principal-component-analysis/
+        - https://en.wikipedia.org/wiki/Principal_component_analysis
+        - https://plot.ly/ipython-notebooks/principal-component-analysis/
+    """
+    mean = np.mean(coords, axis=0)
+    _, _, result = np.linalg.svd(coords - mean)
+    return result
+
+
+def major_axis(coords):
+    """
+    Compute the first principal component of the input coordinates. Also
+    referred to as the first principal factor, this is the vector which best
+    describes the multidimensional data using a single dimension.
+
+    Args:
+        coords (np.arraylike): A `nxk` stack of coordinates.
+
+    Returns:
+        np.ndarray: A `kx1` vector.
+
+    See also:
+        https://en.wikipedia.org/wiki/Principal_component_analysis
+    """
+    return principal_components(coords)[0]
+
+
 class _BasisVectors(object):
     """
     The cartesian basis vectors.
