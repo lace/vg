@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## 0.3.0 (Nov 16, 2018)
+
+- Add principal-component-analysis functions `principal_components()` and
+  `major_axis()`.
+
+
 ## 0.2.0 (Oct 5, 2018)
 
 - Vectorize `angle()` and `unsigned_angle()` and improve documentation and
