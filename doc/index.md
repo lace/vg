@@ -4,7 +4,7 @@ vg
 [NumPy][] for humans – a very good toolbelt providing readable shortcuts for
 commonly used vector-geometry and linear-algebra functions.
 
-The functions can optionally be vectorized, meaning they accept single inputs
+The functions optionally can be vectorized, meaning they accept single inputs
 and stacks of inputs without the need to reshape. They return The Right Thing.
 With the power of NumPy, the vectorized functions are fast.
 
