@@ -14,7 +14,7 @@ The functions optionally can be vectorized, meaning they accept single inputs
 and stacks of inputs without the need to reshape. They return The Right Thing.
 With the power of NumPy, the vectorized functions are fast.
 
-[pypi]: https://pypi.org/project/vector_shortcuts/
+[pypi]: https://pypi.org/project/vg/
 [build]: https://circleci.com/gh/lace/vg/tree/master
 [docs build]: https://vgpy.readthedocs.io/en/latest/
 [black]: https://black.readthedocs.io/en/stable/
