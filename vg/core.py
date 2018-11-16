@@ -14,6 +14,8 @@ __all__ = [
     "pad_with_ones",
     "unpad",
     "apply_homogeneous",
+    "principal_components",
+    "major_axis",
     "basis",
 ]
 
@@ -279,6 +281,47 @@ def apply_homogeneous(vertices, transform):
         raise ValueError("Transformation matrix should be 4 x 4")
 
     return unpad(np.dot(transform, pad_with_ones(vertices).T).T)
+
+
+def principal_components(coords):
+    """
+    Compute the principal components of the input coordinates. These are
+    useful for dimensionality reduction and feature modeling.
+
+    Args:
+        coords (np.arraylike): A `nxk` stack of coordinates.
+
+    Returns:
+        np.ndarray: A `kxk` stack of vectors.
+
+    See also:
+        - http://setosa.io/ev/principal-component-analysis/
+        - https://en.wikipedia.org/wiki/Principal_component_analysis
+        - https://plot.ly/ipython-notebooks/principal-component-analysis/
+    """
+    mean = np.mean(coords, axis=0)
+    _, _, result = np.linalg.svd(coords - mean)
+    return result
+
+
+def major_axis(coords):
+    """
+    Compute the first principal component of the input coordinates. This is
+    the vector which best describes the multidimensional data using a single
+    dimension.
+
+    Args:
+        coords (np.arraylike): A `nxk` stack of coordinates.
+
+    Returns:
+        np.ndarray: A `kx1` vector.
+
+    See also:
+        - http://setosa.io/ev/principal-component-analysis/
+        - https://en.wikipedia.org/wiki/Principal_component_analysis
+        - https://plot.ly/ipython-notebooks/principal-component-analysis/
+    """
+    return principal_components(coords)[0]
 
 
 class _BasisVectors(object):
