@@ -10,7 +10,7 @@ with open("requirements.txt") as f:
 setup(
     name="vg",
     version=importlib.import_module("vg").__version__,
-    description="NumPy for humans – a very good vector-geometry and linear-algebra toolbelt",
+    description="NumPy for humans: a very good vector-geometry and linear-algebra toolbelt",
     long_description=readme,
     long_description_content_type="text/markdown",
     author="Body Labs, Metabolize, and other contributors",
