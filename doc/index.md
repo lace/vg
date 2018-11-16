@@ -4,6 +4,9 @@ vg
 [NumPy][] for humans – a toolbelt providing readable shortcuts for commonly used
 vector-geometry and linear-algebra functions.
 
+[NumPy][] for humans – a toolbelt providing readable shortcuts for commonly used
+vector-geometry and linear-algebra functions.
+
 The functions can optionally be vectorized, meaning they accept single inputs
 and stacks of inputs without the need to reshape. They return The Right Thing.
 With the power of NumPy, the vectorized functions are fast.
