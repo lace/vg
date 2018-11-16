@@ -4,7 +4,7 @@ vg
 [![version](https://img.shields.io/pypi/v/vg.svg?style=flat-square)][pypi]
 [![license](https://img.shields.io/pypi/l/vg.svg?style=flat-square)][pypi]
 [![build](https://img.shields.io/circleci/project/github/lace/vg/master.svg?style=flat-square)][build]
-[![docs build](https://img.shields.io/readthedocs/vg.svg?style=flat-square)][docs build]
+[![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
 [NumPy][] for humans – a toolbelt providing readable shortcuts for commonly used
@@ -16,7 +16,7 @@ With the power of NumPy, the vectorized functions are fast.
 
 [pypi]: https://pypi.org/project/vector_shortcuts/
 [build]: https://circleci.com/gh/lace/vg/tree/master
-[docs build]: https://vg.readthedocs.io/en/latest/
+[docs build]: https://vgpy.readthedocs.io/en/latest/
 [black]: https://black.readthedocs.io/en/stable/
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
@@ -39,7 +39,7 @@ Features
 - `unpad` strips off a column (e.g. of ones).
 - `apply_homogeneous` applies a transformation matrix using homogeneous
   coordinates.
-- Complete documentation: http://vg.readthedocs.io/
+- Complete documentation: http://vgpy.readthedocs.io/
 
 
 Installation

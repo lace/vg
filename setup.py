@@ -18,7 +18,7 @@ setup(
     url="https://github.com/lace/vg",
     project_urls={
         "Issue Tracker": "https://github.com/metabolize/vg/issues",
-        "Documentation": "https://vg.readthedocs.io/en/stable/",
+        "Documentation": "https://vgpy.readthedocs.io/en/stable/",
     },
     packages=find_packages(),
     install_requires=install_requires,
