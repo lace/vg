@@ -285,8 +285,8 @@ def apply_homogeneous(vertices, transform):
 
 def principal_components(coords):
     """
-    Compute the principal components of the input coordinates. These are also
-    referred to as the principal factors.
+    Compute the principal components of the input coordinates. This can be
+    useful for dimensionality reduction and feature modeling.
 
     Args:
         coords (np.arraylike): A `nxk` stack of coordinates.
@@ -306,9 +306,9 @@ def principal_components(coords):
 
 def major_axis(coords):
     """
-    Compute the first principal component of the input coordinates. Also
-    referred to as the first principal factor, this is the vector which best
-    describes the multidimensional data using a single dimension.
+    Compute the first principal component of the input coordinates. This is
+    the vector which best describes the multidimensional data using a single
+    dimension.
 
     Args:
         coords (np.arraylike): A `nxk` stack of coordinates.
@@ -317,7 +317,9 @@ def major_axis(coords):
         np.ndarray: A `kx1` vector.
 
     See also:
-        https://en.wikipedia.org/wiki/Principal_component_analysis
+        - http://setosa.io/ev/principal-component-analysis/
+        - https://en.wikipedia.org/wiki/Principal_component_analysis
+        - https://plot.ly/ipython-notebooks/principal-component-analysis/
     """
     return principal_components(coords)[0]
 
