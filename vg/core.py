@@ -285,7 +285,7 @@ def apply_homogeneous(vertices, transform):
 
 def principal_components(coords):
     """
-    Compute the principal components of the input coordinates. This can be
+    Compute the principal components of the input coordinates. These are
     useful for dimensionality reduction and feature modeling.
 
     Args:
