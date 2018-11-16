@@ -1,6 +1,5 @@
 from __future__ import print_function
 import unittest
-import math
 import numpy as np
 from . import core as vx
 
