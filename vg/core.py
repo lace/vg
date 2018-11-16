@@ -14,6 +14,8 @@ __all__ = [
     "pad_with_ones",
     "unpad",
     "apply_homogeneous",
+    "principal_components",
+    "major_axis",
     "basis",
 ]
 
