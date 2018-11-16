@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath(".."))
 
 # -- Project information -----------------------------------------------------
 
-project = "vx"
+project = "vg"
 copyright = "2016 Body Labs, Inc.; 2018 Metabolize LLC"
 author = "Body Labs, Metabolize, and other contributors"
 
@@ -107,7 +107,7 @@ html_static_path = ["_static"]
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "vxdoc"
+htmlhelp_basename = "vgdoc"
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -130,14 +130,14 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
-latex_documents = [(master_doc, "vx.tex", "vx Documentation", "Metabolize", "manual")]
+latex_documents = [(master_doc, "vg.tex", "vg Documentation", "Metabolize", "manual")]
 
 
 # -- Options for manual page output ------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "vx", "vx Documentation", [author], 1)]
+man_pages = [(master_doc, "vg", "vg Documentation", [author], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------------
@@ -148,10 +148,10 @@ man_pages = [(master_doc, "vx", "vx Documentation", [author], 1)]
 texinfo_documents = [
     (
         master_doc,
-        "vx",
-        "vx Documentation",
+        "vg",
+        "vg Documentation",
         author,
-        "vx",
+        "vg",
         "One line description of project.",
         "Miscellaneous",
     )

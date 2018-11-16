@@ -8,17 +8,17 @@ with open("requirements.txt") as f:
     install_requires = f.read()
 
 setup(
-    name="vector_shortcuts",
-    version=importlib.import_module("vx").__version__,
-    description="Vector and linear algebra toolbelt for NumPy",
+    name="vg",
+    version=importlib.import_module("vg").__version__,
+    description="NumPy for humans – a vector-geometry and linear-algebra toolbelt",
     long_description=readme,
     long_description_content_type="text/markdown",
     author="Body Labs, Metabolize, and other contributors",
     author_email="github@paulmelnikow.com",
-    url="https://github.com/metabolize/vx",
+    url="https://github.com/lace/vg",
     project_urls={
-        "Issue Tracker": "https://github.com/metabolize/vx/issues",
-        "Documentation": "https://vx.readthedocs.io/en/stable/",
+        "Issue Tracker": "https://github.com/metabolize/vg/issues",
+        "Documentation": "https://vg.readthedocs.io/en/stable/",
     },
     packages=find_packages(),
     install_requires=install_requires,

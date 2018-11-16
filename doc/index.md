@@ -1,7 +1,11 @@
-vx
+vg
 ==
 
-Vector and linear algebra toolbelt for [NumPy][].
+[NumPy][] for humans – a toolbelt providing readable shortcuts for commonly used
+vector-geometry and linear-algebra functions.
+ The functions can optionally be vectorized, meaning they accept single inputs
+and stacks of inputs without the need to reshape. They return The Right Thing.
+With the power of NumPy, the vectorized functions are fast.
 
 [numpy]: https://www.numpy.org/
 
@@ -11,7 +15,7 @@ Functions
 
 ```eval_rst
 
-.. automodule:: vx
+.. automodule:: vg
     :members:
 
 ```
@@ -21,12 +25,12 @@ Constants
 ---------
 
 ```eval_rst
-.. py:currentmodule:: vx
+.. py:currentmodule:: vg
 
 .. autodata:: basis
     :annotation:
 
-.. py:currentmodule:: vx.basis
+.. py:currentmodule:: vg.basis
 
 .. autodata:: x
 .. autodata:: neg_x
@@ -43,8 +47,8 @@ Style guide
 
 Use the named secondary arguments. They tend to make the code more readable:
 
-    import vx
-    result = vx.proj(v1, onto=v2)
+    import vg
+    result = vg.proj(v1, onto=v2)
 
 
 Design principles

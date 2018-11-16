@@ -1,17 +1,22 @@
-vx
+vg
 ==
 
-[![version](https://img.shields.io/pypi/v/vector_shortcuts.svg?style=flat-square)][pypi]
-[![license](https://img.shields.io/pypi/l/vector_shortcuts.svg?style=flat-square)][pypi]
-[![build](https://img.shields.io/circleci/project/github/lace/vx/master.svg?style=flat-square)][build]
-[![docs build](https://img.shields.io/readthedocs/vx.svg?style=flat-square)][docs build]
+[![version](https://img.shields.io/pypi/v/vg.svg?style=flat-square)][pypi]
+[![license](https://img.shields.io/pypi/l/vg.svg?style=flat-square)][pypi]
+[![build](https://img.shields.io/circleci/project/github/lace/vg/master.svg?style=flat-square)][build]
+[![docs build](https://img.shields.io/readthedocs/vg.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-Vector and linear algebra toolbelt for [NumPy][].
+[NumPy][] for humans – a toolbelt providing readable shortcuts for commonly used
+vector-geometry and linear-algebra functions.
+
+The functions can optionally be vectorized, meaning they accept single inputs
+and stacks of inputs without the need to reshape. They return The Right Thing.
+With the power of NumPy, the vectorized functions are fast.
 
 [pypi]: https://pypi.org/project/vector_shortcuts/
-[build]: https://circleci.com/gh/lace/vx/tree/master
-[docs build]: https://vx.readthedocs.io/en/latest/
+[build]: https://circleci.com/gh/lace/vg/tree/master
+[docs build]: https://vg.readthedocs.io/en/latest/
 [black]: https://black.readthedocs.io/en/stable/
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
@@ -34,14 +39,14 @@ Features
 - `unpad` strips off a column (e.g. of ones).
 - `apply_homogeneous` applies a transformation matrix using homogeneous
   coordinates.
-- Complete documentation: http://vx.readthedocs.io/
+- Complete documentation: http://vg.readthedocs.io/
 
 
 Installation
 ------------
 
 ```sh
-pip install numpy vector_shortcuts
+pip install numpy vg
 ```
 
 
@@ -50,19 +55,10 @@ Usage
 
 ```py
 import numpy as np
-import vx
+import vg
 
-projected = vx.sproj(np.array([5.0, -3.0, 1.0]), onto=vx.basis.neg_y)
+projected = vg.sproj(np.array([5.0, -3.0, 1.0]), onto=vg.basis.neg_y)
 ```
-
-
-Contribute
-----------
-
-- Issue Tracker: https://github.com/metabolize/vx/issues
-- Source Code: https://github.com/metabolize/vx
-
-Pull requests welcome!
 
 
 Support
