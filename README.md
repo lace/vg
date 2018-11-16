@@ -39,6 +39,8 @@ Features
 - `unpad` strips off a column (e.g. of ones).
 - `apply_homogeneous` applies a transformation matrix using homogeneous
   coordinates.
+- `principal_components` computes principal components of a set of
+  coordinates. `major_axis` returns the first one.
 - Complete documentation: http://vgpy.readthedocs.io/
 
 
@@ -73,7 +75,8 @@ Acknowledgements
 This collection was developed at Body Labs by [Paul Melnikow][] and extracted
 from the Body Labs codebase and open-sourced as part of [blmath][] by [Alex
 Weiss][]. blmath was subsequently [forked][fork] by Paul Melnikow and later
-this namespace was broken out into its own package.
+the `vx` namespace was broken out into its own package. The project was renamed
+to `vg` to resolve a name conflict.
 
 [paul melnikow]: https://github.com/paulmelnikow
 [blmath]: https://github.com/bodylabs/blmath
