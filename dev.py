@@ -23,18 +23,19 @@ def cli():
 
 @cli.command()
 def init():
-    execute("pip install --upgrade -r requirements_dev.txt")
+    execute("pip2 install --upgrade -r requirements_dev_py2.txt")
+    execute("pip3 install --upgrade -r requirements_dev_py3.txt")
 
 
 @cli.command()
 def test():
-    execute("nose2")
+    execute("pytest")
 
 
 @cli.command()
 def test_both():
-    execute("python2 -m nose2")
-    execute("python3 -m nose2")
+    execute("python2 -m pytest")
+    execute("python3 -m pytest")
 
 
 @cli.command()
