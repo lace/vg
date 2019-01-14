@@ -1,4 +1,3 @@
-import math
 import numpy as np
 from . import core as vx
 
