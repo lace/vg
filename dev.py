@@ -33,6 +33,17 @@ def test():
 
 
 @cli.command()
+def coverage():
+    execute("pytest --cov=vg")
+
+
+@cli.command()
+def coverage_report():
+    execute("coverage html")
+    execute("open htmlcov/index.html")
+
+
+@cli.command()
 def test_both():
     execute("python2 -m pytest")
     execute("python3 -m pytest")

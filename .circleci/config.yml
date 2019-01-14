@@ -59,7 +59,14 @@ jobs:
           when: always
           command: |
             . venv/bin/activate
-            ./dev.py test
+            ./dev.py coverage
+
+      - run:
+          name: Send results to coveralls.io
+          when: always
+          command: |
+            . venv/bin/activate
+            coveralls
 
       - run:
           name: Run the doc build
