@@ -20,5 +20,5 @@ def test_normalize_stacked():
 
 
 def test_normalized_wrong_dim():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match='Not sure what to do with 3 dimensions'):
         vx.normalize(np.array([[[1, 1, 0], [0, 1, 0]], [[0, 0, 0], [0, 1, 0]]]))
