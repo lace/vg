@@ -64,7 +64,7 @@ jobs:
       - run:
           name: Send results to coveralls.io
           when: always
-          command: coveralls
+          command: /usr/local/bin/coveralls
 
       - run:
           name: Run the doc build
