@@ -64,7 +64,9 @@ jobs:
       - run:
           name: Send results to coveralls.io
           when: always
-          command: python -m coveralls
+          command: |
+            . venv/bin/activate
+            coveralls
 
       - run:
           name: Run the doc build
