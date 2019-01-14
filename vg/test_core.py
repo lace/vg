@@ -5,22 +5,6 @@ from . import core as vx
 
 
 class TestVector(unittest.TestCase):
-    def test_normalize(self):
-        import math
-
-        v = np.array([1, 1, 0])
-        expected = np.array([math.sqrt(2) / 2.0, math.sqrt(2) / 2.0, 0])
-        np.testing.assert_array_almost_equal(vx.normalize(v), expected)
-
-    def test_normalize_stacked(self):
-        import math
-
-        vs = np.array([[1, 1, 0], [-1, 0, 0], [0, 0, 5]])
-        expected = np.array(
-            [[math.sqrt(2) / 2.0, math.sqrt(2) / 2.0, 0], [-1, 0, 0], [0, 0, 1]]
-        )
-        np.testing.assert_array_almost_equal(vx.normalize(vs), expected)
-
     def test_proj(self):
         v = np.array([5.0, -3.0, 1.0])
         onto = np.array([0, -1.0, 0])
