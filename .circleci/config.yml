@@ -47,7 +47,6 @@ jobs:
             virtualenv venv
             . venv/bin/activate
             set -o pipefail; pip install --upgrade -r requirements_dev_py3.txt | cat
-            pip show -f coveralls
 
       - run:
           name: Show versions
@@ -65,7 +64,7 @@ jobs:
       - run:
           name: Send results to coveralls.io
           when: always
-          command: /usr/local/bin/coveralls
+          command: python -m coveralls
 
       - run:
           name: Run the doc build
