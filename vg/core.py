@@ -296,11 +296,11 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     elif units != "rad":
         raise ValueError('Unknown units {}; expected "deg" or "rad"'.format(units))
 
-    if not assume_normalized:
-        around_axis = normalize(around_axis)
-
     cosine = math.cos(angle)
     sine = math.sin(angle)
+
+    if not assume_normalized:
+        around_axis = normalize(around_axis)
 
     if vector.ndim == 1:
         dot_products = np.inner(around_axis, vector)
