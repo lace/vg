@@ -63,7 +63,7 @@ def perpendicular(v1, v2, normalized=True):
     """
     Given two noncollinear vectors, return a vector perpendicular to both. For
     stacked inputs, compute the result vectors pairwise such that `result[k]` is
-    perpendicular to both `v1[k]` and `v2[k]`.
+    perpendicular to `v1[k]` and `v2[k]`.
 
     Result vectors follow the right-hand rule. When the right index finger
     points along `v1` and the right middle finger along `v2`, the right thumb
