@@ -2,6 +2,7 @@ import numpy as np
 
 __all__ = [
     "normalize",
+    "perpendicular",
     "sproj",
     "proj",
     "reject",
@@ -18,6 +19,29 @@ __all__ = [
     "major_axis",
     "basis",
 ]
+
+
+def pluralize(noun, count, plural=None):
+    if count == 1:
+        return noun
+    elif plural is None:
+        return "{}s".format(noun)
+    else:
+        return plural
+
+
+def raise_dimension_error(*input_values):
+    messages = [
+        "{} {}".format(input_value.ndim, pluralize("dimension", input_value.ndim))
+        for input_value in input_values
+    ]
+    if len(messages) == 1:
+        message = messages[0]
+    elif len(messages) == 2:
+        message = "{} and {}".format(*messages)
+    else:
+        message = "inputs"
+    raise ValueError("Not sure what to do with {}".format(message))
 
 
 def normalize(vector):
@@ -66,7 +90,7 @@ def perpendicular(v1, v2, normalized=True):
         result = np.cross(v1[:, np.newaxis, :], v2[:, np.newaxis, :])[:, 0, :]
         return normalize(result) if normalized else result
     else:
-        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+        raise_dimension_error(v1, v2)
 
 
 def sproj(vector, onto):
