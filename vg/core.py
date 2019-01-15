@@ -294,7 +294,7 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     if units == "deg":
         angle = math.radians(angle)
     elif units != "rad":
-        raise ValueError('Unknown units {}; expected "deg" or "rad"'.format(units))
+        raise ValueError('Unknown units "{}"; expected "deg" or "rad"'.format(units))
 
     cosine = math.cos(angle)
     sine = math.sin(angle)
