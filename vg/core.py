@@ -35,6 +35,40 @@ def normalize(vector):
         raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
 
 
+def perpendicular(v1, v2, normalized=True):
+    """
+    Given two noncollinear vectors, return a vector perpendicular to both. For
+    stacked inputs, compute the result vectors pairwise.
+
+    The result vector follows the right-hand rule. If the right  index finger
+    points along `v1` and the right middle finger along `v2`, the right thumb
+    points along the result.
+
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A vector or stack of vectors with the same shape as
+            `v1`.
+        normalized (bool): When `True`, the result vector is guaranteed to be
+            unit length.
+
+    Return:
+        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+            a `kx1` array.
+
+    See also:
+        - https://en.wikipedia.org/wiki/Cross_product#Definition
+        - https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg
+    """
+    if v1.ndim == 1 and v2.ndim == 1:
+        result = np.cross(v1, v2)
+        return normalize(result) if normalized else result
+    elif v1.ndim == 2 and v2.ndim == 2:
+        result = np.cross(v1[:, np.newaxis, :], v2[:, np.newaxis, :])[:, 0, :]
+        return normalize(result) if normalized else result
+    else:
+        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+
+
 def sproj(vector, onto):
     """
     Compute the scalar projection of `vector` onto the vector `onto`.
@@ -150,7 +184,8 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
         look (np.arraylike): A `3x1` vector specifying the normal of a viewing
             plane, or `None` to compute the angle in 3-space.
         assume_normalized (bool): When `True`, assume the input vectors
-            are unit length, which improves performance.
+            are unit length. This improves performance, however when the inputs
+            are not normalized, setting this will cause an incorrect results.
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Return:
