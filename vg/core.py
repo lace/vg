@@ -62,9 +62,10 @@ def normalize(vector):
 def perpendicular(v1, v2, normalized=True):
     """
     Given two noncollinear vectors, return a vector perpendicular to both. For
-    stacked inputs, compute the result vectors pairwise.
+    stacked inputs, compute the result vectors pairwise such that `result[k]` is
+    perpendicular to both `v1[k]` and `v2[k]`.
 
-    The result vector follows the right-hand rule. If the right  index finger
+    Result vectors follow the right-hand rule. When the right index finger
     points along `v1` and the right middle finger along `v2`, the right thumb
     points along the result.
 
@@ -76,8 +77,7 @@ def perpendicular(v1, v2, normalized=True):
             unit length.
 
     Return:
-        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
-            a `kx1` array.
+        np.arraylike: An array with the same shape as `v1` and `v2`.
 
     See also:
         - https://en.wikipedia.org/wiki/Cross_product#Definition
