@@ -12,6 +12,10 @@ vg
 **[NumPy][] for humans**: a Very Good toolbelt of readable shortcuts for
 common tasks in vector geometry and linear algebra.
 
+The functions optionally can be vectorized, meaning they accept single inputs
+and stacks of inputs without the need to reshape. They return The Right Thing.
+With the power of NumPy, the vectorized functions are fast.
+
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://coveralls.io/github/lace/vg
 [build]: https://circleci.com/gh/lace/vg/tree/master
