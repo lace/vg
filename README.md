@@ -12,10 +12,6 @@ vg
 **[NumPy][] for humans**: a **v**ery **g**ood toolbelt for common tasks in
 vector geometry and linear algebra.
 
-The functions are optionally vectorized, meaning they accept single inputs
-and stacks of inputs. They return The Right Thing, without the need to reshape
-inputs or outputs. With the power of NumPy, the vectorized functions are fast.
-
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://coveralls.io/github/lace/vg
 [build]: https://circleci.com/gh/lace/vg/tree/master
@@ -74,8 +70,9 @@ Features
 --------
 
 All functions are optionally vectorized, meaning they accept single inputs and
-stacks of inputs without the need to reshape inputs or outputs. They return
-The Right Thing. With the power of NumPy, the vectorized functions are fast.
+stacks of inputs interchangeably. They return The Right Thing – a single
+result or a stack of results – without the need to reshape inputs or outputs.
+With the power of NumPy, the vectorized functions are fast.
 
 - `normalize` normalizes a vector.
 - `sproj` computes the scalar projection of one vector onto another.
