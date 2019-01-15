@@ -2,6 +2,7 @@ import numpy as np
 
 __all__ = [
     "normalize",
+    "perpendicular",
     "sproj",
     "proj",
     "reject",
@@ -20,6 +21,29 @@ __all__ = [
 ]
 
 
+def pluralize(noun, count, plural=None):
+    if count == 1:
+        return noun
+    elif plural is None:
+        return "{}s".format(noun)
+    else:
+        return plural
+
+
+def raise_dimension_error(*input_values):
+    messages = [
+        "{} {}".format(input_value.ndim, pluralize("dimension", input_value.ndim))
+        for input_value in input_values
+    ]
+    if len(messages) == 1:
+        message = messages[0]
+    elif len(messages) == 2:
+        message = "{} and {}".format(*messages)
+    else:
+        message = "inputs"
+    raise ValueError("Not sure what to do with {}".format(message))
+
+
 def normalize(vector):
     """
     Return the vector, normalized.
@@ -32,7 +56,41 @@ def normalize(vector):
     elif vector.ndim == 2:
         return vector / np.linalg.norm(vector, axis=1)[:, np.newaxis]
     else:
-        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+        raise_dimension_error(vector)
+
+
+def perpendicular(v1, v2, normalized=True):
+    """
+    Given two noncollinear vectors, return a vector perpendicular to both. For
+    stacked inputs, compute the result vectors pairwise such that `result[k]` is
+    perpendicular to `v1[k]` and `v2[k]`.
+
+    Result vectors follow the right-hand rule. When the right index finger
+    points along `v1` and the right middle finger along `v2`, the right thumb
+    points along the result.
+
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A vector or stack of vectors with the same shape as
+            `v1`.
+        normalized (bool): When `True`, the result vector is guaranteed to be
+            unit length.
+
+    Return:
+        np.arraylike: An array with the same shape as `v1` and `v2`.
+
+    See also:
+        - https://en.wikipedia.org/wiki/Cross_product#Definition
+        - https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg
+    """
+    if v1.ndim == 1 and v2.ndim == 1:
+        result = np.cross(v1, v2)
+        return normalize(result) if normalized else result
+    elif v1.ndim == 2 and v2.ndim == 2:
+        result = np.cross(v1[:, np.newaxis, :], v2[:, np.newaxis, :])[:, 0, :]
+        return normalize(result) if normalized else result
+    else:
+        raise_dimension_error(v1, v2)
 
 
 def sproj(vector, onto):
@@ -59,7 +117,7 @@ def proj(vector, onto):
     elif vector.ndim == 2:
         return sproj(vector, onto=onto)[:, np.newaxis] * normalize(onto)
     else:
-        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+        raise_dimension_error(vector)
 
 
 def reject(vector, from_v):
@@ -99,7 +157,7 @@ def reject_axis(vector, axis, squash=False):
         elif vector.ndim == 2:
             return vector[:, dims_to_keep]
         else:
-            raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+            raise_dimension_error(vector)
     else:
         result = vector.copy()
         if vector.ndim == 1:
@@ -107,7 +165,7 @@ def reject_axis(vector, axis, squash=False):
         elif vector.ndim == 2:
             result[:, axis] = 0.0
         else:
-            raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+            raise_dimension_error(vector)
         return result
 
 
@@ -128,7 +186,7 @@ def magnitude(vector):
     elif vector.ndim == 2:
         return np.linalg.norm(vector, axis=1)
     else:
-        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+        raise_dimension_error(vector)
 
 
 # Alias because angle()'s parameter shadows the name.
@@ -150,7 +208,8 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
         look (np.arraylike): A `3x1` vector specifying the normal of a viewing
             plane, or `None` to compute the angle in 3-space.
         assume_normalized (bool): When `True`, assume the input vectors
-            are unit length, which improves performance.
+            are unit length. This improves performance, however when the inputs
+            are not normalized, setting this will cause an incorrect results.
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Return:
@@ -226,7 +285,7 @@ def almost_collinear(v1, v2, atol=1e-08):
 
     Mathematically speaking, the zero vector is collinear to everything.
     Geometrically that doesn't necessarily make sense. If you care, test
-    your inputs with vx.almost_zero.
+    your inputs with vg.almost_zero.
 
     """
     cross = np.cross(v1, v2)

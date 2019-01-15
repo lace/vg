@@ -1,14 +1,13 @@
-from __future__ import print_function
 import math
 import pytest
 import numpy as np
-from . import core as vx
+from . import core as vg
 
 
 def test_normalize():
     v = np.array([1, 1, 0])
     expected = np.array([math.sqrt(2) / 2.0, math.sqrt(2) / 2.0, 0])
-    np.testing.assert_array_almost_equal(vx.normalize(v), expected)
+    np.testing.assert_array_almost_equal(vg.normalize(v), expected)
 
 
 def test_normalize_stacked():
@@ -16,9 +15,9 @@ def test_normalize_stacked():
     expected = np.array(
         [[math.sqrt(2) / 2.0, math.sqrt(2) / 2.0, 0], [-1, 0, 0], [0, 0, 1]]
     )
-    np.testing.assert_array_almost_equal(vx.normalize(vs), expected)
+    np.testing.assert_array_almost_equal(vg.normalize(vs), expected)
 
 
 def test_normalized_wrong_dim():
     with pytest.raises(ValueError, match="Not sure what to do with 3 dimensions"):
-        vx.normalize(np.array([[[1, 1, 0], [0, 1, 0]], [[0, 0, 0], [0, 1, 0]]]))
+        vg.normalize(np.array([[[1, 1, 0], [0, 1, 0]], [[0, 0, 0], [0, 1, 0]]]))
