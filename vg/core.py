@@ -56,7 +56,7 @@ def normalize(vector):
     elif vector.ndim == 2:
         return vector / np.linalg.norm(vector, axis=1)[:, np.newaxis]
     else:
-        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+        raise_dimension_error(vector)
 
 
 def perpendicular(v1, v2, normalized=True):
@@ -117,7 +117,7 @@ def proj(vector, onto):
     elif vector.ndim == 2:
         return sproj(vector, onto=onto)[:, np.newaxis] * normalize(onto)
     else:
-        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+        raise_dimension_error(vector)
 
 
 def reject(vector, from_v):
@@ -157,7 +157,7 @@ def reject_axis(vector, axis, squash=False):
         elif vector.ndim == 2:
             return vector[:, dims_to_keep]
         else:
-            raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+            raise_dimension_error(vector)
     else:
         result = vector.copy()
         if vector.ndim == 1:
@@ -165,7 +165,7 @@ def reject_axis(vector, axis, squash=False):
         elif vector.ndim == 2:
             result[:, axis] = 0.0
         else:
-            raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+            raise_dimension_error(vector)
         return result
 
 
@@ -186,7 +186,7 @@ def magnitude(vector):
     elif vector.ndim == 2:
         return np.linalg.norm(vector, axis=1)
     else:
-        raise ValueError("Not sure what to do with %s dimensions" % vector.ndim)
+        raise_dimension_error(vector)
 
 
 # Alias because angle()'s parameter shadows the name.
