@@ -34,3 +34,5 @@ def test_apply_homogeneous_error():
         vg.apply_homogeneous(np.array([1.0, 2.0, 3.0]), np.array([1.0]))
     with pytest.raises(ValueError, match="Vertices should be 3x1 or Nx3"):
         vg.apply_homogeneous(np.array([1.0, 2.0]), transform)
+    with pytest.raises(ValueError, match="Not sure what to do with 3 dimensions"):
+        vg.apply_homogeneous(np.array([[[1.0, 2.0, 3.0]]]), transform)
