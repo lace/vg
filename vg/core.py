@@ -21,13 +21,8 @@ __all__ = [
 ]
 
 
-def pluralize(noun, count, plural=None):
-    if count == 1:
-        return noun
-    elif plural is None:
-        return "{}s".format(noun)
-    else:
-        return plural
+def pluralize(noun, count):
+    return noun if count == 1 else "{}s".format(noun)
 
 
 def raise_dimension_error(*input_values):
@@ -159,6 +154,8 @@ def reject_axis(vector, axis, squash=False):
         else:
             raise_dimension_error(vector)
     else:
+        if axis not in [0, 1, 2]:
+            raise ValueError("axis should be 0, 1, or 2")
         result = vector.copy()
         if vector.ndim == 1:
             result[axis] = 0.0

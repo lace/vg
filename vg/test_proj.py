@@ -24,3 +24,8 @@ def test_proj_stacked():
     )
     np.testing.assert_array_almost_equal(vg.sproj(vs, onto=onto), expected_s)
     np.testing.assert_array_almost_equal(vg.proj(vs, onto=onto), expected_v)
+
+
+def test_proj_error():
+    with pytest.raises(ValueError, match="Not sure what to do with 3 dimensions"):
+        vg.proj(np.array([[[5.0, -3.0, 1.0]]]), onto=np.array([0, -1.0, 0]))
