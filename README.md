@@ -9,7 +9,7 @@ vg
 [![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-[NumPy][] for humans – a very good toolbelt providing readable shortcuts for
+_[NumPy][] for humans_: a Very Good toolbelt providing readable shortcuts for
 commonly used vector-geometry and linear-algebra functions.
 
 The functions optionally can be vectorized, meaning they accept single inputs
