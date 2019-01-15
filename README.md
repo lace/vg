@@ -12,10 +12,9 @@ vg
 **[NumPy][] for humans**: a **v**ery **g**ood toolbelt for common tasks in
 vector geometry and linear algebra.
 
-The functions optionally can be vectorized, meaning they accept single inputs
+The functions are optionally vectorized, meaning they accept single inputs
 and stacks of inputs. They return The Right Thing, without the need to reshape
-the inputs or outputs. With the power of NumPy, the vectorized functions are
-fast.
+inputs or outputs. With the power of NumPy, the vectorized functions are fast.
 
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://coveralls.io/github/lace/vg
