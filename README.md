@@ -9,8 +9,8 @@ vg
 [![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-**[NumPy][] for humans**: a **v**ery **g**ood toolbelt of readable shortcuts
-for common tasks in vector geometry and linear algebra.
+**[NumPy][] for humans**: a **v**ery **g**ood toolbelt for common tasks in
+vector geometry and linear algebra.
 
 The functions optionally can be vectorized, meaning they accept single inputs
 and stacks of inputs. They return The Right Thing, without the need to reshape
@@ -25,7 +25,7 @@ fast.
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
 
-## Examples
+## `vg` makes code more readable
 
 #### Normalize a stack of vectors
 
