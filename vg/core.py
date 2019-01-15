@@ -331,12 +331,21 @@ def apply_homogeneous(vertices, transform):
     Apply the given transformation matrix to the vertices using homogenous
     coordinates.
     """
-    if vertices.ndim != 2 or vertices.shape[1] != 3:
-        raise ValueError("Vertices should be N x 3")
     if transform.shape != (4, 4):
-        raise ValueError("Transformation matrix should be 4 x 4")
+        raise ValueError("Transformation matrix should be 4x4")
 
-    return unpad(np.dot(transform, pad_with_ones(vertices).T).T)
+    if vertices.ndim == 1:
+        matrix = vertices[np.newaxis]
+    elif vertices.ndim == 2:
+        matrix = vertices
+    else:
+        raise_dimension_error(vertices)
+
+    if matrix.shape[1] != 3:
+        raise ValueError("Vertices should be 3x1 or Nx3")
+
+    result = unpad(np.dot(transform, pad_with_ones(matrix).T).T)
+    return result[0] if vertices.ndim == 1 else result
 
 
 def principal_components(coords):
