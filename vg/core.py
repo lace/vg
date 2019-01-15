@@ -35,7 +35,7 @@ def raise_dimension_error(*input_values):
     elif len(messages) == 2:
         message = "{} and {}".format(*messages)
     else:
-        message = "inputs"
+        message = "those inputs"
     raise ValueError("Not sure what to do with {}".format(message))
 
 
