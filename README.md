@@ -45,7 +45,7 @@ is_almost_zero = vg.is_almost_zero(v, atol=1e-05)
 #### Major axis of variation (first principal component)
 
 ```py
-# 😭
+# 😩
 mean = np.mean(coords, axis=0)
 _, _, pcs = np.linalg.svd(coords - mean)
 first_pc = pcs[0]
@@ -57,7 +57,7 @@ first_pc = vg.major_axis(coords)
 #### Pairwise angles between two stacks of vectors.
 
 ```py
-# 😩
+# 😭
 dot_products = np.einsum("ij,ij->i", v1s.reshape(-1, 3), v2s.reshape(-1, 3))
 cosines = dot_products / np.linalg.norm(v1s, axis=1) / np.linalg.norm(v1s, axis=1)
 angles = np.arccos(np.clip(cosines, -1.0, 1.0)
