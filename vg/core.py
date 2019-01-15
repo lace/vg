@@ -285,7 +285,7 @@ def almost_collinear(v1, v2, atol=1e-08):
 
     Mathematically speaking, the zero vector is collinear to everything.
     Geometrically that doesn't necessarily make sense. If you care, test
-    your inputs with vx.almost_zero.
+    your inputs with vg.almost_zero.
 
     """
     cross = np.cross(v1, v2)
