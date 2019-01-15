@@ -1,7 +1,7 @@
 vg
 ==
 
-[NumPy][] for humans – a very good toolbelt providing readable shortcuts for
+_[NumPy][] for humans_: a Very Good toolbelt providing readable shortcuts for
 commonly used vector-geometry and linear-algebra functions.
 
 The functions optionally can be vectorized, meaning they accept single inputs
