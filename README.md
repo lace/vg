@@ -29,10 +29,10 @@ With the power of NumPy, the vectorized functions are fast.
 #### Normalize a stack of vectors
 
 ```py
-# 🤤
+# 😮
 vs_norm = vs / np.linalg.norm(vs, axis=1)[:, np.newaxis]
 
-# 😮
+# 😀
 vs_norm = vg.normalize(vs)
 ```
 
