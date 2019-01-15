@@ -294,7 +294,7 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     if units == "deg":
         angle = math.radians(angle)
     elif units != "rad":
-        raise ValueError("Unknown units {}; expected \"deg\" or \"rad\"".format(units))
+        raise ValueError('Unknown units {}; expected "deg" or "rad"'.format(units))
 
     if not assume_normalized:
         around_axis = normalize(around_axis)
@@ -302,11 +302,18 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     cosine = math.cos(angle)
     sine = math.sin(angle)
 
+    if vector.ndim == 1:
+        dot_products = np.inner(around_axis, vector)
+    elif vector.ndim == 2:
+        dot_products = np.inner(around_axis, vector)[:, np.newaxis]
+    else:
+        raise_dimension_error(vector)
+
     # Rodrigues' rotation formula.
     return (
         cosine * vector
         + sine * np.cross(around_axis, vector)
-        + (1 - cosine) * around_axis * np.dot(around_axis, vector)
+        + (1 - cosine) * dot_products * around_axis
     )
 
 
