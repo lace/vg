@@ -54,7 +54,7 @@ mean = np.mean(coords, axis=0)
 _, _, pcs = np.linalg.svd(coords - mean)
 first_pc = pcs[0]
 
-# 😏
+# 😍
 first_pc = vg.major_axis(coords)
 ```
 
