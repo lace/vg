@@ -31,7 +31,7 @@ With the power of NumPy, the vectorized functions are fast.
 ```py
 vs_norm = vs / np.linalg.norm(vs, axis=1)[:, np.newaxis]
 
-# with vg.
+# with vg:
 vs_norm = vg.normalize(vs)
 ```
 
@@ -40,7 +40,7 @@ vs_norm = vg.normalize(vs)
 ```py
 is_almost_zero = np.allclose(v, np.array([0.0, 0.0, 0.0]), rtol=0, atol=1e-05)
 
-# with vg.
+# with vg:
 is_almost_zero = vg.is_almost_zero(v, atol=1e-05)
 ```
 
@@ -51,7 +51,7 @@ mean = np.mean(coords, axis=0)
 _, _, pcs = np.linalg.svd(coords - mean)
 first_pc = pcs[0]
 
-# with vg.
+# with vg:
 first_pc = vg.major_axis(coords)
 ```
 
@@ -62,7 +62,7 @@ dot_products = np.einsum("ij,ij->i", v1s.reshape(-1, 3), v2s.reshape(-1, 3))
 cosines = dot_products / np.linalg.norm(v1s, axis=1) / np.linalg.norm(v1s, axis=1)
 angles = np.arccos(np.clip(cosines, -1.0, 1.0)
 
-# with vg.
+# with vg:
 angles = vg.angle(v1s, v2s)
 ```
 
