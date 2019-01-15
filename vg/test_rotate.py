@@ -39,4 +39,6 @@ def test_rotate_error():
     with pytest.raises(ValueError, match="Not sure what to do with 3 dimensions"):
         vg.rotate(np.array([[[5.0, -3.0, 1.0]]]), around_axis=around_axis, angle=90),
     with pytest.raises(ValueError, match='Unknown units "in"; expected "deg" or "rad"'):
-        vg.rotate(np.array([1.0, 1.0, 1.0]), around_axis=around_axis, angle=90, units="in")
+        vg.rotate(
+            np.array([1.0, 1.0, 1.0]), around_axis=around_axis, angle=90, units="in"
+        )
