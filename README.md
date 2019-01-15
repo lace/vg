@@ -69,6 +69,8 @@ angles = vg.angle(v1s, v2s)
 Features
 --------
 
+See the complete API reference: http://vgpy.readthedocs.io/
+
 All functions are optionally vectorized, meaning they accept single inputs and
 stacks of inputs interchangeably. They return The Right Thing – a single
 result or a stack of results – without the need to reshape inputs or outputs.
@@ -90,8 +92,6 @@ With the power of NumPy, the vectorized functions are fast.
   coordinates.
 - `principal_components` computes principal components of a set of
   coordinates. `major_axis` returns the first one.
-- Complete documentation: http://vgpy.readthedocs.io/
-
 
 Installation
 ------------
