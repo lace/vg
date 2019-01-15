@@ -1,6 +1,6 @@
 from __future__ import print_function
 import numpy as np
-from . import core as vx
+from . import core as vg
 
 
 def test_principal_components():
@@ -20,11 +20,11 @@ def test_principal_components():
         ]
     )
 
-    pcs = vx.principal_components(coords)
+    pcs = vg.principal_components(coords)
 
     assert pcs.shape == (2, 2)
     np.testing.assert_array_almost_equal(pcs[0], np.array([-0.677873, -0.735179]))
 
-    first_pc = vx.major_axis(coords)
+    first_pc = vg.major_axis(coords)
 
     np.testing.assert_array_almost_equal(first_pc, np.array([-0.677873, -0.735179]))
