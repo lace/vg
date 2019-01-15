@@ -118,6 +118,16 @@ Support
 If you are having issues, please let us know.
 
 
+Motivation
+----------
+
+Linear algebra is useful but it doesn't have to be dificult to use. With the
+power of abstractions, simple operations can be made simple, without poring
+through lecture slides, textbooks, inscrutable Stack Overflow answers, or
+dense NumPy docs. Code that uses linear algebra and geometric transformation
+should be readable like English, withouc compromising efficiency.
+
+
 Acknowledgements
 ----------------
 
