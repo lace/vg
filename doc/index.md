@@ -4,15 +4,63 @@ vg
 **[NumPy][] for humans**: a **v**ery **g**ood toolbelt for common tasks in
 vector geometry and linear algebra.
 
-The functions optionally can be vectorized, meaning they accept single inputs
-and stacks of inputs without the need to reshape. They return The Right Thing.
-With the power of NumPy, the vectorized functions are fast.
-
 [numpy]: https://www.numpy.org/
+
+
+## `vg` makes code more readable
+
+#### Normalize a stack of vectors
+
+```py
+# 😮
+vs_norm = vs / np.linalg.norm(vs, axis=1)[:, np.newaxis]
+
+# 😀
+vs_norm = vg.normalize(vs)
+```
+
+#### Check for zero vector
+
+```py
+# 😣
+is_almost_zero = np.allclose(v, np.array([0.0, 0.0, 0.0]), rtol=0, atol=1e-05)
+
+# 🤓
+is_almost_zero = vg.is_almost_zero(v, atol=1e-05)
+```
+
+#### Major axis of variation (first principal component)
+
+```py
+# 😩
+mean = np.mean(coords, axis=0)
+_, _, pcs = np.linalg.svd(coords - mean)
+first_pc = pcs[0]
+
+# 😍
+first_pc = vg.major_axis(coords)
+```
+
+#### Pairwise angles between two stacks of vectors.
+
+```py
+# 😭
+dot_products = np.einsum("ij,ij->i", v1s.reshape(-1, 3), v2s.reshape(-1, 3))
+cosines = dot_products / np.linalg.norm(v1s, axis=1) / np.linalg.norm(v1s, axis=1)
+angles = np.arccos(np.clip(cosines, -1.0, 1.0)
+
+# 🤯
+angles = vg.angle(v1s, v2s)
+``
 
 
 Functions
 ---------
+
+All functions are optionally vectorized, meaning they accept single inputs and
+stacks of inputs interchangeably. They return The Right Thing – a single
+result or a stack of results – without the need to reshape inputs or outputs.
+With the power of NumPy, the vectorized functions are fast.
 
 ```eval_rst
 
