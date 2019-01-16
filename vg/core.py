@@ -207,8 +207,9 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
         look (np.arraylike): A `3x1` vector specifying the normal of a viewing
             plane, or `None` to compute the angle in 3-space.
         assume_normalized (bool): When `True`, assume the input vectors
-            are unit length. This improves performance, however when the inputs
-            are not normalized, setting this will cause an incorrect results.
+            are unit length. This improves performance marginally, however
+            when the inputs are not normalized, setting this will cause an
+            incorrect results.
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Return:
@@ -272,7 +273,7 @@ def signed_angle(v1, v2, look, units="deg"):
 
 def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     """
-    Rotate a point or vector around a given axis. The direction relative to
+    Rotate a point or vector around a given axis. The direction of rotation
     `around_axis` is determined by the right-hand rule.
 
     Args:
@@ -285,7 +286,7 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
             radians.
 
     Returns:
-        np.arraylike: The transformed point or points, with the same shape as
+        np.arraylike: The transformed point or points. This has the same shape as
             `vector`.
 
     See also:
