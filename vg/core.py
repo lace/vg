@@ -207,9 +207,8 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
         look (np.arraylike): A `3x1` vector specifying the normal of a viewing
             plane, or `None` to compute the angle in 3-space.
         assume_normalized (bool): When `True`, assume the input vectors
-            are unit length. This improves performance marginally, however
-            when the inputs are not normalized, setting this will cause an
-            incorrect results.
+            are unit length. This improves performance, however when the inputs
+            are not normalized, setting this will cause an incorrect results.
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Return:
@@ -280,8 +279,9 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
         vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
         around_axis (np.arraylike): A `3x1` vector specifying the axis of rotation.
         assume_normalized (bool): When `True`, assume `around_axis` is unit
-            length. This improves performance, however when it is not
-            normalized, setting this will cause an incorrect results.
+            length. This improves performance marginally, however
+            when the inputs are not normalized, setting this will cause an
+            incorrect results.
         units (str): `'deg'` to specify `angle` in degrees or `'rad'` to specify
             radians.
 
