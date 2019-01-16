@@ -274,7 +274,7 @@ def signed_angle(v1, v2, look, units="deg"):
 def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     """
     Rotate a point or vector around a given axis. The direction of rotation
-    `around_axis` is determined by the right-hand rule.
+    around `around_axis` is determined by the right-hand rule.
 
     Args:
         vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
