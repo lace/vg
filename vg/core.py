@@ -1,3 +1,4 @@
+import math
 import numpy as np
 
 __all__ = [
@@ -10,6 +11,7 @@ __all__ = [
     "magnitude",
     "angle",
     "signed_angle",
+    "rotate",
     "almost_zero",
     "almost_collinear",
     "pad_with_ones",
@@ -266,6 +268,55 @@ def signed_angle(v1, v2, look, units="deg"):
     sign[sign == 0] = 1
 
     return sign * angle(v1, v2, look, units=units)
+
+
+def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
+    """
+    Rotate a point or vector around a given axis. The direction of rotation
+    around `around_axis` is determined by the right-hand rule.
+
+    Args:
+        vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        around_axis (np.arraylike): A `3x1` vector specifying the axis of rotation.
+        assume_normalized (bool): When `True`, assume `around_axis` is unit
+            length. This improves performance marginally, however
+            when the inputs are not normalized, setting this will cause an
+            incorrect results.
+        units (str): `'deg'` to specify `angle` in degrees or `'rad'` to specify
+            radians.
+
+    Returns:
+        np.arraylike: The transformed point or points. This has the same shape as
+            `vector`.
+
+    See also:
+        - https://en.wikipedia.org/wiki/Cross_product#Definition
+        - https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg
+    """
+    if units == "deg":
+        angle = math.radians(angle)
+    elif units != "rad":
+        raise ValueError('Unknown units "{}"; expected "deg" or "rad"'.format(units))
+
+    cosine = math.cos(angle)
+    sine = math.sin(angle)
+
+    if not assume_normalized:
+        around_axis = normalize(around_axis)
+
+    if vector.ndim == 1:
+        dot_products = np.inner(around_axis, vector)
+    elif vector.ndim == 2:
+        dot_products = np.inner(around_axis, vector)[:, np.newaxis]
+    else:
+        raise_dimension_error(vector)
+
+    # Rodrigues' rotation formula.
+    return (
+        cosine * vector
+        + sine * np.cross(around_axis, vector)
+        + (1 - cosine) * dot_products * around_axis
+    )
 
 
 def almost_zero(v, atol=1e-08):
