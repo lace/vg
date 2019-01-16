@@ -11,6 +11,7 @@ __all__ = [
     "magnitude",
     "angle",
     "signed_angle",
+    "rotate",
     "almost_zero",
     "almost_collinear",
     "pad_with_ones",
