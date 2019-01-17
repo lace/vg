@@ -1,7 +1,7 @@
 vg
 ==
 
-[![version](https://img.shields.io/pypi/v/vg.svg?style=flat-square)][pypi
+[![version](https://img.shields.io/pypi/v/vg.svg?style=flat-square)][pypi]
 [![python version](https://img.shields.io/pypi/pyversions/vg.svg?style=flat-square)][pypi]
 [![license](https://img.shields.io/pypi/l/vg.svg?style=flat-square)][pypi]
 [![coverage](https://img.shields.io/coveralls/lace/vg.svg?style=flat-square)][coverage]
