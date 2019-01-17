@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "vg"
-copyright = "2016 Body Labs, Inc.; 2018–2019 Metabolize LLC"
+copyright = "2016 Body Labs, Inc.; 2018-2019 Metabolize LLC"
 author = "Body Labs, Metabolize, and other contributors"
 
 # The short X.Y version

@@ -11,9 +11,9 @@ Functions
 ---------
 
 All functions are optionally vectorized, meaning they accept single inputs and
-stacks of inputs interchangeably. They return The Right Thing – a single
-result or a stack of results – without the need to reshape inputs or outputs.
-With the power of NumPy, the vectorized functions are fast.
+stacks of inputs interchangeably. They return The Right Thing &ndash; a single
+result or a stack of results &ndash; without the need to reshape inputs or
+outputs. With the power of NumPy, the vectorized functions are fast.
 
 ```eval_rst
 
