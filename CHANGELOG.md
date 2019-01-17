@@ -1,6 +1,15 @@
 Changelog
 =========
 
+## 0.4.0 (Jan 17, 2019)
+
+- Add `vg.perpendicular()` for computing the vector perpendicular to two
+  others.
+- Add `vg.rotate()` for rotating a point or vector some number of degrees
+  (or radians) around an axis.
+- Add "before and after" examples to the docs.
+- **100% code coverage.**
+
 ## 0.3.0 (Nov 16, 2018)
 
 - Add principal-component-analysis functions `principal_components()` and
