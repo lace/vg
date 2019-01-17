@@ -60,7 +60,7 @@ first_pc = vg.major_axis(coords)
 # 😭
 dot_products = np.einsum("ij,ij->i", v1s.reshape(-1, 3), v2s.reshape(-1, 3))
 cosines = dot_products / np.linalg.norm(v1s, axis=1) / np.linalg.norm(v1s, axis=1)
-angles = np.arccos(np.clip(cosines, -1.0, 1.0)
+angles = np.arccos(np.clip(cosines, -1.0, 1.0))
 
 # 🤯
 angles = vg.angle(v1s, v2s)
