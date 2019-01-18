@@ -69,7 +69,7 @@ angles = vg.angle(v1s, v2s)
 Features
 --------
 
-See the complete API reference: http://vgpy.readthedocs.io/
+See the complete API reference: https://vgpy.readthedocs.io/en/latest/
 
 All functions are optionally vectorized, meaning they accept single inputs and
 stacks of inputs interchangeably. They return The Right Thing – a single
