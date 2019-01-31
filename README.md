@@ -39,7 +39,7 @@ vs_norm = vg.normalize(vs)
 is_almost_zero = np.allclose(v, np.array([0.0, 0.0, 0.0]), rtol=0, atol=1e-05)
 
 # 🤓
-is_almost_zero = vg.is_almost_zero(v, atol=1e-05)
+is_almost_zero = vg.almost_zero(v, atol=1e-05)
 ```
 
 #### Major axis of variation (first principal component)
