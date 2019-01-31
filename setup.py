@@ -17,7 +17,7 @@ setup(
     author_email="github@paulmelnikow.com",
     url="https://github.com/lace/vg",
     project_urls={
-        "Issue Tracker": "https://github.com/metabolize/vg/issues",
+        "Issue Tracker": "https://github.com/lace/vg/issues",
         "Documentation": "https://vgpy.readthedocs.io/en/stable/",
     },
     packages=find_packages(),
