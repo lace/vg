@@ -5,4 +5,4 @@ black == 18.9b0
 pyflakes >=2.0,<3.0
 
 # For CI.
-coveralls == 1.5.1
+coveralls ==1.6.0
