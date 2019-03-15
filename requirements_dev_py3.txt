@@ -1,7 +1,7 @@
 -r requirements.txt
 -r requirements_dev_common.txt
 
-black == 18.9b0
+black ==19.3b0
 pyflakes >=2.0,<3.0
 
 # For CI.
