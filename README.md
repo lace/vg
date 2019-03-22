@@ -32,7 +32,7 @@ vs_norm = vs / np.linalg.norm(vs, axis=1)[:, np.newaxis]
 vs_norm = vg.normalize(vs)
 ```
 
-#### Check for zero vector
+#### Check for the zero vector
 
 ```py
 # 😣
@@ -54,7 +54,7 @@ first_pc = pcs[0]
 first_pc = vg.major_axis(coords)
 ```
 
-#### Pairwise angles between two stacks of vectors.
+#### Pairwise angles between two stacks of vectors
 
 ```py
 # 😭
