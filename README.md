@@ -32,7 +32,7 @@ vs_norm = vs / np.linalg.norm(vs, axis=1)[:, np.newaxis]
 vs_norm = vg.normalize(vs)
 ```
 
-#### Check for zero vector
+#### Check for the zero vector
 
 ```py
 # 😣
