@@ -54,7 +54,7 @@ first_pc = pcs[0]
 first_pc = vg.major_axis(coords)
 ```
 
-#### Pairwise angles between two stacks of vectors.
+#### Pairwise angles between two stacks of vectors
 
 ```py
 # 😭
