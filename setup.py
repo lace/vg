@@ -14,7 +14,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="vg",
-    version=version_info['__version__'],
+    version=version_info["__version__"],
     description="NumPy for humans: a very good vector-geometry and linear-algebra toolbelt",
     long_description=readme,
     long_description_content_type="text/markdown",
