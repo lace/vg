@@ -1,9 +1,9 @@
-import importlib
 from setuptools import setup, find_packages
 
 # Set __version__.
 # https://packaging.python.org/guides/single-sourcing-package-version/
-execfile('vg/package_version.py')
+version_info = {}
+exec(open("vg/package_version.py").read(), version_info)
 
 with open("README.md") as f:
     readme = f.read()
@@ -13,7 +13,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="vg",
-    version=__version__,
+    version=version_info['__version__'],
     description="NumPy for humans: a very good vector-geometry and linear-algebra toolbelt",
     long_description=readme,
     long_description_content_type="text/markdown",
