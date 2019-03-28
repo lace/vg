@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 0.5.1 (Mar 28, 2019)
+
+- Fix concurrent install with numpy by avoiding numpy import during install.
+
 ## 0.5.0 (Mar 28, 2019)
 
 - Add `vg.apex()` and `vg.farthest()`
