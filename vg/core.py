@@ -464,7 +464,7 @@ def apex(points, vector):
 
 def farthest(from_points, to_point, ret_index=False):
     """
-    Find the farthest point among the inputs, to the given point.
+    Find the point farthest from the given point.
 
     Args:
         from_points (np.arraylike): A `kx3` stack of points in R^3.
