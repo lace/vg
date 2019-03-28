@@ -19,6 +19,8 @@ __all__ = [
     "apply_homogeneous",
     "principal_components",
     "major_axis",
+    "apex",
+    "farthest",
     "basis",
 ]
 
@@ -438,6 +440,53 @@ def major_axis(coords):
         - https://plot.ly/ipython-notebooks/principal-component-analysis/
     """
     return principal_components(coords)[0]
+
+
+def apex(points, vector):
+    """
+    Find the most extreme point in the direction provided.
+
+    Args:
+        points (np.arraylike): A `kx3` stack of points in R^3.
+        vector (np.arraylike): A `3x1` vector specifying the direction of
+            interest.
+
+    Returns:
+        np.ndarray: A `3x1` vector taken from `points`.
+    """
+    if points.ndim != 2 or points.shape[1] != 3:
+        raise ValueError("Invalid shape %s: apex expects nx3" % (points.shape,))
+    if vector.shape != (3,):
+        raise ValueError("vector should be a 3x1 vector")
+    coords_on_axis = points.dot(vector)
+    return points[np.argmax(coords_on_axis)]
+
+
+def farthest(from_points, to_point, ret_index=False):
+    """
+    Find the point farthest from the given point.
+
+    Args:
+        from_points (np.arraylike): A `kx3` stack of points in R^3.
+        to_point (np.arraylike): A `3x1` point of interest.
+        ret_index (bool): When `True`, return both the point and its index.
+
+    Returns:
+        np.ndarray: A `3x1` vector taken from `from_points`.
+    """
+    if from_points.ndim != 2 or from_points.shape[1] != 3:
+        raise ValueError(
+            "Invalid shape %s: farthest expects nx3" % (from_points.shape,)
+        )
+    if to_point.shape != (3,):
+        raise ValueError("to_point should be 3x1")
+
+    absolute_distances = magnitude(from_points - to_point)
+
+    index_of_farthest_point = np.argmax(absolute_distances)
+    farthest_point = from_points[index_of_farthest_point]
+
+    return farthest_point, index_of_farthest_point if ret_index else farthest_point
 
 
 class _BasisVectors(object):
