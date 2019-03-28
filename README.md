@@ -9,8 +9,8 @@ vg
 [![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-**[NumPy][] for humans**: a **v**ery **g**ood toolbelt for common tasks in
-vector geometry and linear algebra.
+**[NumPy][] for humans**: a **v**ery **g**ood vector-geometry and
+linear-algebra toolbelt.
 
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://coveralls.io/github/lace/vg
