@@ -1,6 +1,13 @@
 Changelog
 =========
 
+## 0.5.0 (Mar 28, 2019)
+
+- Add `vg.apex()` and `vg.farthest()`
+- Fix documentation typos.
+- Update dev dependencies.
+
+
 ## 0.4.0 (Jan 17, 2019)
 
 - Add `vg.perpendicular()` for computing the vector perpendicular to two
