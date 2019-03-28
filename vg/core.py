@@ -475,7 +475,9 @@ def farthest(from_points, to_point, ret_index=False):
         np.ndarray: A `3x1` vector taken from `from_points`.
     """
     if from_points.ndim != 2 or from_points.shape[1] != 3:
-        raise ValueError("Invalid shape %s: farthest expects nx3" % (from_points.shape,))
+        raise ValueError(
+            "Invalid shape %s: farthest expects nx3" % (from_points.shape,)
+        )
     if to_point.shape != (3,):
         raise ValueError("to_point should be 3x1")
 

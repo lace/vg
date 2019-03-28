@@ -13,7 +13,9 @@ def test_farthest():
     np.testing.assert_array_equal(point, from_points[1])
     np.testing.assert_array_equal(index, 1)
 
-    with pytest.raises(ValueError, match="Invalid shape \\(3,\\): farthest expects nx3"):
+    with pytest.raises(
+        ValueError, match="Invalid shape \\(3,\\): farthest expects nx3"
+    ):
         vg.farthest(to_point, to_point)
 
     with pytest.raises(ValueError, match="to_point should be 3x1"):
