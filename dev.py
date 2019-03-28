@@ -76,7 +76,7 @@ def doc_open():
 
 
 @cli.command()
-def upload():
+def publish():
     execute("rm -rf dist/")
     execute("python setup.py sdist")
     execute("twine upload dist/*")
