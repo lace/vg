@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 0.5.2 (Mar 28, 2019)
+
+- Again, fix concurrent install with numpy by avoiding numpy import during install.
+
 ## 0.5.1 (Mar 28, 2019)
 
 - Fix concurrent install with numpy by avoiding numpy import during install.
