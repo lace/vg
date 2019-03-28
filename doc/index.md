@@ -1,8 +1,8 @@
 vg
 ==
 
-**[NumPy][] for humans**: a **v**ery **g**ood toolbelt for common tasks in
-vector geometry and linear algebra.
+**[NumPy][] for humans**: a **v**ery **g**ood vector-geometry and
+linear-algebra toolbelt.
 
 [numpy]: https://www.numpy.org/
 
