@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 
-# Set __version__.
+# Set version_info[__version__], while avoiding importing numpy, in case numpy
+# and vg are being installed concurrently.
 # https://packaging.python.org/guides/single-sourcing-package-version/
 version_info = {}
 exec(open("vg/package_version.py").read(), version_info)
