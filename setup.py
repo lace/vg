@@ -1,5 +1,10 @@
-import importlib
 from setuptools import setup, find_packages
+
+# Set version_info[__version__], while avoiding importing numpy, in case numpy
+# and vg are being installed concurrently.
+# https://packaging.python.org/guides/single-sourcing-package-version/
+version_info = {}
+exec(open("vg/package_version.py").read(), version_info)
 
 with open("README.md") as f:
     readme = f.read()
@@ -9,7 +14,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="vg",
-    version=importlib.import_module("vg.package_version").__version__,
+    version=version_info["__version__"],
     description="NumPy for humans: a very good vector-geometry and linear-algebra toolbelt",
     long_description=readme,
     long_description_content_type="text/markdown",
