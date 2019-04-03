@@ -17,6 +17,11 @@ def check_value(a, shape, **kwargs):
 
     Example:
         >>> vg.shape.check_value(np.zeros((4, 3)), (-1, 3))
+        >>> # Proceed with confidence that `points` is a k x 3 array.
+
+    Example:
+        >>> k = vg.shape.check_value(np.zeros((4, 3)), (-1, 3))
+        >>> k
         4
     """
     is_wildcard = lambda dim: dim == -1
