@@ -72,9 +72,14 @@ def check(locals_namespace, name, shape):
         dimensions (if more than one).
 
     Example:
-        >>> points = np.zeros((4, 3))
-        >>> vg.shape.check(locals(), 'points', (-1, 3))
-        4
+        >>> def my_fun_function(points):
+        ...     vg.shape.check(locals(), 'points', (-1, 3))
+        ...     # Confident that `points` is a k x 3 array
+
+    Example:
+        >>> def my_fun_function(points):
+        ...     k = vg.shape.check(locals(), 'points', (-1, 3))
+        ...     print("my_fun_function invoked with {} points".format(k))
 
     """
     return check_value(locals_namespace[name], shape, name=name)
