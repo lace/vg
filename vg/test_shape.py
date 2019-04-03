@@ -77,7 +77,7 @@ def test_check_valid_wildcard():
     assert check(locals(), "input_value", (-1, 3, -1)) == (5, 2)
 
 
-def test_check_value_wrong_shape_named():
+def test_check_wrong_shape_named():
     input_value = np.zeros(4)
     with pytest.raises(ValueError) as e:
         check(locals(), "input_value", (3,))
@@ -91,7 +91,7 @@ def test_check_wrong_shape_wildcard_named():
     assert "input_value must be an array with shape (-1, 3); got (5, 4)" in str(e.value)
 
 
-def test_check_value_none_named():
+def test_check_none_named():
     input_value = None
     with pytest.raises(ValueError) as e:
         check(locals(), "input_value", (3,))
