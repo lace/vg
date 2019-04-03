@@ -77,6 +77,7 @@ result or a stack of results – without the need to reshape inputs or outputs.
 With the power of NumPy, the vectorized functions are fast.
 
 - `normalize` normalizes a vector.
+- `perpendicular` finds a vector that is perpendicular to two others.
 - `sproj` computes the scalar projection of one vector onto another.
 - `proj` computes the vector projection of one vector onto another.
 - `reject` computes the vector rejection of one vector from another.
@@ -92,6 +93,10 @@ With the power of NumPy, the vectorized functions are fast.
   coordinates.
 - `principal_components` computes principal components of a set of
   coordinates. `major_axis` returns the first one.
+- `apex` computes the farthest point in a given direction.
+- `farthest` computes the point farthest from a given point.
+- `shape.check` verifies the dimensions of a numpy array from a local variable.
+- `shape.check_value` verifies the dimensions of a numpy array.
 
 Installation
 ------------
