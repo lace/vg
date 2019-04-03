@@ -54,8 +54,8 @@ def check_value(a, shape, **kwargs):
 
 def check(locals_namespace, name, shape):
     """
-    Convenience function for invoking `check()` with a `locals()`
-    dict.
+    Convenience function for invoking `vg.shape.check_value()` with a
+    `locals()` dict.
 
     Args:
         namespace (dict): A subscriptable object, typically `locals()`.
