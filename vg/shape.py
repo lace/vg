@@ -14,6 +14,10 @@ def check_value(a, shape, **kwargs):
     Returns:
         object: The wildcard dimension (if one) or a tuple of wildcard
         dimensions (if more than one).
+
+    Example:
+        >>> vg.shape.check_value(np.zeros((4, 3)), (-1, 3))
+        4
     """
     is_wildcard = lambda dim: dim == -1
     if all(not isinstance(dim, int) and not is_wildcard(dim) for dim in shape):
@@ -68,8 +72,9 @@ def check(locals_namespace, name, shape):
         dimensions (if more than one).
 
     Example:
-
-        check_local(locals(), 'points', (-1, 3))
+        >>> points = np.zeros((4, 3))
+        >>> vg.shape.check(locals(), 'points', (-1, 3))
+        4
 
     """
     return check_value(locals_namespace[name], shape, name=name)
