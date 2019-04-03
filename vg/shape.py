@@ -30,7 +30,7 @@ def check_value(a, shape, **kwargs):
         len(a.shape)
     except (AttributeError, TypeError):
         raise ValueError(
-            "{} with shape {}; got {}".format(preamble, shape, type(a).__name__)
+            "{} with shape {}; got {}".format(preamble, shape, a.__class__.__name__)
         )
 
     # Check non-wildcard dimensions.
