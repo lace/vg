@@ -74,7 +74,7 @@ def check(locals_namespace, name, shape):
     Example:
         >>> def my_fun_function(points):
         ...     vg.shape.check(locals(), 'points', (-1, 3))
-        ...     # Confident that `points` is a k x 3 array
+        ...     # Proceed with confidence that `points` is a k x 3 array.
 
     Example:
         >>> def my_fun_function(points):
