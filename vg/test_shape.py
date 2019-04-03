@@ -31,6 +31,20 @@ def test_check_value_none():
     assert "Expected an array with shape (3,); got None" in str(e.value)
 
 
+def test_check_value_wrong_type():
+    with pytest.raises(ValueError) as e:
+        check_value({}, (3,))
+    assert "Expected an array with shape (3,); got dict" in str(e.value)
+
+    class Value:
+        def __init__(self):
+            self.shape = None
+
+    with pytest.raises(ValueError) as e:
+        check_value(Value(), (3,))
+    assert "Expected an array with shape (3,); got Value" in str(e.value)
+
+
 def test_check_value_valid_named():
     check_value(np.zeros(3), (3,), name="input_value")
 
