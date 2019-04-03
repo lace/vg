@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 0.6.0 (Apr 3, 2019)
+
+- Add `vg.shape.check()` and `vg.shape.check_value()`
+
 ## 0.5.2 (Mar 28, 2019)
 
 - Again, fix concurrent install with numpy by avoiding numpy import during install.
