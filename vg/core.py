@@ -452,7 +452,7 @@ def apex(points, along):
             interest.
 
     Returns:
-        np.ndarray: A `3x1` vector taken from `points`.
+        np.ndarray: A `3x1` point taken from `points`.
     """
     if points.ndim != 2 or points.shape[1] != 3:
         raise ValueError("Invalid shape %s: apex expects nx3" % (points.shape,))
