@@ -15,6 +15,7 @@ __all__ = [
     "rotate",
     "almost_zero",
     "almost_collinear",
+    "almost_equal",
     "principal_components",
     "major_axis",
     "apex",
@@ -321,6 +322,17 @@ def almost_collinear(v1, v2, atol=1e-08):
     cross = np.cross(v1, v2)
     norm = np.linalg.norm(cross)
     return np.isclose(norm, 0.0, rtol=0, atol=atol)
+
+
+def almost_equal(v1, v2, atol=1e-08):
+    """
+    Test if `v1` and `v2` are equal within the given absolute tolerance.
+
+    See also:
+        - https://docs.scipy.org/doc/numpy/reference/generated/numpy.allclose.html
+
+    """
+    return np.allclose(v1, v2, rtol=0, atol=atol)
 
 
 def principal_components(coords):
