@@ -442,23 +442,23 @@ def major_axis(coords):
     return principal_components(coords)[0]
 
 
-def apex(points, vector):
+def apex(points, along):
     """
     Find the most extreme point in the direction provided.
 
     Args:
         points (np.arraylike): A `kx3` stack of points in R^3.
-        vector (np.arraylike): A `3x1` vector specifying the direction of
+        along (np.arraylike): A `3x1` vector specifying the direction of
             interest.
 
     Returns:
-        np.ndarray: A `3x1` vector taken from `points`.
+        np.ndarray: A `3x1` point taken from `points`.
     """
     if points.ndim != 2 or points.shape[1] != 3:
         raise ValueError("Invalid shape %s: apex expects nx3" % (points.shape,))
-    if vector.shape != (3,):
-        raise ValueError("vector should be a 3x1 vector")
-    coords_on_axis = points.dot(vector)
+    if along.shape != (3,):
+        raise ValueError("along should be a 3x1 vector")
+    coords_on_axis = points.dot(along)
     return points[np.argmax(coords_on_axis)]
 
 

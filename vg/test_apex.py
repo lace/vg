@@ -20,33 +20,33 @@ def test_apex():
     )
 
     np.testing.assert_array_equal(
-        vg.apex(points, vg.basis.x), [0.67040405, 0.19267665, -0.56983579]
+        vg.apex(points, along=vg.basis.x), [0.67040405, 0.19267665, -0.56983579]
     )
     np.testing.assert_array_equal(
-        vg.apex(points, vg.basis.neg_x), [-0.97418884, -0.79808404, -0.18545491]
+        vg.apex(points, along=vg.basis.neg_x), [-0.97418884, -0.79808404, -0.18545491]
     )
     np.testing.assert_array_equal(
-        vg.apex(points, vg.basis.y), [0.60675227, 0.32673201, -0.20369793]
+        vg.apex(points, along=vg.basis.y), [0.60675227, 0.32673201, -0.20369793]
     )
     np.testing.assert_array_equal(
-        vg.apex(points, vg.basis.neg_y), [-0.68038753, -0.90011588, 0.4649872]
+        vg.apex(points, along=vg.basis.neg_y), [-0.68038753, -0.90011588, 0.4649872]
     )
     np.testing.assert_array_equal(
-        vg.apex(points, vg.basis.z), [-0.68038753, -0.90011588, 0.4649872]
+        vg.apex(points, along=vg.basis.z), [-0.68038753, -0.90011588, 0.4649872]
     )
     np.testing.assert_array_equal(
-        vg.apex(points, vg.basis.neg_z), [0.46270635, -0.3865265, -0.98106526]
+        vg.apex(points, along=vg.basis.neg_z), [0.46270635, -0.3865265, -0.98106526]
     )
 
     v = np.full(3, 1 / 3 ** 0.5)
     expected = points[np.argmax(points.sum(axis=1))]
-    np.testing.assert_array_equal(vg.apex(points, v), expected)
+    np.testing.assert_array_equal(vg.apex(points, along=v), expected)
 
     # Test non-normalized too.
-    np.testing.assert_array_equal(vg.apex(points, np.array([1, 1, 1])), expected)
+    np.testing.assert_array_equal(vg.apex(points, along=np.array([1, 1, 1])), expected)
 
     with pytest.raises(ValueError, match="Invalid shape \\(3,\\): apex expects nx3"):
-        vg.apex(vg.basis.x, vg.basis.x)
+        vg.apex(vg.basis.x, along=vg.basis.x)
 
-    with pytest.raises(ValueError, match="vector should be a 3x1 vector"):
-        vg.apex(points, points)
+    with pytest.raises(ValueError, match="along should be a 3x1 vector"):
+        vg.apex(points, along=points)
