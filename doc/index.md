@@ -20,6 +20,9 @@ outputs. With the power of NumPy, the vectorized functions are fast.
 .. automodule:: vg
     :members:
 
+.. automodule:: vg.matrix
+    :members:
+
 .. automodule:: vg.shape
     :members:
 
