@@ -1,6 +1,15 @@
 Changelog
 =========
 
+## 1.0.0 (Apr 4, 2019)
+
+- BREAKING CHANGE: Rename `vg.proj()` -> `vg.project()`.
+- BREAKING CHANGE: Rename `vg.sproj()` -> `vg.scalar_projection()`.
+- BREAKING CHANGE: Move matrix functions into namespace.
+- BREAKING CHANGE: Give second argument to `vg.apex()` a better name
+- Add `vg.almost_equal()`.
+- Improve documentation.
+
 ## 0.6.0 (Apr 3, 2019)
 
 - Add `vg.shape.check()` and `vg.shape.check_value()`
