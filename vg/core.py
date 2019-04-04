@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from ._helpers import pluralize, raise_dimension_error
+from ._helpers import raise_dimension_error
 
 __all__ = [
     "normalize",
