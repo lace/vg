@@ -59,10 +59,10 @@ Use the named secondary arguments. They tend to make the code more readable:
     result = vg.proj(v1, onto=v2)
 
 
-Motivation
-----------
+Design principles
+-----------------
 
-Linear algebra is useful but it doesn't have to be dificult to use. With the
+Linear algebra is useful and it doesn't have to be dificult to use. With the
 power of abstractions, simple operations can be made simple, without poring
 through lecture slides, textbooks, inscrutable Stack Overflow answers, or
 dense NumPy docs. Code that uses linear algebra and geometric transformation
@@ -83,3 +83,11 @@ These common operations should be abstracted for a few reasons:
    or a stack of vectors. They are more careful about checking edge cases
    like a zero norm or zero cross product and returning a correct result
    or raising an appropriate error.
+
+
+Versioning
+----------
+
+This library adheres to [Semantic Versioning][semver].
+
+[semver]: https://semver.org/
