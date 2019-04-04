@@ -59,10 +59,10 @@ Use the named secondary arguments. They tend to make the code more readable:
     result = vg.proj(v1, onto=v2)
 
 
-Motivation
-----------
+Design principles
+-----------------
 
-Linear algebra is useful but it doesn't have to be dificult to use. With the
+Linear algebra is useful and it doesn't have to be dificult to use. With the
 power of abstractions, simple operations can be made simple, without poring
 through lecture slides, textbooks, inscrutable Stack Overflow answers, or
 dense NumPy docs. Code that uses linear algebra and geometric transformation

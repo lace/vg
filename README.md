@@ -20,7 +20,9 @@ linear-algebra toolbelt.
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
 
-## `vg` makes code more readable
+## Motivation
+
+`vg` makes code more readable.
 
 #### Normalize a stack of vectors
 
@@ -78,25 +80,29 @@ With the power of NumPy, the vectorized functions are fast.
 
 - `normalize` normalizes a vector.
 - `perpendicular` finds a vector that is perpendicular to two others.
-- `sproj` computes the scalar projection of one vector onto another.
-- `proj` computes the vector projection of one vector onto another.
+- `project` computes the vector projection of one vector onto another.
+- `scalar_projection` computes the scalar projection of one vector onto
+   another.
 - `reject` computes the vector rejection of one vector from another.
 - `reject_axis` zeros or squashes one component of a vector.
 - `magnitude` computes the magnitude of a vector.
 - `angle` computes the unsigned angle between two vectors.
 - `signed_angle` computes the signed angle between two vectors.
+- `rotate` rotates a point or vector around a given axis.
 - `almost_zero` tests if a vector is almost the zero vector.
 - `almost_collinear` tests if two vectors are almost collinear.
-- `pad_with_ones` adds a column of ones.
-- `unpad` strips off a column (e.g. of ones).
-- `apply_homogeneous` applies a transformation matrix using homogeneous
-  coordinates.
+- `almost_equal` tests if two vectors are almost equal.
 - `principal_components` computes principal components of a set of
   coordinates. `major_axis` returns the first one.
 - `apex` computes the farthest point in a given direction.
 - `farthest` computes the point farthest from a given point.
+- `matrix.pad_with_ones` adds a column of ones.
+- `matrix.unpad` strips off a column (e.g. of ones).
+- `matrix.transform` applies a transformation matrix using homogeneous
+  coordinates.
 - `shape.check` verifies the dimensions of a numpy array from a local variable.
 - `shape.check_value` verifies the dimensions of a numpy array.
+- `basis` provides convenient values like `basis.neg_y` for the basis vectors.
 
 Installation
 ------------
@@ -117,10 +123,10 @@ projected = vg.sproj(np.array([5.0, -3.0, 1.0]), onto=vg.basis.neg_y)
 ```
 
 
-Motivation
-----------
+Design principles
+-----------------
 
-Linear algebra is useful but it doesn't have to be dificult to use. With the
+Linear algebra is useful and it doesn't have to be dificult to use. With the
 power of abstractions, simple operations can be made simple, without poring
 through lecture slides, textbooks, inscrutable Stack Overflow answers, or
 dense NumPy docs. Code that uses linear algebra and geometric transformation
