@@ -18,7 +18,7 @@ setup(
     description="NumPy for humans: a very good vector-geometry and linear-algebra toolbelt",
     long_description=readme,
     long_description_content_type="text/markdown",
-    author="Body Labs, Metabolize, and other contributors",
+    author="Metabolize, Body Labs, and other contributors",
     author_email="github@paulmelnikow.com",
     url="https://github.com/lace/vg",
     project_urls={
