@@ -83,3 +83,11 @@ These common operations should be abstracted for a few reasons:
    or a stack of vectors. They are more careful about checking edge cases
    like a zero norm or zero cross product and returning a correct result
    or raising an appropriate error.
+
+
+Versioning
+----------
+
+This library adheres to [Semantic Versioning][semver].
+
+[semver]: https://semver.org/

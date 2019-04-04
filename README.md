@@ -149,6 +149,15 @@ These common operations should be abstracted for a few reasons:
    or raising an appropriate error.
 
 
+
+Versioning
+----------
+
+This library adheres to [Semantic Versioning][semver].
+
+[semver]: https://semver.org/
+
+
 Acknowledgements
 ----------------
 
