@@ -5,8 +5,8 @@ from ._helpers import raise_dimension_error
 __all__ = [
     "normalize",
     "perpendicular",
-    "sproj",
-    "proj",
+    "project",
+    "scalar_projection",
     "reject",
     "reject_axis",
     "magnitude",
@@ -72,7 +72,22 @@ def perpendicular(v1, v2, normalized=True):
         raise_dimension_error(v1, v2)
 
 
-def sproj(vector, onto):
+def project(vector, onto):
+    """
+    Compute the vector projection of `vector` onto the vector `onto`.
+
+    `onto` need not be normalized.
+
+    """
+    if vector.ndim == 1:
+        return scalar_projection(vector, onto=onto) * normalize(onto)
+    elif vector.ndim == 2:
+        return scalar_projection(vector, onto=onto)[:, np.newaxis] * normalize(onto)
+    else:
+        raise_dimension_error(vector)
+
+
+def scalar_projection(vector, onto):
     """
     Compute the scalar projection of `vector` onto the vector `onto`.
 
@@ -84,21 +99,6 @@ def sproj(vector, onto):
     return np.dot(vector, normalize(onto))
 
 
-def proj(vector, onto):
-    """
-    Compute the vector projection of `vector` onto the vector `onto`.
-
-    `onto` need not be normalized.
-
-    """
-    if vector.ndim == 1:
-        return sproj(vector, onto=onto) * normalize(onto)
-    elif vector.ndim == 2:
-        return sproj(vector, onto=onto)[:, np.newaxis] * normalize(onto)
-    else:
-        raise_dimension_error(vector)
-
-
 def reject(vector, from_v):
     """
     Compute the vector rejection of `vector` from `from_v` -- i.e.
@@ -107,7 +107,7 @@ def reject(vector, from_v):
     `from_v` need not be normalized.
 
     """
-    return vector - proj(vector, onto=from_v)
+    return vector - project(vector, onto=from_v)
 
 
 def reject_axis(vector, axis, squash=False):
