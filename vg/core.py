@@ -22,6 +22,7 @@ __all__ = [
     "basis",
 ]
 
+
 def normalize(vector):
     """
     Return the vector, normalized.
@@ -320,6 +321,7 @@ def almost_collinear(v1, v2, atol=1e-08):
     cross = np.cross(v1, v2)
     norm = np.linalg.norm(cross)
     return np.isclose(norm, 0.0, rtol=0, atol=atol)
+
 
 def principal_components(coords):
     """

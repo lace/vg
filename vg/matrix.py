@@ -1,6 +1,7 @@
 import numpy as np
 from ._helpers import raise_dimension_error
 
+
 def pad_with_ones(matrix):
     """
     Add a column of ones. Transform from:
