@@ -37,13 +37,6 @@ def test_almost_unit_length():
         False,
     ]
 
-    assert vg.almost_unit_length(np.vstack([unit_vectors, non_unit_vectors])).tolist() == [
-        True,
-        True,
-        True,
-        True,
-        False,
-        False,
-        False,
-        False,
-    ]
+    assert vg.almost_unit_length(
+        np.vstack([unit_vectors, non_unit_vectors])
+    ).tolist() == [True, True, True, True, False, False, False, False]
