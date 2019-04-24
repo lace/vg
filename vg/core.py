@@ -14,6 +14,7 @@ __all__ = [
     "signed_angle",
     "rotate",
     "almost_zero",
+    "almost_unit_length",
     "almost_collinear",
     "almost_equal",
     "principal_components",
@@ -308,6 +309,20 @@ def almost_zero(v, atol=1e-08):
 
     """
     return np.allclose(v, np.array([0.0, 0.0, 0.0]), rtol=0, atol=atol)
+
+
+def almost_unit_length(vector, atol=1e-08):
+    """
+    Test if the `vector` has almost unit length. For stacked inputs, test each
+    one.
+
+    Args:
+        vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+
+    Returns:
+        object: For `3x1` inputs, a `bool`. For `kx1` inputs, a `kx1` array.
+    """
+    return np.isclose(magnitude(vector), 1.0, rtol=0, atol=atol)
 
 
 def almost_collinear(v1, v2, atol=1e-08):
