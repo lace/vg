@@ -90,6 +90,7 @@ With the power of NumPy, the vectorized functions are fast.
 - `signed_angle` computes the signed angle between two vectors.
 - `rotate` rotates a point or vector around a given axis.
 - `almost_zero` tests if a vector is almost the zero vector.
+- `almost_unit_length` tests if a vector is almost a unit vector.
 - `almost_collinear` tests if two vectors are almost collinear.
 - `almost_equal` tests if two vectors are almost equal.
 - `principal_components` computes principal components of a set of
