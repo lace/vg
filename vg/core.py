@@ -22,6 +22,7 @@ __all__ = [
     "apex",
     "farthest",
     "basis",
+    "within",
 ]
 
 
@@ -436,6 +437,37 @@ def farthest(from_points, to_point, ret_index=False):
     farthest_point = from_points[index_of_farthest_point]
 
     return farthest_point, index_of_farthest_point if ret_index else farthest_point
+
+
+def within(points, radius, of_point, atol=1e-08, ret_indices=False):
+    """
+    Select points within a given radius of a point.
+
+    Args:
+        points (np.arraylike): A `kx3` stack of points in R^3.
+        radius (float): The radius of the sphere of interest centered on
+            `of_point`.
+        of_point (np.arraylike): The `3x1` point of interest.
+        ret_indexes (bool): When `True`, return both the points and their
+            indices.
+
+    Returns:
+        np.ndarray: A `3x1` vector taken from `points`.
+    """
+    if points.ndim != 2 or points.shape[1] != 3:
+        raise ValueError("Invalid shape %s: within expects nx3" % (points.shape,))
+    if not isinstance(radius, float):
+        raise ValueError("radius should be a float")
+    if of_point.shape != (3,):
+        raise ValueError("to_point should be 3x1")
+
+    absolute_distances = magnitude(points - of_point)
+    indexes_within_radius = (absolute_distances < radius + atol).nonzero()
+    points_within_radius = points[indexes_within_radius]
+    if ret_indices:
+        return points_within_radius, indexes_within_radius
+    else:
+        return points_within_radius
 
 
 class _BasisVectors(object):
