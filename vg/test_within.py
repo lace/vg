@@ -34,6 +34,7 @@ def test_within():
         ret_indices=True,
     )
     assert isinstance(actual_indices, np.ndarray)
+    np.testing.assert_array_equal(actual_indices, indices_within_4)
     np.testing.assert_array_almost_equal(actual_points, points_within_4)
 
     np.testing.assert_array_almost_equal(
