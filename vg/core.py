@@ -448,6 +448,8 @@ def within(points, radius, of_point, atol=1e-08, ret_indices=False):
         radius (float): The radius of the sphere of interest centered on
             `of_point`.
         of_point (np.arraylike): The `3x1` point of interest.
+        atol (float): The distance tolerance. Points within `radius + atol`
+            of `of_point` are selected.
         ret_indexes (bool): When `True`, return both the points and their
             indices.
 
