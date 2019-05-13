@@ -9,8 +9,8 @@ vg
 [![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-**[NumPy][] for humans**: a **v**ery **g**ood vector-geometry and
-linear-algebra toolbelt.
+Linear algebra for humans: a **v**ery **g**ood vector-geometry and
+linear-algebra toolbelt. Simple [NumPy][] operations made readable.
 
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://github.com/lace/vg/blob/master/.coveragerc
@@ -20,11 +20,10 @@ linear-algebra toolbelt.
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
 
-## Motivation
+Examples
+--------
 
-`vg` makes code more readable.
-
-#### Normalize a stack of vectors
+Normalize a stack of vectors:
 
 ```py
 # 😮
@@ -34,7 +33,7 @@ vs_norm = vs / np.linalg.norm(vs, axis=1)[:, np.newaxis]
 vs_norm = vg.normalize(vs)
 ```
 
-#### Check for the zero vector
+Check for the zero vector:
 
 ```py
 # 😣
@@ -44,7 +43,7 @@ is_almost_zero = np.allclose(v, np.array([0.0, 0.0, 0.0]), rtol=0, atol=1e-05)
 is_almost_zero = vg.almost_zero(v, atol=1e-05)
 ```
 
-#### Major axis of variation (first principal component)
+Find the major axis of variation (first principal component):
 
 ```py
 # 😩
@@ -56,7 +55,7 @@ first_pc = pcs[0]
 first_pc = vg.major_axis(coords)
 ```
 
-#### Pairwise angles between two stacks of vectors
+Compute pairwise angles between two stacks of vectors:
 
 ```py
 # 😭
