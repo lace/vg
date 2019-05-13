@@ -29,7 +29,7 @@ jobs:
           when: always
           command: |
             . venv/bin/activate
-            ./dev.py test
+            ./dev.py coverage
 
   python3:
     docker:
