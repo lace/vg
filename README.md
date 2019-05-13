@@ -20,6 +20,9 @@ linear-algebra toolbelt. Simple [NumPy][] operations made readable.
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
 
+Examples
+--------
+
 Normalize a stack of vectors:
 
 ```py
