@@ -78,33 +78,6 @@ stacks of inputs interchangeably. They return The Right Thing – a single
 result or a stack of results – without the need to reshape inputs or outputs.
 With the power of NumPy, the vectorized functions are fast.
 
-- `normalize` normalizes a vector.
-- `perpendicular` finds a vector that is perpendicular to two others.
-- `project` computes the vector projection of one vector onto another.
-- `scalar_projection` computes the scalar projection of one vector onto
-   another.
-- `reject` computes the vector rejection of one vector from another.
-- `reject_axis` zeros or squashes one component of a vector.
-- `magnitude` computes the magnitude of a vector.
-- `angle` computes the unsigned angle between two vectors.
-- `signed_angle` computes the signed angle between two vectors.
-- `rotate` rotates a point or vector around a given axis.
-- `almost_zero` tests if a vector is almost the zero vector.
-- `almost_unit_length` tests if a vector is almost a unit vector.
-- `almost_collinear` tests if two vectors are almost collinear.
-- `almost_equal` tests if two vectors are almost equal.
-- `principal_components` computes principal components of a set of
-  coordinates. `major_axis` returns the first one.
-- `apex` computes the farthest point in a given direction.
-- `farthest` computes the point farthest from a given point.
-- `matrix.pad_with_ones` adds a column of ones.
-- `matrix.unpad` strips off a column (e.g. of ones).
-- `matrix.transform` applies a transformation matrix using homogeneous
-  coordinates.
-- `shape.check` verifies the dimensions of a numpy array from a local variable.
-- `shape.check_value` verifies the dimensions of a numpy array.
-- `basis` provides convenient values like `basis.neg_y` for the basis vectors.
-
 Installation
 ------------
 
