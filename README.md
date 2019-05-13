@@ -20,11 +20,7 @@ linear-algebra toolbelt. Simple [NumPy][] operations made readable.
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
 
-## Motivation
-
-`vg` makes code more readable.
-
-#### Normalize a stack of vectors
+Normalize a stack of vectors:
 
 ```py
 # 😮
@@ -34,7 +30,7 @@ vs_norm = vs / np.linalg.norm(vs, axis=1)[:, np.newaxis]
 vs_norm = vg.normalize(vs)
 ```
 
-#### Check for the zero vector
+Check for the zero vector:
 
 ```py
 # 😣
@@ -44,7 +40,7 @@ is_almost_zero = np.allclose(v, np.array([0.0, 0.0, 0.0]), rtol=0, atol=1e-05)
 is_almost_zero = vg.almost_zero(v, atol=1e-05)
 ```
 
-#### Major axis of variation (first principal component)
+Find the major axis of variation (first principal component):
 
 ```py
 # 😩
@@ -56,7 +52,7 @@ first_pc = pcs[0]
 first_pc = vg.major_axis(coords)
 ```
 
-#### Pairwise angles between two stacks of vectors
+Compute pairwise angles between two stacks of vectors:
 
 ```py
 # 😭
