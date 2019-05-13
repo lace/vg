@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 1.1.0 (May 13, 2019)
+
+- Add `vg.almost_unit_length`
+- Add `vg.within`
+
 ## 1.0.0 (Apr 4, 2019)
 
 - BREAKING CHANGE: Rename `vg.proj()` -> `vg.project()`.
