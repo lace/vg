@@ -120,7 +120,10 @@ Usage
 import numpy as np
 import vg
 
-projected = vg.sproj(np.array([5.0, -3.0, 1.0]), onto=vg.basis.neg_y)
+projected = vg.scalar_projection(
+  np.array([5.0, -3.0, 1.0]),
+  onto=vg.basis.neg_y
+)
 ```
 
 
