@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 1.2.0 (May 29, 2019)
+
+- Add `vg.cross` and `vg.dot`.
+- Allow `vg.perpendicular` to accept a mix of stacked and unstacked inputs.
+
 ## 1.1.0 (May 13, 2019)
 
 - Add `vg.almost_unit_length`
