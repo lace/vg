@@ -1,6 +1,7 @@
 import math
 import numpy as np
-from ._helpers import raise_dimension_error
+from ._helpers import raise_dimension_error, broadcast_and_tile
+from .shape import check
 
 __all__ = [
     "normalize",
@@ -23,6 +24,8 @@ __all__ = [
     "farthest",
     "basis",
     "within",
+    "cross",
+    "dot",
 ]
 
 
@@ -43,18 +46,20 @@ def normalize(vector):
 
 def perpendicular(v1, v2, normalized=True):
     """
-    Given two noncollinear vectors, return a vector perpendicular to both. For
-    stacked inputs, compute the result vectors pairwise such that `result[k]` is
-    perpendicular to `v1[k]` and `v2[k]`.
+    Given two noncollinear vectors, return a vector perpendicular to both.
 
     Result vectors follow the right-hand rule. When the right index finger
     points along `v1` and the right middle finger along `v2`, the right thumb
     points along the result.
 
+    When one or both sets of inputs is stacked, compute the perpendicular
+    vectors elementwise, returning a stacked result. (e.g. when `v1` and `v2`
+    are both stacked, `result[k]` is perpendicular to `v1[k]` and `v2[k]`.)
+
     Args:
         v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
-        v2 (np.arraylike): A vector or stack of vectors with the same shape as
-            `v1`.
+        v2 (np.arraylike): A `3x1 vector or a `kx3` stack of vectors. If
+            stacked, the shape must be the same as `v1`.
         normalized (bool): When `True`, the result vector is guaranteed to be
             unit length.
 
@@ -65,14 +70,8 @@ def perpendicular(v1, v2, normalized=True):
         - https://en.wikipedia.org/wiki/Cross_product#Definition
         - https://commons.wikimedia.org/wiki/File:Right_hand_rule_cross_product.svg
     """
-    if v1.ndim == 1 and v2.ndim == 1:
-        result = np.cross(v1, v2)
-        return normalize(result) if normalized else result
-    elif v1.ndim == 2 and v2.ndim == 2:
-        result = np.cross(v1[:, np.newaxis, :], v2[:, np.newaxis, :])[:, 0, :]
-        return normalize(result) if normalized else result
-    else:
-        raise_dimension_error(v1, v2)
+    result = cross(v1, v2)
+    return normalize(result) if normalized else result
 
 
 def project(vector, onto):
@@ -470,6 +469,44 @@ def within(points, radius, of_point, atol=1e-08, ret_indices=False):
         return points_within_radius, indices_within_radius
     else:
         return points_within_radius
+
+
+def dot(v1, v2):
+    """
+    Compute individual or pairwise dot products.
+
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors. If
+            stacks are provided for both `v1` and `v2` they must have the
+            same shape.
+    """
+    if v1.ndim == 1 and v2.ndim == 1:
+        check(locals(), "v1", (3,))
+        check(locals(), "v2", (3,))
+        return np.dot(v1, v2)
+    else:
+        v1, v2 = broadcast_and_tile(v1, v2)
+        return np.einsum("ij,ij->i", v1.reshape(-1, 3), v2.reshape(-1, 3))
+
+
+def cross(v1, v2):
+    """
+    Compute individual or pairwise cross products.
+
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors. If
+            stacks are provided for both `v1` and `v2` they must have the
+            same shape.
+    """
+    if v1.ndim == 1 and v2.ndim == 1:
+        check(locals(), "v1", (3,))
+        check(locals(), "v2", (3,))
+        return np.cross(v1, v2)
+    else:
+        v1, v2 = broadcast_and_tile(v1, v2)
+        return np.cross(v1[:, np.newaxis, :], v2[:, np.newaxis, :])[:, 0, :]
 
 
 class _BasisVectors(object):
