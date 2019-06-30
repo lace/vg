@@ -7,6 +7,10 @@ def test_check_value_valid():
     check_value(np.zeros(3), (3,))
 
 
+def test_check_value_valid_scalar():
+    check_value(np.int64(3), ())
+
+
 def test_check_value_valid_wildcard():
     assert check_value(np.zeros((5, 3)), (-1, 3)) == 5
     assert check_value(np.zeros((5, 3)), (5, -1)) == 3
