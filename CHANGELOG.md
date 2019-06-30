@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 1.2.1 (June 30, 2019)
+
+- Fix `vg.shape.check` for scalars.
+
 ## 1.2.0 (May 29, 2019)
 
 - Add `vg.cross` and `vg.dot`.
