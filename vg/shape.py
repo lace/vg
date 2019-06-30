@@ -25,7 +25,7 @@ def check_value(a, shape, **kwargs):
         4
     """
     is_wildcard = lambda dim: dim == -1
-    if all(not isinstance(dim, int) and not is_wildcard(dim) for dim in shape):
+    if any(not isinstance(dim, int) and not is_wildcard(dim) for dim in shape):
         raise ValueError("Expected shape dimensions to be int")
 
     if "name" in kwargs:
