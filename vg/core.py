@@ -176,6 +176,33 @@ def magnitude(vector):
 _normalize = normalize
 
 
+def euclidean_distance(v1, v2):
+    """
+    Compute euclidean distance, either individually or pairwise.
+    
+    Args:
+        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors. If
+            stacks are provided for both `v1` and `v2` they must have the
+            same shape.
+
+    Returns:
+        object: When both inputs are `3x1`, a `float` with the distance. Otherwise
+            a `kx1` array.
+    """
+    if v1.ndim == 1 and v2.ndim == 1:
+        check(locals(), "v1", (3,))
+        check(locals(), "v2", (3,))
+        return np.sqrt(np.sum(np.square(v2 - v1)))
+    else:
+        k = check(locals(), "v1", (-1, 3))
+        if v2.ndim == 1:
+            check(locals(), "v2", (3,))
+        else:
+            check(locals(), "v2", (k, 3))
+        return np.sqrt(np.sum(np.square(v2 - v1), axis=1))
+
+
 def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     """
     Compute the unsigned angle between two vectors. For stacked inputs, the
