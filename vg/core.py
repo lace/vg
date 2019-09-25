@@ -11,6 +11,7 @@ __all__ = [
     "reject",
     "reject_axis",
     "magnitude",
+    "euclidean_distance",
     "angle",
     "signed_angle",
     "rotate",
