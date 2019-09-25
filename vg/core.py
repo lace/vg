@@ -179,8 +179,11 @@ _normalize = normalize
 
 def euclidean_distance(v1, v2):
     """
-    Compute euclidean distance, either individually or pairwise.
-    
+    Compute Euclidean distance, which is the distance between two points in a
+    straight line. This can be done individually by passing in single
+    point for either or both arguments, or pairwise by passing in stacks of
+    points.
+
     Args:
         v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
         v2 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors. If
