@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 1.2.2 (Sep 29, 2019)
+
+- Fix encoding error during installation on Windows 10.
+
 ## 1.2.1 (June 30, 2019)
 
 - Fix `vg.shape.check` for scalars.
