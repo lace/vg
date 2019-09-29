@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 version_info = {}
 exec(open("vg/package_version.py").read(), version_info)
 
-with open("README.md") as f:
+with open("README.md", encoding="utf8") as f:
     readme = f.read()
 
 with open("requirements.txt") as f:
