@@ -6,11 +6,9 @@ from setuptools import setup, find_packages
 version_info = {}
 exec(open("vg/package_version.py").read(), version_info)
 
-with open("README.md", encoding="utf8") as f:
-    readme = f.read()
-
-with open("requirements.txt") as f:
-    install_requires = f.read()
+# https://github.com/lace/vg/issues/72
+readme = open("README.md", "rb").read().decode("utf-8")
+install_requires = open("requirements.txt", "rb").read().decode("utf-8")
 
 setup(
     name="vg",
