@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## 1.3.0 (Sep 30, 2019)
+
+- Add `vg.euclidean_distance`.
+
+Same as 1.2.2 but republished to reflect correct semver.
+
 ## 1.2.2 (Sep 29, 2019)
 
 - Fix encoding error during installation on Windows 10.
