@@ -31,11 +31,13 @@ def test_project_stacked_vs():
 
 
 def test_project_stacked_both():
-    vs = np.array([[5.0, -3.0, 1.0], [1.0, 0, 1.0], [0.0, 1, 0.0], [0.0, 0, 0.0]])
-    onto = np.array([[0, -1.0, 0], [0, 0.0, 1.0], [1.0, 0.0, 1.0], [0.0, 1.0, 0.0]])
-    expected_s = np.array([3.0, 1.0, 0.0, 0])
+    vs = np.array([[5.0, -3.0, 1.0], [1.0, 0.0, 1.0], [0.0, 1.0, 1.5], [0.0, 0, 0.0]])
+    onto = np.array(
+        [[0.0, -1.0, 0], [0.0, 0.0, 1.0], [0.0, 0.0, -1.0], [0.0, 1.0, 0.0]]
+    )
+    expected_s = np.array([3.0, 1.0, -1.5, 0])
     expected_v = np.array(
-        [[0.0, -3.0, 0.0], [0.0, 0, 1.0], [0.0, 0.0, 0.0], [0.0, 0, 0.0]]
+        [[0.0, -3.0, 0.0], [0.0, 0, 1.0], [0.0, 0.0, 1.5], [0.0, 0, 0.0]]
     )
     np.testing.assert_array_almost_equal(
         vg.scalar_projection(vs, onto=onto), expected_s
