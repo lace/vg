@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 1.4.0 (Oct. 6, 2019)
+
+- `vg.scalar_projection` and `vg.project`: Allow stacked inputs for `onto` when
+  `vector` is also stacked.
+
 ## 1.3.0 (Sep 30, 2019)
 
 Same as 1.2.2 but republished to reflect correct semver.
