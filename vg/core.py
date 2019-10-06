@@ -97,9 +97,17 @@ def scalar_projection(vector, onto):
     `onto` need not be normalized.
 
     """
-    if onto.ndim != 1:
-        raise ValueError("onto should be a vector")
-    return np.dot(vector, normalize(onto))
+    if vector.ndim == 1:
+        check(locals(), "vector", (3,))
+        check(locals(), "onto", (3,))
+    else:
+        k = check(locals(), "vector", (-1, 3))
+        if onto.ndim == 1:
+            check(locals(), "onto", (3,))
+        else:
+            check(locals(), "onto", (k, 3))
+
+    return dot(vector, normalize(onto))
 
 
 def reject(vector, from_v):
