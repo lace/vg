@@ -372,8 +372,7 @@ def almost_collinear(v1, v2, atol=1e-08):
     mathematically speaking, the zero vector is collinear to everything.
 
     Geometrically that doesn't necessarily make sense. If you want to handle
-    the case of the zero vector, you can test your inputs with
-    `vg.almost_zero()`.
+    zero vectors specially, you can test your inputs with `vg.almost_zero()`.
     """
     cross = np.cross(v1, v2)
     norm = np.linalg.norm(cross)
