@@ -342,6 +342,25 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     )
 
 
+def scale_factor(v1, v2):
+    """
+    Given two parallel vectors, compute the scale factor `k` such that
+    `k * v1` is approximately equal to `v2`.
+    
+    When `v1` is the zero vector, returns `np.nan`.
+    """
+    check(locals(), "v1", (3,))
+    check(locals(), "v2", (3,))
+
+    v1_dot_v2 = np.dot(v1, v2)
+    v1_dot_v1 = np.dot(v1, v1)
+
+    if v1_dot_v1 == 0:
+        return np.nan
+    else:
+        return v1_dot_v2 / v1_dot_v1
+
+
 def almost_zero(v, atol=1e-08):
     """
     Test if v is almost the zero vector.
