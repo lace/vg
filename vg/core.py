@@ -421,12 +421,13 @@ def almost_unit_length(vector, atol=1e-08):
 
 def almost_collinear(v1, v2, atol=1e-08):
     """
-    Test if v1 and v2 are almost collinear.
+    Test if `v1` and `v2` are almost collinear.
 
-    Mathematically speaking, the zero vector is collinear to everything.
-    Geometrically that doesn't necessarily make sense. If you care, test
-    your inputs with vg.almost_zero.
+    This will return true if either `v1` or `v2` is the zero vector, because
+    mathematically speaking, the zero vector is collinear to everything.
 
+    Geometrically that doesn't necessarily make sense, so if you want to handle
+    zero vectors specially, you can test your inputs with `vg.almost_zero()`.
     """
     cross = np.cross(v1, v2)
     norm = np.linalg.norm(cross)
