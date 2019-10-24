@@ -1,6 +1,13 @@
 Changelog
 =========
 
+## 1.5.0 (Oct. 24, 2019)
+
+- Add `vg.nearest()`.
+- Add `vg.scale_factor()`.
+- Add `vg.orient()`.
+- Improve documentation, including docs for `vg.almost_collinear()`.
+
 ## 1.4.0 (Oct. 6, 2019)
 
 - `vg.scalar_projection` and `vg.project`: Allow stacked inputs for `onto` when
