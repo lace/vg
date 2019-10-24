@@ -24,6 +24,7 @@ __all__ = [
     "principal_components",
     "major_axis",
     "apex",
+    "nearest",
     "farthest",
     "basis",
     "within",
@@ -502,6 +503,29 @@ def apex(points, along):
         raise ValueError("along should be a 3x1 vector")
     coords_on_axis = points.dot(along)
     return points[np.argmax(coords_on_axis)]
+
+
+def nearest(from_points, to_point, ret_index=False):
+    """
+    Find the point nearest to the given point.
+
+    Args:
+        from_points (np.arraylike): A `kx3` stack of points in R^3.
+        to_point (np.arraylike): A `3x1` point of interest.
+        ret_index (bool): When `True`, return both the point and its index.
+
+    Returns:
+        np.ndarray: A `3x1` vector taken from `from_points`.
+    """
+    check(locals(), "from_points", (-1, 3))
+    check(locals(), "to_point", (3,))
+
+    absolute_distances = magnitude(from_points - to_point)
+
+    index_of_nearest_point = np.argmin(absolute_distances)
+    nearest_point = from_points[index_of_nearest_point]
+
+    return nearest_point, index_of_nearest_point if ret_index else nearest_point
 
 
 def farthest(from_points, to_point, ret_index=False):
