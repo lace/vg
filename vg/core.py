@@ -346,8 +346,13 @@ def scale_factor(v1, v2):
     """
     Given two parallel vectors, compute the scale factor `k` such that
     `k * v1` is approximately equal to `v2`.
-    
-    When `v1` is the zero vector, returns `np.nan`.
+
+    Args:
+        v1 (np.arraylike): A vector in `R^3`.
+        v2 (np.arraylike): A second vector in `R^3`.
+
+    Returns:
+        float: The scale factor `k`, or `nan` if `v1` is the zero vector.
     """
     check(locals(), "v1", (3,))
     check(locals(), "v2", (3,))
