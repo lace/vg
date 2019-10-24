@@ -15,6 +15,8 @@ __all__ = [
     "angle",
     "signed_angle",
     "rotate",
+    "scale_factor",
+    "orient",
     "almost_zero",
     "almost_unit_length",
     "almost_collinear",
@@ -340,6 +342,58 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
         + sine * np.cross(around_axis, vector)
         + (1 - cosine) * dot_products * around_axis
     )
+
+
+def scale_factor(v1, v2):
+    """
+    Given two parallel vectors, compute the scale factor `k` such that
+    `k * v1` is approximately equal to `v2`.
+
+    Args:
+        v1 (np.arraylike): A vector in `R^3`.
+        v2 (np.arraylike): A second vector in `R^3`.
+
+    Returns:
+        float: The scale factor `k`, or `nan` if `v1` is the zero vector.
+    """
+    check(locals(), "v1", (3,))
+    check(locals(), "v2", (3,))
+
+    v1_dot_v2 = np.dot(v1, v2)
+    v1_dot_v1 = np.dot(v1, v1)
+
+    if v1_dot_v1 == 0:
+        return np.nan
+    else:
+        return v1_dot_v2 / v1_dot_v1
+
+
+def orient(vector, along, reverse=False):
+    """
+    Given two vectors, flip the first if necessary, so that it points
+    (approximately) along the second vector rather than (approximately)
+    opposite it.
+
+    Args:
+        vector (np.arraylike): A vector in `R^3`.
+        along (np.arraylike): A second vector in `R^3`.
+        reverse (bool): When `True`, reverse the logic, returning a vector
+          that points against `along`.
+
+    Returns:
+        np.arraylike: Either `vector` or `-vector`.
+    """
+    check(locals(), "vector", (3,))
+    check(locals(), "along", (3,))
+
+    projected = project(vector, onto=along)
+    computed_scale_factor = scale_factor(projected, along)
+    if not reverse and computed_scale_factor < 0:
+        return -vector
+    elif reverse and computed_scale_factor > 0:
+        return -vector
+    else:
+        return vector
 
 
 def almost_zero(v, atol=1e-08):
