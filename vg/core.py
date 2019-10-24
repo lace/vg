@@ -370,8 +370,10 @@ def almost_collinear(v1, v2, atol=1e-08):
 
     This will return true if either v1 or v2 is the zero vector, because
     mathematically speaking, the zero vector is collinear to everything.
-    Geometrically that doesn't necessarily make sense, so if you care, test
-    your inputs with `vg.almost_zero()`.
+    Geometrically that doesn't necessarily make sense.
+
+    If you want to handle the case of the zero vector, you can test your
+    inputs with `vg.almost_zero()`.
     """
     cross = np.cross(v1, v2)
     norm = np.linalg.norm(cross)
