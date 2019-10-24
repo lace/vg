@@ -10,7 +10,7 @@ vg
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
 A **v**ery **g**ood vector-geometry and linear-algebra toolbelt. Linear
-algebra for humans. Simple [NumPy][] operations made readable, and built to
+algebra for humans. Simple [NumPy][] operations made readable, built to
 scale from prototyping to production.
 
 [pypi]: https://pypi.org/project/vg/

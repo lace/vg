@@ -2,8 +2,8 @@ vg
 ==
 
 **vg** is a **v**ery **g**ood vector-geometry and linear-algebra toolbelt.
-Linear algebra for humans. Simple [NumPy][] operations made readable, and
-built to scale from prototyping to production.
+Linear algebra for humans. Simple [NumPy][] operations made readable, built
+to scale from prototyping to production.
 
 [numpy]: https://www.numpy.org/
 
