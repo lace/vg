@@ -1,7 +1,7 @@
 vg
 ==
 
-**Linear algrbra for humans**: a **v**ery **g**ood vector-geometry and
+**Linear algebra for humans**: a **v**ery **g**ood vector-geometry and
 linear-algebra toolbelt. Simple [NumPy][] operations, made readable.
 
 [numpy]: https://www.numpy.org/
