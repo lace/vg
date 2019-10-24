@@ -9,8 +9,9 @@ vg
 [![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-Linear algebra for humans: a **v**ery **g**ood vector-geometry and
-linear-algebra toolbelt. Simple [NumPy][] operations made readable.
+A **v**ery **g**ood vector-geometry and linear-algebra toolbelt. Linear
+algebra for humans. Simple [NumPy][] operations made readable, and built to
+scale from prototyping to production.
 
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://github.com/lace/vg/blob/master/.coveragerc
