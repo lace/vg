@@ -366,9 +366,9 @@ def almost_unit_length(vector, atol=1e-08):
 
 def almost_collinear(v1, v2, atol=1e-08):
     """
-    Test if v1 and v2 are almost collinear.
+    Test if `v1` and `v2` are almost collinear.
 
-    This will return true if either v1 or v2 is the zero vector, because
+    This will return true if either `v1` or `v2` is the zero vector, because
     mathematically speaking, the zero vector is collinear to everything.
     Geometrically that doesn't necessarily make sense.
 
