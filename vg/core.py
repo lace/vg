@@ -532,7 +532,10 @@ def nearest(from_points, to_point, ret_index=False):
     index_of_nearest_point = np.argmin(absolute_distances)
     nearest_point = from_points[index_of_nearest_point]
 
-    return nearest_point, index_of_nearest_point if ret_index else nearest_point
+    if ret_index:
+        return nearest_point, index_of_nearest_point
+    else:
+        return nearest_point
 
 
 def farthest(from_points, to_point, ret_index=False):
@@ -559,7 +562,10 @@ def farthest(from_points, to_point, ret_index=False):
     index_of_farthest_point = np.argmax(absolute_distances)
     farthest_point = from_points[index_of_farthest_point]
 
-    return farthest_point, index_of_farthest_point if ret_index else farthest_point
+    if ret_index:
+        return farthest_point, index_of_farthest_point
+    else:
+        return farthest_point
 
 
 def within(points, radius, of_point, atol=1e-08, ret_indices=False):
