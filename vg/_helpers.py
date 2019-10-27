@@ -1,5 +1,5 @@
 import numpy as np
-from .shape import check
+from .shape import check, check_value
 
 
 def pluralize(noun, count):
@@ -35,3 +35,39 @@ def broadcast_and_tile(v1, v2):
         return v1, v2
     else:
         raise_dimension_error(v1, v2)
+
+
+# TODO: After dropping Python 2, make `name=None` a regular kwarg.
+def _check_value_any(a, *shapes, **kwargs):
+    """
+    Similar to `check_value()`, but accepts many candidate shapes and checks
+    each of them before raising an error.
+
+    Returns:
+        object: The wildcard dimension (if one) or a tuple of wildcard
+        dimensions (if more than one) of the matched shape
+    """
+    if len(shapes) == 0:
+        raise ValueError("At least one shape is required")
+    name = kwargs.get("name")
+    for shape in shapes:
+        try:
+            return check_value(a, shape, name=name)
+        except ValueError:
+            pass
+
+    if name is None:
+        preamble = "Expected an array"
+    else:
+        preamble = "Expected {} to be an array".format(name)
+
+    shape_choices = ", ".join(
+        shapes[:-2] + (" or ".join([str(shapes[-2]), str(shapes[-1])]),)
+    )
+
+    if a is None:
+        raise ValueError("{} with shape {}; got None".format(preamble, shape_choices))
+    else:
+        raise ValueError(
+            "{} with shape {}; got {}".format(preamble, shape_choices, a.shape)
+        )
