@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## 1.6.1 (Oct. 27, 2019)
+
+- Fix `vg.nearest()` and `vg.farthest()` with `ret_index=False`
+
 ## 1.6.0 (Oct. 27, 2019)
 
 - Allow `vg.scale_factor()` to accept a mix of stacked and unstacked inputs.
