@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from ._helpers import raise_dimension_error, broadcast_and_tile
+from ._helpers import raise_dimension_error, broadcast_and_tile, _check_value_any
 from .shape import check
 
 __all__ = [
@@ -351,22 +351,24 @@ def scale_factor(v1, v2):
     `k * v1` is approximately equal to `v2`.
 
     Args:
-        v1 (np.arraylike): A vector in `R^3`.
+        v1 (np.arraylike): A vector in `R^3` or a `kx3` stack of vectors.
         v2 (np.arraylike): A second vector in `R^3`.
 
     Returns:
         float: The scale factor `k`, or `nan` if `v1` is the zero vector.
     """
-    check(locals(), "v1", (3,))
-    check(locals(), "v2", (3,))
+    k = _check_value_any(v1, (3,), (-1, 3), name="v1")
+    _check_value_any(v2, (3,), (-1 if k is None else k, 3), name="v1")
 
-    v1_dot_v2 = np.dot(v1, v2)
-    v1_dot_v1 = np.dot(v1, v1)
+    v1_dot_v2 = dot(v1, v2)
+    v1_dot_v1 = dot(v1, v1)
 
-    if v1_dot_v1 == 0:
-        return np.nan
-    else:
-        return v1_dot_v2 / v1_dot_v1
+    if np.isscalar(v1_dot_v1) and v1_dot_v1 == 0:
+        v1_dot_v1 = np.nan
+    elif not np.isscalar(v1_dot_v1):
+        v1_dot_v1[v1_dot_v1 == 0] = np.nan
+
+    return v1_dot_v2 / v1_dot_v1
 
 
 def orient(vector, along, reverse=False):
