@@ -11,3 +11,7 @@ def test_nearest():
 
     np.testing.assert_array_equal(point, from_points[0])
     np.testing.assert_array_equal(index, 0)
+
+    np.testing.assert_array_equal(
+        vg.nearest(from_points, to_point, ret_index=False), from_points[0]
+    )
