@@ -358,8 +358,8 @@ def scale_factor(v1, v2):
 
     Returns:
         object: A float containing the scale factor `k`, or `nan` if `v1`
-          is the zero vector. If either input is stacked, the result will also
-          be stacked.
+        is the zero vector. If either input is stacked, the result will also
+        be stacked.
     """
     k = _check_value_any(v1, (3,), (-1, 3), name="v1")
     _check_value_any(v2, (3,), (-1 if k is None else k, 3), name="v1")
