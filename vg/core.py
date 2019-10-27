@@ -352,7 +352,9 @@ def scale_factor(v1, v2):
 
     Args:
         v1 (np.arraylike): A vector in `R^3` or a `kx3` stack of vectors.
-        v2 (np.arraylike): A second vector in `R^3`.
+        v2 (np.arraylike): A second vector in `R^3` or a `kx3` stack of
+          vectors. If `v1` and `v2` are both stacked, they must be the
+          same shape.
 
     Returns:
         float: The scale factor `k`, or `nan` if `v1` is the zero vector.
