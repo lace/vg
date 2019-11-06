@@ -9,13 +9,13 @@ def test_almost_collinear():
 
     for v1 in collinear_vectors:
         for v2 in collinear_vectors:
-            assert vg.almost_collinear(v1, v2) == True
+            assert vg.almost_collinear(v1, v2) == True  # noqa: E712
 
     for v in collinear_vectors:
         zero_v = np.array([0.0, 0.0, 0.0])
-        assert vg.almost_collinear(v, zero_v) == True
-        assert vg.almost_collinear(zero_v, v) == True
-        assert vg.almost_collinear(zero_v, zero_v) == True
+        assert vg.almost_collinear(v, zero_v) == True  # noqa: E712
+        assert vg.almost_collinear(zero_v, v) == True  # noqa: E712
+        assert vg.almost_collinear(zero_v, zero_v) == True  # noqa: E712
 
     non_collinear_vectors = np.array(
         [[1.0, 1.0, 0.0], [-1.0, -1.3, 0.0], [2.0, 2.0, 1.0], [1.000001, 1.0, 0.0]]
@@ -24,4 +24,4 @@ def test_almost_collinear():
     for index1, v1 in enumerate(non_collinear_vectors):
         for index2, v2 in enumerate(non_collinear_vectors):
             if index1 != index2:
-                assert vg.almost_collinear(v1, v2) == False
+                assert vg.almost_collinear(v1, v2) == False  # noqa: E712

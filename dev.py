@@ -9,10 +9,7 @@ def python_source_files():
     import glob
 
     include_paths = glob.glob("*.py") + glob.glob("vg/*.py") + ["doc/"]
-
-    # TODO: Use flake8; argh.
-    exclude_paths = ["vg/__init__.py"]
-
+    exclude_paths = []
     return [x for x in include_paths if x not in exclude_paths]
 
 
@@ -51,7 +48,7 @@ def test_both():
 
 @cli.command()
 def lint():
-    execute("pyflakes", *python_source_files())
+    execute("flake8", *python_source_files())
 
 
 @cli.command()

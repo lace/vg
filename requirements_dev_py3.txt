@@ -2,4 +2,4 @@
 -r requirements_dev_common.txt
 
 black ==19.3b0
-pyflakes >=2.0,<3.0
+flake8 >=3.7.7,<4.0
