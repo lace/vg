@@ -593,7 +593,7 @@ def within(points, radius, of_point, atol=1e-08, ret_indices=False):
         raise ValueError("to_point should be 3x1")
 
     absolute_distances = magnitude(points - of_point)
-    indices_within_radius, = (absolute_distances < radius + atol).nonzero()
+    (indices_within_radius,) = (absolute_distances < radius + atol).nonzero()
     points_within_radius = points[indices_within_radius]
     if ret_indices:
         return points_within_radius, indices_within_radius
