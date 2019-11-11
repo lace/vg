@@ -14,7 +14,7 @@ express these operations in highly readable forms which communicate clearly
 regardless of the reader's math background.
 
 The goal of vg is to enable Python programmers to leverage the power of
-linear algebra to carry out vector-geometry operations. It leads to code
+linear algebra to carry out vector-geometry operations. It produces code
 which is easy to write, understand, and maintain.
 
 [NumPy][] is powerful – and also worth learning! However it’s easy to get
