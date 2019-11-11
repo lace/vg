@@ -23,7 +23,7 @@ when working on basic geometric operatioons. vg is intended to be
 friendlier. It checks that your inputs are structured correctly for the
 narrower use case of 3D geometry, and then it &ldquo;just works.&rdquo;
 For example, `vg.euclidean_distance()` is invoked the same for two stacks
-of points as it is with a stack and a single point, or two single points.
+of points, a stack and a point, or a simple pair of points.
 
 In the name of readability, efficiency is not compromised. These operations
 are as useful in production code as in one-off scripts. If you find anything
