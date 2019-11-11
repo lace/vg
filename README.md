@@ -13,6 +13,8 @@ A **v**ery **g**ood vector-geometry and linear-algebra toolbelt. Linear
 algebra for humans. Simple [NumPy][] operations made readable, built to
 scale from prototyping to production.
 
+See the complete API reference: https://vgpy.readthedocs.io/en/latest/
+
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://github.com/lace/vg/blob/master/.coveragerc
 [build]: https://circleci.com/gh/lace/vg/tree/master
@@ -70,8 +72,6 @@ angles = vg.angle(v1s, v2s)
 
 Features
 --------
-
-See the complete API reference: https://vgpy.readthedocs.io/en/latest/
 
 All functions are optionally vectorized, meaning they accept single inputs and
 stacks of inputs interchangeably. They return The Right Thing – a single
