@@ -20,7 +20,7 @@ def test_within():
 
     is_within_4 = np.array([True, True, True, True, False, True, True, True, False])
     points_within_4 = points[is_within_4]
-    indices_within_4, = is_within_4.nonzero()
+    (indices_within_4,) = is_within_4.nonzero()
 
     np.testing.assert_array_almost_equal(
         vg.within(points, radius=4.0, of_point=np.array([0.0, 1.0, 0.0]), atol=0.1),
