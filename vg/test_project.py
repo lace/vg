@@ -12,7 +12,7 @@ def test_project():
     np.testing.assert_array_almost_equal(vg.project(v, onto=onto), expected_v)
 
     with pytest.raises(
-        ValueError, match="onto must be an array with shape \(3,\); got \(2, 3\)"
+        ValueError, match=r"onto must be an array with shape \(3,\); got \(2, 3\)"
     ):
         vg.project(v, onto=np.array([vg.basis.x, vg.basis.x]))
 
