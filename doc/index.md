@@ -3,27 +3,31 @@ vg
 
 **vg** is a **v**ery **g**ood vector-geometry and linear-algebra toolbelt.
 
-Linear algebra is incredibly powerful for solving geometric problems – and a
-wide range of others! Though many programmers would benefit from learning the
-math behind it, for others understanding its abstractions is enough.
-Furthermore, its abstractions provide powerful ways of communicating the
-ideas in a way that all programmers can understand, regardless of their math
-background.
+Motivation
+----------
+
+Linear algebra is incredibly powerful for solving a wide range of problems,
+including geometric problems, which are the focus of this library. Though
+some programmers benefit need to know the math behind these operations,
+often understanding the abstractions is enough. Furthermore, the
+abstractions provide powerful ways of communicating the ideas in a way that
+is more readable to everyone, regardless of their math background.
 
 The goal of vg is to expose the power of vector geometry and linear algebra
 to Python programmers. It leads to code which is easy to write, understand,
 and maintain, even if the math isn’t in your head.
 
 [NumPy][] is powerful – and also worth learning! However it’s easy to get
-slowed down by technical concerns like broadcasting and reindexing. vg is
+slowed down by technical concerns like broadcasting and indexing. vg is
 intended to be friendlier. It checks that your inputs are structured
-correctly, and &ldquo;just works.&rdquo; For example, the vg invocation is the
-same for computing the distance between two stacks of points, and between a
-stack of points and a single point.
+correctly for the narrower use case of 3D geometry, and then it
+&ldquo;just works.&rdquo; For example, `vg.euclidean_distance()` is
+invoked the same for two stacks of points as it is with a stack and a
+single point, or two single points.
 
-In obtaining readability, efficiency is not compromised. These operations are
-as useful in production code as in one-off scripts. (If you find anything to
-be dramatically slower than a lower-level equivalent, please let us know so
+In the name of readability, efficiency is not compromised. These operations
+are as useful in production code as in one-off scripts. (If you find anything
+is dramatically slower than a lower-level equivalent, please let us know so
 we can fix it!)
 
 [numpy]: https://www.numpy.org/
