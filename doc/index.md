@@ -13,9 +13,9 @@ understanding the abstractions is enough. Furthermore, the abstractions
 express these operations in highly readable forms which communicate clearly
 regardless of the reader's math background.
 
-The goal of vg is to enable Python programmers to leverage the power of
-linear algebra to carry out vector-geometry operations. It produces code
-which is easy to write, understand, and maintain.
+The goal of vg is to help Python programmers leverage the power of linear
+algebra to carry out vector-geometry operations. It produces code which
+is easy to write, understand, and maintain.
 
 [NumPy][] is powerful – and also worth learning! However it’s easy to get
 slowed down by technical concerns like broadcasting and indexing, even
