@@ -2,8 +2,29 @@ vg
 ==
 
 **vg** is a **v**ery **g**ood vector-geometry and linear-algebra toolbelt.
-Linear algebra for humans. Simple [NumPy][] operations made readable, built
-to scale from prototyping to production.
+
+Linear algebra is incredibly powerful for solving geometric problems – and a
+wide range of others! Though many programmers would benefit from learning the
+math behind it, for others understanding its abstractions is enough.
+Furthermore, its abstractions provide powerful ways of communicating the
+ideas in a way that all programmers can understand, regardless of their math
+background.
+
+The goal of vg is to expose the power of vector geometry and linear algebra
+to Python programmers. It leads to code which is easy to write, understand,
+and maintain, even if the math isn’t in your head.
+
+[NumPy][] is powerful – and also worth learning! However it’s easy to get
+slowed down by technical concerns like broadcasting and reindexing. vg is
+intended to be friendlier. It checks that your inputs are structured
+correctly, and &ldquo;just works.&rdquo; For example, the vg invocation is the
+same for computing the distance between two stacks of points, and between a
+stack of points and a single point.
+
+In obtaining readability, efficiency is not compromised. These operations are
+as useful in production code as in one-off scripts. (If you find anything to
+be dramatically slower than a lower-level equivalent, please let us know so
+we can fix it!)
 
 [numpy]: https://www.numpy.org/
 
