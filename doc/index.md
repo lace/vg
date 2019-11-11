@@ -15,15 +15,15 @@ is more readable to everyone, regardless of their math background.
 
 The goal of vg is to expose the power of vector geometry and linear algebra
 to Python programmers. It leads to code which is easy to write, understand,
-and maintain, even if the math isn’t in your head.
+and maintain.
 
 [NumPy][] is powerful – and also worth learning! However it’s easy to get
-slowed down by technical concerns like broadcasting and indexing. vg is
-intended to be friendlier. It checks that your inputs are structured
-correctly for the narrower use case of 3D geometry, and then it
-&ldquo;just works.&rdquo; For example, `vg.euclidean_distance()` is
-invoked the same for two stacks of points as it is with a stack and a
-single point, or two single points.
+slowed down by technical concerns like broadcasting and indexing, even
+when working on basic geometric operatioons. vg is intended to be
+friendlier. It checks that your inputs are structured correctly for the
+narrower use case of 3D geometry, and then it &ldquo;just works.&rdquo;
+For example, `vg.euclidean_distance()` is invoked the same for two stacks
+of points as it is with a stack and a single point, or two single points.
 
 In the name of readability, efficiency is not compromised. These operations
 are as useful in production code as in one-off scripts. (If you find anything
