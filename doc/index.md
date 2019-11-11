@@ -19,16 +19,16 @@ is easy to write, understand, and maintain.
 
 [NumPy][] is powerful – and also worth learning! However it’s easy to get
 slowed down by technical concerns like broadcasting and indexing, even
-when working on basic geometric operatioons. vg is intended to be
-friendlier. It checks that your inputs are structured correctly for the
+when working on basic geometric operations. vg is friendlier: it's
+NumPy for humans. It checks that your inputs are structured correctly for the
 narrower use case of 3D geometry, and then it &ldquo;just works.&rdquo;
 For example, `vg.euclidean_distance()` is invoked the same for two stacks
 of points, a stack and a point, or a simple pair of points.
 
-In the name of readability, efficiency is not compromised. These operations
-are as useful in production code as in one-off scripts. If you find anything
-is dramatically slower than a lower-level equivalent, please let us know so
-we can fix it!
+In the name of readability, efficiency is not compromised. You'll find these
+operations as suited to production code as one-off scripts. If you find
+anything is dramatically slower than a lower-level equivalent, please let us
+know so we can fix it!
 
 [numpy]: https://www.numpy.org/
 
