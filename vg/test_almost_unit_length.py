@@ -14,7 +14,7 @@ def test_almost_unit_length():
     )
 
     for v in unit_vectors:
-        assert vg.almost_unit_length(np.array(v)) == True
+        assert vg.almost_unit_length(np.array(v)) == True  # noqa: E712
 
     assert vg.almost_unit_length(np.array(unit_vectors)).tolist() == [
         True,
@@ -28,7 +28,7 @@ def test_almost_unit_length():
     )
 
     for v in non_unit_vectors:
-        assert vg.almost_unit_length(np.array(v)) == False
+        assert vg.almost_unit_length(np.array(v)) == False  # noqa: E712
 
     assert vg.almost_unit_length(np.array(non_unit_vectors)).tolist() == [
         False,

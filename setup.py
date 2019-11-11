@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 # Set version_info[__version__], while avoiding importing numpy, in case numpy
 # and vg are being installed concurrently.
