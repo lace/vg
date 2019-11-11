@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
-from .core import raise_dimension_error
 from ._helpers import _check_value_any
+from .core import raise_dimension_error
 
 
 def test_raise_dimension_error():

@@ -1,6 +1,6 @@
-import pytest
 import numpy as np
-from .shape import check_value, check
+import pytest
+from .shape import check, check_value
 
 
 def test_check_value_valid():

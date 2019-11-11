@@ -1,6 +1,6 @@
 import math
-import pytest
 import numpy as np
+import pytest
 from . import core as vg
 
 

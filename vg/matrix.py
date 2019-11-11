@@ -1,6 +1,6 @@
 import numpy as np
-from .shape import check
 from ._helpers import raise_dimension_error
+from .shape import check
 
 
 def pad_with_ones(matrix):

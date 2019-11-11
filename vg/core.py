@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from ._helpers import raise_dimension_error, broadcast_and_tile, _check_value_any
+from ._helpers import _check_value_any, broadcast_and_tile, raise_dimension_error
 from .shape import check
 
 __all__ = [
