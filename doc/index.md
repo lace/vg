@@ -6,10 +6,10 @@ vg
 Motivation
 ----------
 
-Linear algebra provides an incredibly powerful toolset for a wide range of
-problems, including geometric problems, which are the focus of this library.
-Though some programmers need to know the math that powers these solutions,
-often understanding the abstractions is enough. Furthermore, the abstractions
+Linear algebra provides a powerful toolset for a wide range of problems,
+including geometric problems, which are the focus of this library. Though
+some programmers need to know the math that powers these solutions, often
+understanding the abstractions is enough. Furthermore, the abstractions
 provide powerful ways of communicating the ideas in a way that is highly
 readable, regardless of the reader's math background.
 
