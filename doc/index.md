@@ -8,10 +8,10 @@ Motivation
 
 Linear algebra provides an incredibly powerful toolset for a wide range of
 problems, including geometric problems, which are the focus of this library.
-Though some programmers benefit need to know the math that powers these
-solutions, often understanding the abstractions is enough. Furthermore, the
-abstractions provide powerful ways of communicating the ideas in a way that
-is more readable to everyone, regardless of their math background.
+Though some programmers need to know the math that powers these solutions,
+often understanding the abstractions is enough. Furthermore, the abstractions
+provide powerful ways of communicating the ideas in a way that is highly
+readable, regardless of the reader's math background.
 
 The goal of vg is to expose the power of vector geometry and linear algebra
 to Python programmers. It leads to code which is easy to write, understand,
