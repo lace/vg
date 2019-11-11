@@ -26,9 +26,9 @@ For example, `vg.euclidean_distance()` is invoked the same for two stacks
 of points as it is with a stack and a single point, or two single points.
 
 In the name of readability, efficiency is not compromised. These operations
-are as useful in production code as in one-off scripts. (If you find anything
+are as useful in production code as in one-off scripts. If you find anything
 is dramatically slower than a lower-level equivalent, please let us know so
-we can fix it!)
+we can fix it!
 
 [numpy]: https://www.numpy.org/
 
