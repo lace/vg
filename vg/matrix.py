@@ -1,6 +1,5 @@
 import numpy as np
 from ._helpers import raise_dimension_error
-from .shape import check
 
 
 def pad_with_ones(matrix):
@@ -37,26 +36,6 @@ def unpad(matrix):
     if not all(matrix[:, 3] == 1.0):
         raise ValueError("Expected a column of ones")
     return np.delete(matrix, 3, axis=1)
-
-
-def convert_33_to_44(matrix):
-    """
-    Transform from:
-        array([[1., 2., 3.],
-               [2., 3., 4.],
-               [5., 6., 7.]])
-    to:
-        array([[1., 2., 3., 0.],
-               [2., 3., 4., 0.],
-               [5., 6., 7., 0.],
-               [0., 0., 0., 1.]])
-
-    """
-    check(locals(), "matrix", (3, 3))
-    result = np.zeros((4, 4), dtype=matrix.dtype)
-    result[:3, :3] = matrix
-    result[3, 3] = 1
-    return result
 
 
 def transform(vertices, transform):
