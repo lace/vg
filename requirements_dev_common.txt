@@ -8,4 +8,4 @@ recommonmark
 
 # Unit tests.
 pytest ==4.5.0
-pytest-cov == 2.7.1
+pytest-cov == 2.8.1
