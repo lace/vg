@@ -503,14 +503,14 @@ def apex(points, along):
             interest.
 
     Returns:
-        np.ndarray: A `3x1` point taken from `points`.
+        np.ndarray: A copy of a point taken from `points`.
     """
     if points.ndim != 2 or points.shape[1] != 3:
         raise ValueError("Invalid shape %s: apex expects nx3" % (points.shape,))
     if along.shape != (3,):
         raise ValueError("along should be a 3x1 vector")
     coords_on_axis = points.dot(along)
-    return points[np.argmax(coords_on_axis)]
+    return points[np.argmax(coords_on_axis)].copy()
 
 
 def nearest(from_points, to_point, ret_index=False):
