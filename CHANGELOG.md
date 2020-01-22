@@ -1,6 +1,13 @@
 Changelog
 =========
 
+## 1.7.0 (Jan. 22, 2020)
+
+- Add `vg.average()`.
+- `vg.apex()`: Return a copy instead of a view.
+- Improve documentation intro.
+- Distribute universal wheels.
+
 ## 1.6.1 (Oct. 27, 2019)
 
 - Fix `vg.nearest()` and `vg.farthest()` with `ret_index=False`
