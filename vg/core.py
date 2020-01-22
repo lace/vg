@@ -604,7 +604,8 @@ def within(points, radius, of_point, atol=1e-08, ret_indices=False):
 
 def average(values, weights=None, ret_sum_of_weights=False):
     """
-    Compute a weighted or unweighted average of input vectors or points.
+    Compute a weighted or unweighted average of the 3D input values. The
+    inputs could be points or vectors.
 
     Args:
         values (np.arraylike): A `kx3` stack of vectors.
