@@ -28,6 +28,7 @@ __all__ = [
     "farthest",
     "basis",
     "within",
+    "average",
     "cross",
     "dot",
 ]
@@ -599,6 +600,30 @@ def within(points, radius, of_point, atol=1e-08, ret_indices=False):
         return points_within_radius, indices_within_radius
     else:
         return points_within_radius
+
+
+def average(values, weights=None, ret_sum_of_weights=False):
+    """
+    Compute the average of input vectors or points. When weights are provided,
+    computes a weighted average.
+
+    Args:
+        values (np.arraylike): A `kx3` stack of vectors.
+        weights (array-convertible): An optional `k` array of weights.
+        ret_sum_of_weights (bool): When `True`, the sum of the weights is
+            returned. When `weights` is `None`, this is the number of
+            elements over which the average is taken.
+    """
+    k = check(locals(), "values", (-1, 3))
+    if weights is not None:
+        weights = np.array(weights)
+        check(locals(), "weights", (k,))
+    result = np.average(values, axis=0, weights=weights)
+    if ret_sum_of_weights:
+        sum_of_weights = np.sum(weights)
+        return result, sum_of_weights
+    else:
+        return result
 
 
 def dot(v1, v2):
