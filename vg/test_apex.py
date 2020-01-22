@@ -51,6 +51,7 @@ def test_apex():
     with pytest.raises(ValueError, match="along should be a 3x1 vector"):
         vg.apex(points, along=points)
 
+
 def test_apex_returns_a_copy():
     points = np.array(
         [
