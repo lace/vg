@@ -1,6 +1,17 @@
 Changelog
 =========
 
+## 1.8.0 (Apr. 22, 2020)
+
+- Add `vg.shape.columnize()`, a helper function for functions which may,
+  accept and return a stack of points or a single point.
+- Add `vg.shape.check_value_any()` for checking an input against multiple
+  valid shape.
+- Fix `vg.euclidean_distance()` so it will correctly accept a single point
+  as the first argument with a stack of points as the second argument.
+- Correct many erroneous mentions of `3x1` and `kx1` in the documentation
+  and error messages.
+
 ## 1.7.0 (Jan. 22, 2020)
 
 - Add `vg.average()`.
