@@ -167,15 +167,15 @@ def reject_axis(vector, axis, squash=False):
 
 def magnitude(vector):
     """
-    Compute the magnitude of `vector`. For stacked inputs, compute the magnitude
-    of each one.
+    Compute the magnitude of `vector`. For a stacked input, compute the
+    magnitude of each one.
 
     Args:
         vector (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
 
     Returns:
-        object: For `(3,)` inputs, a `float` with the magnitude. For `kx1`
-            inputs, a `kx1` array.
+        object: For a `(3,)` input, a `float` with the magnitude. For a `kx3`
+            input, a `(k,)` array.
     """
     if vector.ndim == 1:
         return np.linalg.norm(vector)
@@ -203,8 +203,8 @@ def euclidean_distance(v1, v2):
             same shape.
 
     Returns:
-        object: When both inputs are `(3,)`, a `float` with the distance. Otherwise
-            a `kx1` array.
+        object: When both inputs are `(3,)`, a `float` with the distance.
+        Otherwise a `(k,)` array.
     """
     k = check_value_any(v1, (3,), (-1, 3), name="v1")
     check_value_any(
@@ -219,7 +219,7 @@ def euclidean_distance(v1, v2):
 
 def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     """
-    Compute the unsigned angle between two vectors. For stacked inputs, the
+    Compute the unsigned angle between two vectors. For a stacked input, the
     angle is computed pairwise.
 
     When `look` is provided, the angle is computed in that viewing plane
@@ -237,8 +237,8 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Return:
-        object: For `(3,)` inputs, a `float` with the angle. For `kx1` inputs,
-            a `kx1` array.
+        object: For a `(3,)` input, a `float` with the angle. For a `kx3`
+        input, a `(k,)` array.
     """
     if units not in ["deg", "rad"]:
         raise ValueError("Unrecognized units {}; expected deg or rad".format(units))
@@ -266,7 +266,7 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
 
 def signed_angle(v1, v2, look, units="deg"):
     """
-    Compute the signed angle between two vectors. For stacked inputs, the
+    Compute the signed angle between two vectors. For a stacked input, the
     angle is computed pairwise.
 
     Results are in the range -180 and 180 (or `-math.pi` and `math.pi`). A
@@ -282,8 +282,8 @@ def signed_angle(v1, v2, look, units="deg"):
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Returns:
-        object: For `(3,)` inputs, a `float` with the angle. For `kx1` inputs,
-            a `kx1` array.
+        object: For a `(3,)` input, a `float` with the angle. For a `kx3`
+        input, a `(k,)` array.
     """
     # The sign of (A x B) dot look gives the sign of the angle.
     # > 0 means clockwise, < 0 is counterclockwise.
@@ -412,14 +412,15 @@ def almost_zero(v, atol=1e-08):
 
 def almost_unit_length(vector, atol=1e-08):
     """
-    Test if the `vector` has almost unit length. For stacked inputs, test each
+    Test if the `vector` has almost unit length. For a stacked input, test each
     one.
 
     Args:
         vector (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
 
     Returns:
-        object: For `(3,)` inputs, a `bool`. For `kx1` inputs, a `kx1` array.
+        object: For a `(3,)` input, a `bool`. For a `kx3` input, a `(k,)`
+        array.
     """
     return np.isclose(magnitude(vector), 1.0, rtol=0, atol=atol)
 
@@ -481,7 +482,7 @@ def major_axis(coords):
         coords (np.arraylike): A `nxk` stack of coordinates.
 
     Returns:
-        np.ndarray: A `kx1` vector.
+        np.ndarray: A `(k,)` vector.
 
     See also:
         - http://setosa.io/ev/principal-component-analysis/
