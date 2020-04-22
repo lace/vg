@@ -64,7 +64,8 @@ def check_value(arr, shape, **kwargs):
         return tuple(wildcard_dims)
 
 
-def check_value_any(arr, *shapes, name=None):
+# TODO-2.x: Remove kwargs hack when upgrading to Python 3.
+def check_value_any(arr, *shapes, **kwargs):
     """
     Check that the given argument has any of the expected shapes. Shape dimensons
     can be ints or -1 for a wildcard.
@@ -93,14 +94,14 @@ def check_value_any(arr, *shapes, name=None):
         raise ValueError("At least one shape is required")
     for shape in shapes:
         try:
-            return check_value(arr, shape, name=name)
+            return check_value(arr, shape, name=kwargs.get("name", "arr"))
         except ValueError:
             pass
 
-    if name is None:
-        preamble = "Expected an array"
+    if "name" in kwargs:
+        preamble = "Expected {} to be an array".format(kwargs["name"])
     else:
-        preamble = "Expected {} to be an array".format(name)
+        preamble = "Expected an array"
 
     if len(shapes) == 1:
         (shape_choices,) = shapes
