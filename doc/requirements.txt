@@ -1,1 +1,1 @@
-numpy
+-r ../requirements_doc.txt
