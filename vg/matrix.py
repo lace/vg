@@ -54,7 +54,7 @@ def transform(vertices, transform):
         raise_dimension_error(vertices)
 
     if matrix.shape[1] != 3:
-        raise ValueError("Vertices should be 3x1 or Nx3")
+        raise ValueError("Vertices should be (3,) or Nx3")
 
     result = unpad(np.dot(transform, pad_with_ones(matrix).T).T)
     return result[0] if vertices.ndim == 1 else result

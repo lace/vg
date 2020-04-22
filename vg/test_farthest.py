@@ -17,10 +17,8 @@ def test_farthest():
         vg.farthest(from_points, to_point, ret_index=False), from_points[1]
     )
 
-    with pytest.raises(
-        ValueError, match="Invalid shape \\(3,\\): farthest expects nx3"
-    ):
+    with pytest.raises(ValueError, match=r"Invalid shape \(3,\): farthest expects nx3"):
         vg.farthest(to_point, to_point)
 
-    with pytest.raises(ValueError, match="to_point should be 3x1"):
+    with pytest.raises(ValueError, match=r"to_point should be \(3,\)"):
         vg.farthest(from_points, from_points)

@@ -45,10 +45,10 @@ def test_apex():
     # Test non-normalized too.
     np.testing.assert_array_equal(vg.apex(points, along=np.array([1, 1, 1])), expected)
 
-    with pytest.raises(ValueError, match="Invalid shape \\(3,\\): apex expects nx3"):
+    with pytest.raises(ValueError, match=r"Invalid shape \(3,\): apex expects nx3"):
         vg.apex(vg.basis.x, along=vg.basis.x)
 
-    with pytest.raises(ValueError, match="along should be a 3x1 vector"):
+    with pytest.raises(ValueError, match=r"along should be a \(3,\) vector"):
         vg.apex(points, along=points)
 
 

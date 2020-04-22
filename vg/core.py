@@ -62,8 +62,8 @@ def perpendicular(v1, v2, normalized=True):
     are both stacked, `result[k]` is perpendicular to `v1[k]` and `v2[k]`.)
 
     Args:
-        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
-        v2 (np.arraylike): A `3x1 vector or a `kx3` stack of vectors. If
+        v1 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors. If
             stacked, the shape must be the same as `v1`.
         normalized (bool): When `True`, the result vector is guaranteed to be
             unit length.
@@ -171,10 +171,10 @@ def magnitude(vector):
     of each one.
 
     Args:
-        vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        vector (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
 
     Returns:
-        object: For `3x1` inputs, a `float` with the magnitude. For `kx1`
+        object: For `(3,)` inputs, a `float` with the magnitude. For `kx1`
             inputs, a `kx1` array.
     """
     if vector.ndim == 1:
@@ -197,13 +197,13 @@ def euclidean_distance(v1, v2):
     points.
 
     Args:
-        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
-        v2 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors. If
+        v1 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors. If
             stacks are provided for both `v1` and `v2` they must have the
             same shape.
 
     Returns:
-        object: When both inputs are `3x1`, a `float` with the distance. Otherwise
+        object: When both inputs are `(3,)`, a `float` with the distance. Otherwise
             a `kx1` array.
     """
     if v1.ndim == 1 and v2.ndim == 1:
@@ -228,10 +228,10 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
     (`look` is the normal). Otherwise the angle is computed in 3-space.
 
     Args:
-        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v1 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
         v2 (np.arraylike): A vector or stack of vectors with the same shape as
             `v1`.
-        look (np.arraylike): A `3x1` vector specifying the normal of a viewing
+        look (np.arraylike): A `(3,)` vector specifying the normal of a viewing
             plane, or `None` to compute the angle in 3-space.
         assume_normalized (bool): When `True`, assume the input vectors
             are unit length. This improves performance, however when the inputs
@@ -239,7 +239,7 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Return:
-        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+        object: For `(3,)` inputs, a `float` with the angle. For `kx1` inputs,
             a `kx1` array.
     """
     if units not in ["deg", "rad"]:
@@ -276,15 +276,15 @@ def signed_angle(v1, v2, look, units="deg"):
     number is counterclockwise.
 
     Args:
-        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        v1 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
         v2 (np.arraylike): A vector or stack of vectors with the same shape as
             `v1`.
-        look (np.arraylike): A `3x1` vector specifying the normal of the
+        look (np.arraylike): A `(3,)` vector specifying the normal of the
             viewing plane.
         units (str): `'deg'` to return degrees or `'rad'` to return radians.
 
     Returns:
-        object: For `3x1` inputs, a `float` with the angle. For `kx1` inputs,
+        object: For `(3,)` inputs, a `float` with the angle. For `kx1` inputs,
             a `kx1` array.
     """
     # The sign of (A x B) dot look gives the sign of the angle.
@@ -303,8 +303,8 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     around `around_axis` is determined by the right-hand rule.
 
     Args:
-        vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
-        around_axis (np.arraylike): A `3x1` vector specifying the axis of rotation.
+        vector (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
+        around_axis (np.arraylike): A `(3,)` vector specifying the axis of rotation.
         assume_normalized (bool): When `True`, assume `around_axis` is unit
             length. This improves performance marginally, however
             when the inputs are not normalized, setting this will cause an
@@ -418,10 +418,10 @@ def almost_unit_length(vector, atol=1e-08):
     one.
 
     Args:
-        vector (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
+        vector (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
 
     Returns:
-        object: For `3x1` inputs, a `bool`. For `kx1` inputs, a `kx1` array.
+        object: For `(3,)` inputs, a `bool`. For `kx1` inputs, a `kx1` array.
     """
     return np.isclose(magnitude(vector), 1.0, rtol=0, atol=atol)
 
@@ -499,7 +499,7 @@ def apex(points, along):
 
     Args:
         points (np.arraylike): A `kx3` stack of points in R^3.
-        along (np.arraylike): A `3x1` vector specifying the direction of
+        along (np.arraylike): A `(3,)` vector specifying the direction of
             interest.
 
     Returns:
@@ -508,7 +508,7 @@ def apex(points, along):
     if points.ndim != 2 or points.shape[1] != 3:
         raise ValueError("Invalid shape %s: apex expects nx3" % (points.shape,))
     if along.shape != (3,):
-        raise ValueError("along should be a 3x1 vector")
+        raise ValueError("along should be a (3,) vector")
     coords_on_axis = points.dot(along)
     return points[np.argmax(coords_on_axis)].copy()
 
@@ -519,11 +519,11 @@ def nearest(from_points, to_point, ret_index=False):
 
     Args:
         from_points (np.arraylike): A `kx3` stack of points in R^3.
-        to_point (np.arraylike): A `3x1` point of interest.
+        to_point (np.arraylike): A `(3,)` point of interest.
         ret_index (bool): When `True`, return both the point and its index.
 
     Returns:
-        np.ndarray: A `3x1` vector taken from `from_points`.
+        np.ndarray: A `(3,)` vector taken from `from_points`.
     """
     check(locals(), "from_points", (-1, 3))
     check(locals(), "to_point", (3,))
@@ -545,18 +545,18 @@ def farthest(from_points, to_point, ret_index=False):
 
     Args:
         from_points (np.arraylike): A `kx3` stack of points in R^3.
-        to_point (np.arraylike): A `3x1` point of interest.
+        to_point (np.arraylike): A `(3,)` point of interest.
         ret_index (bool): When `True`, return both the point and its index.
 
     Returns:
-        np.ndarray: A `3x1` vector taken from `from_points`.
+        np.ndarray: A `(3,)` vector taken from `from_points`.
     """
     if from_points.ndim != 2 or from_points.shape[1] != 3:
         raise ValueError(
             "Invalid shape %s: farthest expects nx3" % (from_points.shape,)
         )
     if to_point.shape != (3,):
-        raise ValueError("to_point should be 3x1")
+        raise ValueError("to_point should be (3,)")
 
     absolute_distances = magnitude(from_points - to_point)
 
@@ -577,21 +577,21 @@ def within(points, radius, of_point, atol=1e-08, ret_indices=False):
         points (np.arraylike): A `kx3` stack of points in R^3.
         radius (float): The radius of the sphere of interest centered on
             `of_point`.
-        of_point (np.arraylike): The `3x1` point of interest.
+        of_point (np.arraylike): The `(3,)` point of interest.
         atol (float): The distance tolerance. Points within `radius + atol`
             of `of_point` are selected.
         ret_indexes (bool): When `True`, return both the points and their
             indices.
 
     Returns:
-        np.ndarray: A `3x1` vector taken from `points`.
+        np.ndarray: A `(3,)` vector taken from `points`.
     """
     if points.ndim != 2 or points.shape[1] != 3:
         raise ValueError("Invalid shape %s: within expects nx3" % (points.shape,))
     if not isinstance(radius, float):
         raise ValueError("radius should be a float")
     if of_point.shape != (3,):
-        raise ValueError("to_point should be 3x1")
+        raise ValueError("to_point should be (3,)")
 
     absolute_distances = magnitude(points - of_point)
     (indices_within_radius,) = (absolute_distances < radius + atol).nonzero()
@@ -634,8 +634,8 @@ def dot(v1, v2):
     Compute individual or pairwise dot products.
 
     Args:
-        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
-        v2 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors. If
+        v1 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors. If
             stacks are provided for both `v1` and `v2` they must have the
             same shape.
     """
@@ -653,8 +653,8 @@ def cross(v1, v2):
     Compute individual or pairwise cross products.
 
     Args:
-        v1 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors.
-        v2 (np.arraylike): A `3x1` vector or a `kx3` stack of vectors. If
+        v1 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors.
+        v2 (np.arraylike): A `(3,)` vector or a `kx3` stack of vectors. If
             stacks are provided for both `v1` and `v2` they must have the
             same shape.
     """

@@ -66,7 +66,7 @@ def test_within_error():
             radius=False,
             of_point=np.array([0.0, 1.0, 0.0]),
         )
-    with pytest.raises(ValueError, match="to_point should be 3x1"):
+    with pytest.raises(ValueError, match=r"to_point should be \(3,\)"):
         vg.within(
             np.array([[2.0, 4.0, 0.0]]), radius=4.0, of_point=np.array([0.0, 1.0])
         )
