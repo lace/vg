@@ -157,15 +157,18 @@ def check(locals_namespace, name, shape):
 
 def columnize(arr, shape=(-1, 3), name=None):
     """
-    Helper for functions which may accept many stacks of three points (kx3)
-    returning a stack of results, or a single set of three points (3x1)
-    returning a single result.
+    Helper for functions which may accept a stack of points (`kx3`) returning
+    a stack of results, or a single set of three points `(3,)` returning a
+    single result.
 
-    Returns the points as kx3, and a `transform_result` function which can
-    be applied to the result. It picks off the first result in the 3x1 case.
+    For either kind of input, it returns the points as `kx3`, a boolean
+    `is_columnized`, and a `maybe_decolumnized` function which can be applied
+    to the result before returning it. For a columnized input this function
+    does nothing, and for a non-columnized input, it decolumnizes it,
+    producing the desired return value.
 
-    Not limited to kx3; this can be used different dimensional shapes like
-    kx4, or higher dimensional shapes like kx3x3.
+    This is not limited to `kx3`. It can be used for different dimensional
+    shapes like `kx4`, and even higher dimensional shapes like `kx3x3`.
     """
     if not isinstance(shape, tuple):
         raise ValueError("shape should be a tuple")

@@ -28,7 +28,7 @@ def test_apply_homogeneous_stacked():
 def test_apply_homogeneous_error():
     with pytest.raises(ValueError, match="Transformation matrix should be 4x4"):
         apply_transform(np.array([1.0, 2.0, 3.0]), np.array([1.0]))
-    with pytest.raises(ValueError, match="Vertices should be 3x1 or Nx3"):
+    with pytest.raises(ValueError, match=r"Vertices should be \(3,\) or Nx3"):
         apply_transform(np.array([1.0, 2.0]), transform)
     with pytest.raises(ValueError, match="Not sure what to do with 3 dimensions"):
         apply_transform(np.array([[[1.0, 2.0, 3.0]]]), transform)
