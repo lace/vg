@@ -1,7 +1,7 @@
 import math
 import numpy as np
 from ._helpers import _check_value_any, broadcast_and_tile, raise_dimension_error
-from .shape import check
+from .shape import check, check_value_any
 
 __all__ = [
     "normalize",
@@ -206,16 +206,14 @@ def euclidean_distance(v1, v2):
         object: When both inputs are `3x1`, a `float` with the distance. Otherwise
             a `kx1` array.
     """
+    k = check_value_any(v1, (3,), (-1, 3), name="v1")
+    check_value_any(
+        v2, (3,), (-1 if k is None else k, 3), name="v2",
+    )
+
     if v1.ndim == 1 and v2.ndim == 1:
-        check(locals(), "v1", (3,))
-        check(locals(), "v2", (3,))
         return np.sqrt(np.sum(np.square(v2 - v1)))
     else:
-        k = check(locals(), "v1", (-1, 3))
-        if v2.ndim == 1:
-            check(locals(), "v2", (3,))
-        else:
-            check(locals(), "v2", (k, 3))
         return np.sqrt(np.sum(np.square(v2 - v1), axis=1))
 
 

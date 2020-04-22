@@ -36,3 +36,4 @@ def test_euclidean_distance_mixed():
         ]
     )
     np.testing.assert_array_almost_equal(vg.euclidean_distance(v1s, v2), expected)
+    np.testing.assert_array_almost_equal(vg.euclidean_distance(v2, v1s), expected)
