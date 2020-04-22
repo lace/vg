@@ -1,0 +1,7 @@
+[build]
+  base = "doc"
+  publish = "build"
+  command = "../dev.py doc"
+  # With the default ignore setting, changes to the inline doc in the modules do
+  # not trigger builds.
+  ignore = "false"
