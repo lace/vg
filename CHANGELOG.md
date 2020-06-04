@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 1.9.0 (Jun. 4, 2020)
+
+- Add `vg.argapex()`, which is like `vg.apex()` except it returns the
+  index instead of the point.
+
 ## 1.8.0 (Apr. 22, 2020)
 
 - Add `vg.shape.columnize()`, a helper function for functions which may,
