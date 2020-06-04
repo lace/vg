@@ -3,7 +3,7 @@ import pytest
 from . import core as vg
 
 
-def test_apex():
+def test_argapex_and_apex():
     points = np.array(
         [
             [-0.97418884, -0.79808404, -0.18545491],
@@ -19,24 +19,18 @@ def test_apex():
         ]
     )
 
-    np.testing.assert_array_equal(
-        vg.apex(points, along=vg.basis.x), [0.67040405, 0.19267665, -0.56983579]
-    )
-    np.testing.assert_array_equal(
-        vg.apex(points, along=vg.basis.neg_x), [-0.97418884, -0.79808404, -0.18545491]
-    )
-    np.testing.assert_array_equal(
-        vg.apex(points, along=vg.basis.y), [0.60675227, 0.32673201, -0.20369793]
-    )
-    np.testing.assert_array_equal(
-        vg.apex(points, along=vg.basis.neg_y), [-0.68038753, -0.90011588, 0.4649872]
-    )
-    np.testing.assert_array_equal(
-        vg.apex(points, along=vg.basis.z), [-0.68038753, -0.90011588, 0.4649872]
-    )
-    np.testing.assert_array_equal(
-        vg.apex(points, along=vg.basis.neg_z), [0.46270635, -0.3865265, -0.98106526]
-    )
+    np.testing.assert_array_equal(vg.argapex(points, along=vg.basis.x), 2)
+    np.testing.assert_array_equal(vg.apex(points, along=vg.basis.x), points[2])
+    np.testing.assert_array_equal(vg.argapex(points, along=vg.basis.neg_x), 0)
+    np.testing.assert_array_equal(vg.apex(points, along=vg.basis.neg_x), points[0])
+    np.testing.assert_array_equal(vg.argapex(points, along=vg.basis.y), 1)
+    np.testing.assert_array_equal(vg.apex(points, along=vg.basis.y), points[1])
+    np.testing.assert_array_equal(vg.argapex(points, along=vg.basis.neg_y), 3)
+    np.testing.assert_array_equal(vg.apex(points, along=vg.basis.neg_y), points[3])
+    np.testing.assert_array_equal(vg.argapex(points, along=vg.basis.z), 3)
+    np.testing.assert_array_equal(vg.apex(points, along=vg.basis.z), points[3])
+    np.testing.assert_array_equal(vg.argapex(points, along=vg.basis.neg_z), 9)
+    np.testing.assert_array_equal(vg.apex(points, along=vg.basis.neg_z), points[9])
 
     v = np.full(3, 1 / 3 ** 0.5)
     expected = points[np.argmax(points.sum(axis=1))]
@@ -45,11 +39,8 @@ def test_apex():
     # Test non-normalized too.
     np.testing.assert_array_equal(vg.apex(points, along=np.array([1, 1, 1])), expected)
 
-    with pytest.raises(ValueError, match=r"Invalid shape \(3,\): apex expects nx3"):
-        vg.apex(vg.basis.x, along=vg.basis.x)
-
-    with pytest.raises(ValueError, match=r"along should be a \(3,\) vector"):
-        vg.apex(points, along=points)
+    with pytest.raises(ValueError, match=r"At least one point is required"):
+        vg.apex(np.zeros((0, 3)), vg.basis.z)
 
 
 def test_apex_returns_a_copy():
