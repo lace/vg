@@ -24,6 +24,7 @@ __all__ = [
     "principal_components",
     "major_axis",
     "apex",
+    "argapex",
     "nearest",
     "farthest",
     "basis",
@@ -492,6 +493,26 @@ def major_axis(coords):
     return principal_components(coords)[0]
 
 
+def argapex(points, along):
+    """
+    Find the index of the most extreme point in the direction provided.
+
+    Args:
+        points (np.arraylike): A `kx3` stack of points in R^3.
+        along (np.arraylike): A `(3,)` vector specifying the direction of
+            interest.
+
+    Returns:
+        int: The index of the most extreme point.
+    """
+    k = check(locals(), "points", (-1, 3))
+    if k == 0:
+        raise ValueError("At least one point is required")
+    check(locals(), "along", (3,))
+    coords_on_axis = points.dot(along)
+    return np.argmax(coords_on_axis)
+
+
 def apex(points, along):
     """
     Find the most extreme point in the direction provided.
@@ -504,12 +525,7 @@ def apex(points, along):
     Returns:
         np.ndarray: A copy of a point taken from `points`.
     """
-    if points.ndim != 2 or points.shape[1] != 3:
-        raise ValueError("Invalid shape %s: apex expects nx3" % (points.shape,))
-    if along.shape != (3,):
-        raise ValueError("along should be a (3,) vector")
-    coords_on_axis = points.dot(along)
-    return points[np.argmax(coords_on_axis)].copy()
+    return points[argapex(points=points, along=along)].copy()
 
 
 def nearest(from_points, to_point, ret_index=False):
