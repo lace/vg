@@ -15,5 +15,6 @@ def test_almost_equal():
         == False  # noqa: E712
     )
     assert (
-        vg.almost_equal(np.array([1.0, 2.0, 3.0]), np.array([1.0])) == False
-    )  # noqa: E712
+        vg.almost_equal(np.array([1.0, 2.0, 3.0]), np.array([1.0]))
+        == False  # noqa: E712
+    )
