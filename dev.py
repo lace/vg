@@ -76,7 +76,6 @@ def doc_open():
 def publish():
     execute("rm -rf dist/")
     execute("python3 setup.py sdist bdist_wheel")
-    execute("python2 setup.py bdist_wheel")
     execute("twine upload dist/*")
 
 
