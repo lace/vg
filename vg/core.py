@@ -24,6 +24,7 @@ __all__ = [
     "principal_components",
     "major_axis",
     "apex",
+    "argapex",
     "nearest",
     "farthest",
     "basis",
