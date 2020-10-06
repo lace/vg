@@ -17,6 +17,7 @@ def test_average():
         ret_sum_of_weights=True,
     )
     np.testing.assert_array_equal(
-        result, np.array([-3.375, -4.875, -8.25]),
+        result,
+        np.array([-3.375, -4.875, -8.25]),
     )
     assert sum_of_weights == 8.0

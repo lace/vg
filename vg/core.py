@@ -209,7 +209,10 @@ def euclidean_distance(v1, v2):
     """
     k = check_value_any(v1, (3,), (-1, 3), name="v1")
     check_value_any(
-        v2, (3,), (-1 if k is None else k, 3), name="v2",
+        v2,
+        (3,),
+        (-1 if k is None else k, 3),
+        name="v2",
     )
 
     if v1.ndim == 1 and v2.ndim == 1:
