@@ -59,6 +59,8 @@ def test_apex_functions():
 
     with pytest.raises(ValueError, match=r"At least one point is required"):
         vg.apex(np.zeros((0, 3)), vg.basis.z)
+    with pytest.raises(ValueError, match=r"At least one point is required"):
+        vg.apex_and_opposite(np.zeros((0, 3)), vg.basis.z)
 
 
 def test_apex_returns_a_copy():
