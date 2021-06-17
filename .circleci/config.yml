@@ -4,83 +4,48 @@ jobs:
     docker:
       - image: circleci/python:2
 
-    working_directory: ~/repo
-
     steps:
       - checkout
 
       - run:
           name: Install python dependencies
-          # set -o pipefail; pip .. | cat is used to disable the progress bar.
-          command: |
-            mkdir -p venv
-            virtualenv venv
-            . venv/bin/activate
-            set -o pipefail; pip install --upgrade -r requirements_dev_py2.txt | cat
-
-      - run:
-          name: Show versions
-          command: |
-            . venv/bin/activate
-            pip freeze
+          command: poetry install
 
       - run:
           name: Run tests
           when: always
-          command: |
-            . venv/bin/activate
-            python dev.py coverage
+          command: ./dev.py coverage
 
   python3:
     docker:
       - image: circleci/python:3
 
-    working_directory: ~/repo
-
     steps:
       - checkout
 
       - run:
           name: Install python dependencies
-          command: |
-            mkdir -p venv
-            virtualenv venv
-            . venv/bin/activate
-            set -o pipefail; pip install --upgrade -r requirements_dev_py3.txt | cat
-
-      - run:
-          name: Show versions
-          command: |
-            . venv/bin/activate
-            pip freeze
+          command: poetry install
 
       - run:
           name: Run tests
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py coverage
+          command: ./dev.py coverage
 
       - run:
           name: Run the doc build
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py doc
+          command: ./dev.py doc
 
       - run:
           name: Check lint
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py lint
+          command: ./dev.py lint
 
       - run:
           name: Check code format
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py black-check
+          command: ./dev.py black-check
 
 workflows:
   version: 2

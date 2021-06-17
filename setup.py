@@ -8,7 +8,7 @@ exec(open("vg/package_version.py").read(), version_info)
 
 # https://github.com/lace/vg/issues/72
 readme = open("README.md", "rb").read().decode("utf-8")
-install_requires = open("requirements.txt", "rb").read().decode("utf-8")
+install_requires = ["numpy"]
 
 setup(
     name="vg",

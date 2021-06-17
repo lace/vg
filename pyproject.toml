@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "vg"
+version = "0.1.0"
+description = "Linear algebra for humans: a very good vector-geometry and linear-algebra toolbelt"
+authors = ["Paul Melnikow <github@paulmelnikow.com>"]
+license = "BSD"
+
+[tool.poetry.dependencies]
+python = ">= 3.7, < 4"
+numpy = "^1.20.3"
+
+[tool.poetry.dev-dependencies]
+executor = ">= 21.0"
+click = ">=7.0,<8.0"
+pytest = "4.5.0"
+pytest-cov = "2.9.0"
+flake8 = ">=3.7.9,<4.0"
+black = "20.8b1"
+coverage = "^5.5"
+flake8-import-order = "^0.18.1"
+Sphinx = "^4.0.2"
+sphinxcontrib-apidoc = "^0.3.0"
+myst-parser = "^0.15.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
