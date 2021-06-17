@@ -20,7 +20,9 @@ jobs:
       - run:
           name: Run tests
           when: always
-          command: pytest --cov=vg
+          command: |
+            . venv/bin/activate
+            pytest --cov=vg
 
   python3:
     docker:
