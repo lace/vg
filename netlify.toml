@@ -1,5 +1,5 @@
 [build]
-  publish = "build"
+  publish = "doc/build"
   # https://github.com/netlify/build-image/issues/221#issuecomment-504385202
   # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
   command = """
