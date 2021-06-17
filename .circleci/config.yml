@@ -16,6 +16,11 @@ jobs:
             . venv/bin/activate
             set -o pipefail; pip install --upgrade -r requirements_ci_py2.txt | cat
 
+      - run:
+          name: Show versions
+          command: |
+            . venv/bin/activate
+            pip freeze
 
       - run:
           name: Run tests
