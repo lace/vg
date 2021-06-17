@@ -20,7 +20,7 @@ jobs:
       - run:
           name: Run tests
           when: always
-          command: ./dev.py coverage
+          command: pytest --cov=vg
 
   python3:
     docker:
