@@ -230,6 +230,14 @@ docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)"]
 testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "packaging", "pep517", "pyfakefs", "flufl.flake8", "pytest-black (>=0.3.7)", "pytest-mypy", "importlib-resources (>=1.3)"]
 
 [[package]]
+name = "iniconfig"
+version = "1.1.1"
+description = "iniconfig: brain-dead simple config-ini parsing"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "jinja2"
 version = "3.0.1"
 description = "A very fast and expressive template engine."
@@ -294,14 +302,6 @@ markdown-it-py = ">=1.0,<2.0"
 code_style = ["pre-commit (==2.6)"]
 rtd = ["myst-parser (==0.14.0a3)", "sphinx-book-theme (>=0.1.0,<0.2.0)"]
 testing = ["coverage", "pytest (>=3.6,<4)", "pytest-cov", "pytest-regressions"]
-
-[[package]]
-name = "more-itertools"
-version = "8.8.0"
-description = "More routines for operating on iterables, beyond itertools"
-category = "dev"
-optional = false
-python-versions = ">=3.5"
 
 [[package]]
 name = "mypy-extensions"
@@ -444,25 +444,25 @@ python-versions = "*"
 
 [[package]]
 name = "pytest"
-version = "4.5.0"
+version = "6.2.4"
 description = "pytest: simple powerful testing with Python"
 category = "dev"
 optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+python-versions = ">=3.6"
 
 [package.dependencies]
-atomicwrites = ">=1.0"
-attrs = ">=17.4.0"
+atomicwrites = {version = ">=1.0", markers = "sys_platform == \"win32\""}
+attrs = ">=19.2.0"
 colorama = {version = "*", markers = "sys_platform == \"win32\""}
-more-itertools = {version = ">=4.0.0", markers = "python_version > \"2.7\""}
-pluggy = ">=0.9,<0.10 || >0.10,<1.0"
-py = ">=1.5.0"
-setuptools = "*"
-six = ">=1.10.0"
-wcwidth = "*"
+importlib-metadata = {version = ">=0.12", markers = "python_version < \"3.8\""}
+iniconfig = "*"
+packaging = "*"
+pluggy = ">=0.12,<1.0.0a1"
+py = ">=1.8.2"
+toml = "*"
 
 [package.extras]
-testing = ["argcomplete", "hypothesis (>=3.56)", "nose", "requests", "mock"]
+testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
 name = "pytest-cov"
@@ -712,14 +712,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "wcwidth"
-version = "0.2.5"
-description = "Measures the displayed width of unicode strings in a terminal"
-category = "dev"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "zipp"
 version = "3.4.1"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -734,7 +726,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = ">= 3.7, < 4"
-content-hash = "3212df886456591797d9bafb6a00a11e64dc4ecd09d8194f7644d4f08e431eb6"
+content-hash = "11512f7df4ef5c83133bd7cec6c95c558f341ad872d1a8376744efbff5583bbb"
 
 [metadata.files]
 alabaster = [
@@ -870,6 +862,10 @@ importlib-metadata = [
     {file = "importlib_metadata-4.5.0-py3-none-any.whl", hash = "sha256:833b26fb89d5de469b24a390e9df088d4e52e4ba33b01dc5e0e4f41b81a16c00"},
     {file = "importlib_metadata-4.5.0.tar.gz", hash = "sha256:b142cc1dd1342f31ff04bb7d022492b09920cb64fed867cd3ea6f80fe3ebd139"},
 ]
+iniconfig = [
+    {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
+    {file = "iniconfig-1.1.1.tar.gz", hash = "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"},
+]
 jinja2 = [
     {file = "Jinja2-3.0.1-py3-none-any.whl", hash = "sha256:1f06f2da51e7b56b8f238affdd6b4e2c61e39598a378cc49345bc1bd42a978a4"},
     {file = "Jinja2-3.0.1.tar.gz", hash = "sha256:703f484b47a6af502e743c9122595cc812b0271f661722403114f71a79d0f5a4"},
@@ -921,10 +917,6 @@ mccabe = [
 mdit-py-plugins = [
     {file = "mdit-py-plugins-0.2.8.tar.gz", hash = "sha256:5991cef645502e80a5388ec4fc20885d2313d4871e8b8e320ca2de14ac0c015f"},
     {file = "mdit_py_plugins-0.2.8-py3-none-any.whl", hash = "sha256:1833bf738e038e35d89cb3a07eb0d227ed647ce7dd357579b65343740c6d249c"},
-]
-more-itertools = [
-    {file = "more-itertools-8.8.0.tar.gz", hash = "sha256:83f0308e05477c68f56ea3a888172c78ed5d5b3c282addb67508e7ba6c8f813a"},
-    {file = "more_itertools-8.8.0-py3-none-any.whl", hash = "sha256:2cf89ec599962f2ddc4d568a05defc40e0a587fbc10d5989713638864c36be4d"},
 ]
 mypy-extensions = [
     {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
@@ -1006,8 +998,8 @@ pyreadline = [
     {file = "pyreadline-2.1.zip", hash = "sha256:4530592fc2e85b25b1a9f79664433da09237c1a270e4d78ea5aa3a2c7229e2d1"},
 ]
 pytest = [
-    {file = "pytest-4.5.0-py2.py3-none-any.whl", hash = "sha256:b8bf138592384bd4e87338cb0f256bf5f615398a649d4bd83915f0e4047a5ca6"},
-    {file = "pytest-4.5.0.tar.gz", hash = "sha256:1a8aa4fa958f8f451ac5441f3ac130d9fc86ea38780dd2715e6d5c5882700b24"},
+    {file = "pytest-6.2.4-py3-none-any.whl", hash = "sha256:91ef2131a9bd6be8f76f1f08eac5c5317221d6ad1e143ae03894b862e8976890"},
+    {file = "pytest-6.2.4.tar.gz", hash = "sha256:50bcad0a0b9c5a72c8e4e7c9855a3ad496ca6a881a3641b4260605450772c54b"},
 ]
 pytest-cov = [
     {file = "pytest-cov-2.9.0.tar.gz", hash = "sha256:b6a814b8ed6247bd81ff47f038511b57fe1ce7f4cc25b9106f1a4b106f1d9322"},
@@ -1187,10 +1179,6 @@ urllib3 = [
 verboselogs = [
     {file = "verboselogs-1.7-py2.py3-none-any.whl", hash = "sha256:d63f23bf568295b95d3530c6864a0b580cec70e7ff974177dead1e4ffbc6ff49"},
     {file = "verboselogs-1.7.tar.gz", hash = "sha256:e33ddedcdfdafcb3a174701150430b11b46ceb64c2a9a26198c76a156568e427"},
-]
-wcwidth = [
-    {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
-    {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
 ]
 zipp = [
     {file = "zipp-3.4.1-py3-none-any.whl", hash = "sha256:51cb66cc54621609dd593d1787f286ee42a5c0adbb4b29abea5a63edc3e03098"},

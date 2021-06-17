@@ -41,12 +41,6 @@ def coverage_report():
 
 
 @cli.command()
-def test_both():
-    execute("python2 -m pytest")
-    execute("python3 -m pytest")
-
-
-@cli.command()
 def lint():
     execute("flake8", *python_source_files())
 
@@ -75,7 +69,7 @@ def doc_open():
 @cli.command()
 def publish():
     execute("rm -rf dist/")
-    execute("python3 setup.py sdist bdist_wheel")
+    execute("python setup.py sdist bdist_wheel")
     execute("twine upload dist/*")
 
 
