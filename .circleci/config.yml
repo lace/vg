@@ -9,7 +9,7 @@ jobs:
 
       - run:
           name: Install python dependencies
-          command: poetry install
+          command: poetry install --no-ansi --no-interaction
 
       - run:
           name: Run tests
@@ -25,7 +25,7 @@ jobs:
 
       - run:
           name: Install python dependencies
-          command: poetry install
+          command: poetry install --no-ansi --no-interaction
 
       - run:
           name: Run tests
