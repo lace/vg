@@ -1,9 +1,8 @@
 [build]
   publish = "build"
   # https://github.com/netlify/build-image/issues/221#issuecomment-504385202
+  # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
   command = """
-restore_home_cache ".cache" "pip cache" &&
-restore_cwd_cache '.venv' 'python virtualenv' &&
 pip3 install -q poetry==1.2.0a1 &&
 poetry config settings.virtualenvs.in-project true &&
 poetry install &&
