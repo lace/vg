@@ -9,10 +9,13 @@ jobs:
 
       - run:
           name: Install python dependencies
+          # set -o pipefail; pip .. | cat is used to disable the progress bar.
           command: |
-            poetry --version
-            poetry install --no-ansi --no-interaction
-            poetry show
+            mkdir -p venv
+            virtualenv venv
+            . venv/bin/activate
+            set -o pipefail; pip install --upgrade -r requirements_ci_py2.txt | cat
+
 
       - run:
           name: Run tests
