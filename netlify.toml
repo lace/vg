@@ -4,7 +4,6 @@
   # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
   command = """
 pip install -q poetry==1.2.0a1 &&
-poetry config settings.virtualenvs.in-project true &&
 poetry install &&
 ./dev.py doc
 """
