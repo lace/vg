@@ -1,5 +1,4 @@
-# Imported from code.
-numpy
+-c requirements.txt
 
 # Used in dev.py.
 executor >= 21.0

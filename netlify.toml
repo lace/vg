@@ -1,7 +1,9 @@
 [build]
-  base = "doc"
-  publish = "build"
-  command = "../dev.py doc"
-  # With the default ignore setting, changes to the inline doc in the modules do
-  # not trigger builds.
-  ignore = "false"
+  publish = "doc/build"
+  # https://github.com/netlify/build-image/issues/221#issuecomment-504385202
+  # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
+  command = """
+pip install -q pip-tools==6.2.0 &&
+pip-sync doc-requirements.txt &&
+sphinx-build -W -b singlehtml doc doc/build
+"""
