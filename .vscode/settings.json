@@ -1,6 +1,5 @@
 {
-    "python.linting.pylintEnabled": true,
-    "python.linting.flake8Enabled": false,
+    "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
     "python.testing.pytestArgs": [
         "vg"
