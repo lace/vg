@@ -44,9 +44,8 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx.ext.napoleon",
+    "myst_parser",
 ]
-
-source_parsers = {".md": "recommonmark.parser.CommonMarkParser"}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -181,10 +180,3 @@ epub_exclude_files = ["search.html"]
 # Napoleon settings.
 napoleon_numpy_docstring = False
 napoleon_include_special_with_doc = True
-
-
-def setup(app):
-    from recommonmark.transform import AutoStructify
-
-    app.add_config_value("recommonmark_config", {}, True)
-    app.add_transform(AutoStructify)

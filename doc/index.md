@@ -41,7 +41,7 @@ stacks of inputs interchangeably. They return The Right Thing &ndash; a single
 result or a stack of results &ndash; without the need to reshape inputs or
 outputs. With the power of NumPy, the vectorized functions are fast.
 
-```eval_rst
+```{eval-rst}
 
 .. automodule:: vg
     :members:
@@ -58,7 +58,7 @@ outputs. With the power of NumPy, the vectorized functions are fast.
 Constants
 ---------
 
-```eval_rst
+```{eval-rst}
 .. py:currentmodule:: vg
 
 .. autodata:: basis

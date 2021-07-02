@@ -1,3 +1,0 @@
-[report]
-omit = **/test_*.py
-fail_under = 100.0
