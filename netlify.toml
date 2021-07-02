@@ -4,6 +4,6 @@
   # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
   command = """
 pip install -q pip-tools==6.2.0 &&
-pip-sync doc-requirements.txt &&
+pip-sync requirements.txt doc-requirements.txt &&
 sphinx-build -W -b singlehtml doc doc/build
 """
