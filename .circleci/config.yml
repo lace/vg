@@ -11,7 +11,7 @@ jobs:
           name: Install python dependencies
           # set -o pipefail; pip .. | cat is used to disable the progress bar.
           command: |
-            python -m venv .venv
+            virtualenv .venv
             . .venv/bin/activate
             set -o pipefail; pip install --upgrade -r requirements_ci_py2.txt | cat
 
