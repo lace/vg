@@ -19,9 +19,8 @@ def cli():
 
 
 @cli.command()
-def init():
-    execute("pip2 install --upgrade -r requirements_dev_py2.txt")
-    execute("pip3 install --upgrade -r requirements_dev_py3.txt")
+def install():
+    execute("poetry install --remove-untracked")
 
 
 @cli.command()
