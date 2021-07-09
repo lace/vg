@@ -4,8 +4,6 @@ jobs:
     docker:
       - image: circleci/python:2
 
-    working_directory: ~/repo
-
     steps:
       - checkout
 
@@ -16,7 +14,7 @@ jobs:
             mkdir -p venv
             virtualenv venv
             . venv/bin/activate
-            set -o pipefail; pip install --upgrade -r requirements_dev_py2.txt | cat
+            set -o pipefail; pip install --upgrade -r requirements_ci_py2.txt | cat
 
       - run:
           name: Show versions
@@ -29,13 +27,11 @@ jobs:
           when: always
           command: |
             . venv/bin/activate
-            python dev.py coverage
+            pytest --cov=vg
 
   python3:
     docker:
       - image: circleci/python:3
-
-    working_directory: ~/repo
 
     steps:
       - checkout
@@ -43,44 +39,30 @@ jobs:
       - run:
           name: Install python dependencies
           command: |
-            mkdir -p venv
-            virtualenv venv
-            . venv/bin/activate
-            set -o pipefail; pip install --upgrade -r requirements_dev_py3.txt | cat
-
-      - run:
-          name: Show versions
-          command: |
-            . venv/bin/activate
-            pip freeze
+            pip install poetry==1.2.0a1
+            poetry --version
+            poetry install --no-ansi --no-interaction
+            poetry show
 
       - run:
           name: Run tests
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py coverage
+          command: ./dev.py coverage
 
       - run:
           name: Run the doc build
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py doc
+          command: ./dev.py doc
 
       - run:
           name: Check lint
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py lint
+          command: ./dev.py lint
 
       - run:
           name: Check code format
           when: always
-          command: |
-            . venv/bin/activate
-            ./dev.py black-check
+          command: ./dev.py black-check
 
 workflows:
   version: 2

@@ -126,6 +126,14 @@ These common operations should be abstracted for a few reasons:
    or raising an appropriate error.
 
 
+Development
+-----------
+
+After cloning the repo, run `./bootstrap.zsh` to initialize a virtual
+environment with the project's dependencies.
+
+Subsequently, run `./dev.py install` to update the dependencies.
+
 
 Versioning
 ----------
