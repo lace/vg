@@ -3,21 +3,21 @@ from .shape import check, check_value
 
 
 def pluralize(noun, count):
-    return noun if count == 1 else "{}s".format(noun)
+    return noun if count == 1 else f"{noun}s"
 
 
 def raise_dimension_error(*input_values):
     messages = [
-        "{} {}".format(input_value.ndim, pluralize("dimension", input_value.ndim))
+        f"{input_value.ndim} {pluralize('dimension', input_value.ndim)}"
         for input_value in input_values
     ]
     if len(messages) == 1:
         message = messages[0]
     elif len(messages) == 2:
-        message = "{} and {}".format(*messages)
+        message = f"{messages[0]} and {messages[1]}"
     else:
         message = "those inputs"
-    raise ValueError("Not sure what to do with {}".format(message))
+    raise ValueError(f"Not sure what to do with {message}")
 
 
 def broadcast_and_tile(v1, v2):
@@ -37,8 +37,7 @@ def broadcast_and_tile(v1, v2):
         raise_dimension_error(v1, v2)
 
 
-# TODO: After dropping Python 2, make `name=None` a regular kwarg.
-def _check_value_any(a, *shapes, **kwargs):
+def _check_value_any(a, *shapes, name=None, **kwargs):
     """
     Similar to `check_value()`, but accepts many candidate shapes and checks
     each of them before raising an error.
@@ -49,7 +48,6 @@ def _check_value_any(a, *shapes, **kwargs):
     """
     if len(shapes) == 0:
         raise ValueError("At least one shape is required")
-    name = kwargs.get("name")
     for shape in shapes:
         try:
             return check_value(a, shape, name=name)
@@ -59,15 +57,13 @@ def _check_value_any(a, *shapes, **kwargs):
     if name is None:
         preamble = "Expected an array"
     else:
-        preamble = "Expected {} to be an array".format(name)
+        preamble = f"Expected {name} to be an array"
 
     shape_choices = ", ".join(
         shapes[:-2] + (" or ".join([str(shapes[-2]), str(shapes[-1])]),)
     )
 
     if a is None:
-        raise ValueError("{} with shape {}; got None".format(preamble, shape_choices))
+        raise ValueError(f"{preamble} with shape {shape_choices}; got None")
     else:
-        raise ValueError(
-            "{} with shape {}; got {}".format(preamble, shape_choices, a.shape)
-        )
+        raise ValueError(f"{preamble} with shape {shape_choices}; got {a.shape}")
