@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "vg"
-version = "0.1.0"
+version = "1.10.0"
 description = "Linear algebra for humans: a very good vector-geometry and linear-algebra toolbelt"
 authors = ["Paul Melnikow <github@paulmelnikow.com>", "Metabolize, Body Labs, and other contributors"]
-license = "BSD"
+license = "BSD-2-Clause"
 include = ["CHANGELOG.md"]
 exclude = ["*/test_*.py"]
 homepage = "https://vgpy.readthedocs.io/en/stable"
@@ -18,9 +18,7 @@ classifiers = [
     "Topic :: Multimedia :: Graphics :: 3D Modeling",
     "Topic :: Scientific/Engineering :: Mathematics",
     "Topic :: Scientific/Engineering :: Visualization",
-    "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3",
 ]
 
 
