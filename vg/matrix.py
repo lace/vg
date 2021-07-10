@@ -61,7 +61,7 @@ def unpad(matrix):
 def transform(vertices, transform):
     """
     Deprecated. Will be removed in vg 2. Use
-    `polliwog.transform.apply_affine_transform()` instead.
+    `polliwog.transform.apply_transform()` instead.
 
     Apply the given transformation matrix to the vertices using homogenous
     coordinates.
@@ -70,7 +70,7 @@ def transform(vertices, transform):
 
     warnings.warn(
         "`vg.matrix.transform()` has been deprecated and will be removed in vg 2. "
-        + "Use `polliwog.transform.apply_affine_transform()` instead.",
+        + "Use `polliwog.transform.apply_transform()` instead.",
         DeprecationWarning,
     )
 
