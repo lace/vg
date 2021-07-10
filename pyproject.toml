@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "Linear algebra for humans: a very good vector-geometry and linear-algebra toolbelt"
 authors = ["Paul Melnikow <github@paulmelnikow.com>"]
 license = "BSD"
+exclude = ["*/test_*.py"]
 
 [tool.poetry.dependencies]
 python = ">= 3.7, < 4"
