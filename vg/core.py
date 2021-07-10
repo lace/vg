@@ -415,7 +415,7 @@ def orient(vector, along, reverse=False):
 
     warnings.warn(
         "`vg.orient()` has been deprecated and will be removed in vg 2. Use `vg.aligned_with()` instead.",
-        warnings.DeprecationWarning,
+        DeprecationWarning,
     )
     return aligned_with(vector, along, reverse=reverse)
 
