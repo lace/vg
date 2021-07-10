@@ -129,15 +129,15 @@ we get clearer about what does and doesn't belong in this library, and what ways
 of exposing this functionality are easiest to learn. We want to continue to
 improve the interface over time, even if it means small breaking changes.
 
-As a result, we provide a compatibility layer, which all libraries depending on
-`vg` are encouraged to use. Replace `import vg` with
-`from vg.compat import v1 as vg` and use `>=1.11` as your dependency
-specifier. You can also replace 1.11 with a later version which includes a
-feature you need. The important thing is not to use `>=1.11,<2`. Since this
-project guarantees that `from vg.compat import v1 as vg` will continue to work
-the same in 2.0+, the `<2` constraint provides no stability value &ndash; and it
-makes things unnecessarily difficult for consumers who use multiple dependencies
-with `vg`.
+As a result, we provide a forward compatibility layer, which all libraries
+depending on `vg` are encouraged to use. Replace `import vg` with
+`from vg.compat import v1 as vg` and use `>=1.11` as your dependency specifier.
+You can also replace 1.11 with a later version which includes a feature you
+need. The important thing is not to use `>=1.11,<2`. Since this project
+guarantees that `from vg.compat import v1 as vg` will continue to work the same
+in 2.0+, the `<2` constraint provides no stability value &ndash; and it makes
+things unnecessarily difficult for consumers who use multiple dependencies with
+`vg`.
 
 Applications have two options:
 
