@@ -3,35 +3,32 @@ Changelog
 
 ## 1.11.0 (Jul. 10, 2021)
 
-Starting with this release, all libraries depending on `vg` are encouraged to
-use the new forward-compatibility layer. Replace `import vg` with
-`from vg.compat import v1 as vg` and use `>=1.11` as your dependency specifier.
-You can also replace 1.11 with a later version which includes a feature you
-need. The important thing is not to use `>=1.11,<2`. Since this project
-guarantees that `from vg.compat import v1 as vg` will continue to work the same
-in 2.0+, the `<2` constraint provides no stability value &ndash; and it makes
-things unnecessarily difficult for consumers who use multiple dependencies with
-`vg`.
+- Starting with this release, all libraries depending on `vg` are encouraged to
+  use the new forward-compatibility layer. Replace `import vg` with
+  `from vg.compat import v1 as vg` and use `>=1.11` as your dependency
+  specifier. You can also replace 1.11 with a later version which includes a
+  feature you need. The important thing is not to use `>=1.11,<2`. Since this
+  project guarantees that `from vg.compat import v1 as vg` will continue to work
+  the same in 2.0+, the `<2` constraint provides no stability value &ndash; and
+  it makes things unnecessarily difficult for consumers who use multiple
+  dependencies with `vg`.
 
-Applications have two options:
+  Applications have two options:
 
-1. Follow the recommendation for libraries: specify `>=1.11` and import using
-   `from vg.compat import v1 as vg`. This option provides better code stability
-   and makes upgrades seamless.
-2. Specify `>=1.11,<2` and use `import vg` directly, and when upgrading to
-   `>=2,<3`, review the changelog and modify the calling code if necessary.
-   This option ensures you stay up to date with the recommended, friendliest
-   interface for calling into `vg`.
+    1. Follow the recommendation for libraries: specify `>=1.11` and import using
+      `from vg.compat import v1 as vg`. This option provides better code stability
+      and makes upgrades seamless.
+    2. Specify `>=1.11,<2` and use `import vg` directly, and when upgrading to
+      `>=2,<3`, review the changelog and modify the calling code if necessary.
+      This option ensures you stay up to date with the recommended, friendliest
+      interface for calling into `vg`.
 
-### DEPRECATIONS
-
-The deprecated functions will be removed in vg 2.
-
-- Rename `vg.orient()` to `vg.aligned_with()`.
+- Rename `vg.orient()` to `vg.aligned_with()`. `vg.orient()` will be removed in
+  vg 2.
 - Deprecate `vg.matrix.pad_with_ones()`, `vg.matrix.unpad()`, and
   `vg.matrix.transform()` in favor of
-  [`polliwog.transform.apply_transform()`][apply_transform]. (See
-  [lace/polliwog#113][] for additional context on why
+  [`polliwog.transform.apply_transform()`][apply_transform]. These functions will
+  be removed in vg 2. (See [lace/polliwog#113][] for additional context on why
   `pad_with_ones()` and `unpad()` are being removed.)
 
 [apply_transform]: https://polliwog.readthedocs.io/en/latest/#polliwog.transform.apply_transform
