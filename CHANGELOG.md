@@ -26,10 +26,10 @@ Changelog
 - Rename `vg.orient()` to `vg.aligned_with()`. `vg.orient()` will be removed in
   vg 2.
 - Deprecate `vg.matrix.pad_with_ones()`, `vg.matrix.unpad()`, and
-  `vg.matrix.transform()` in favor of
-  [`polliwog.transform.apply_transform()`][apply_transform]. These functions will
-  be removed in vg 2. (See [lace/polliwog#113][] for additional context on why
-  `pad_with_ones()` and `unpad()` are being removed.)
+  `vg.matrix.transform()` (in favor of
+  [`polliwog.transform.apply_transform()`][apply_transform]). These functions
+  will be removed in vg 2. (See [lace/polliwog#113][] for additional context on
+  why `pad_with_ones()` and `unpad()` are being removed.)
 
 [apply_transform]: https://polliwog.readthedocs.io/en/latest/#polliwog.transform.apply_transform
 [lace/polliwog#113]: https://github.com/lace/polliwog/pull/113
