@@ -37,7 +37,7 @@ def broadcast_and_tile(v1, v2):
         raise_dimension_error(v1, v2)
 
 
-def _check_value_any(a, *shapes, name=None, **kwargs):
+def _check_value_any(a, *shapes, name=None):
     """
     Similar to `check_value()`, but accepts many candidate shapes and checks
     each of them before raising an error.
