@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from .matrix import transform as apply_transform
+from vg.matrix import transform as apply_transform
 
 scale_factor = np.array([3.0, 0.5, 2.0])
 transform = np.array(
