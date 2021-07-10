@@ -379,7 +379,7 @@ def scale_factor(v1, v2):
     return v1_dot_v2 / v1_dot_v1
 
 
-def orient(vector, along, reverse=False):
+def aligned_with(vector, along, reverse=False):
     """
     Given two vectors, flip the first if necessary, so that it points
     (approximately) along the second vector rather than (approximately)
@@ -405,6 +405,19 @@ def orient(vector, along, reverse=False):
         return -vector
     else:
         return vector
+
+
+def orient(vector, along, reverse=False):
+    """
+    Deprecated alias for `aligned_with()`. Will be removed in v2.
+    """
+    import warnings
+
+    warnings.warn(
+        "`vg.orient()` has been deprecated and will be removed in vg 2. Use `vg.aligned_with()` instead.",
+        warnings.DeprecationWarning,
+    )
+    return aligned_with(vector, along, reverse=reverse)
 
 
 def almost_zero(v, atol=1e-08):
