@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import pytest
-from . import core as vg
+import vg
 
 
 around_axis = np.array([0.0, 2.0, -1.0])

@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import pytest
-from . import core as vg
+import vg
 
 
 def test_magnitude():

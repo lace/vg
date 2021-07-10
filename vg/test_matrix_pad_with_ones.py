@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from .matrix import pad_with_ones
+from vg.matrix import pad_with_ones
 
 
 def test_pad_with_ones():

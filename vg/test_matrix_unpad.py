@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from .matrix import unpad
+from vg.matrix import unpad
 
 
 def test_unpad():
