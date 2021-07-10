@@ -156,3 +156,8 @@ years. This means breaking changes must be batched. Typically such features are
 first made available under the `vg.experimental` module, and then moved into
 `vg` upon the next major version release. Such experimental features may change
 in any subsequent minor release.
+
+### Deprecations
+
+Deprecated features will emit deprecation warnings in a minor version and cause
+errors or incorrect behavior in the next major version.
