@@ -16,7 +16,6 @@ __all__ = [
     "signed_angle",
     "rotate",
     "scale_factor",
-    "aligned_with",
     "orient",
     "almost_zero",
     "almost_unit_length",
