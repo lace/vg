@@ -9,9 +9,9 @@ vg
 [![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
-A **v**ery **g**ood vector-geometry and linear-algebra toolbelt. Linear
-algebra for humans. Simple [NumPy][] operations made readable, built to
-scale from prototyping to production.
+A **v**ery **g**ood vector-geometry toolbelt for dealing with 3D points and
+vectors. These are simple [NumPy][] operations made readable, built to scale
+from prototyping to production.
 
 :book: See the complete documentation: https://vgpy.readthedocs.io/en/latest/
 

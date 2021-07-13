@@ -13,7 +13,7 @@ install_requires = ["numpy"]
 setup(
     name="vg",
     version=version_info["__version__"],
-    description="Linear algebra for humans: a very good vector-geometry and linear-algebra toolbelt",
+    description="A vector-geometry toolbelt for dealing with 3D points and vectors",
     long_description=readme,
     long_description_content_type="text/markdown",
     author="Metabolize, Body Labs, and other contributors",

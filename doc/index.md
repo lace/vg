@@ -1,7 +1,8 @@
 vg
 ==
 
-**vg** is a **v**ery **g**ood vector-geometry and linear-algebra toolbelt.
+**vg** is a **v**ery **g**ood vector-geometry toolbelt for dealing with 3D
+points and vectors.
 
 Motivation
 ----------
@@ -161,3 +162,28 @@ in any subsequent minor release.
 
 Deprecated features will emit deprecation warnings in a minor version and cause
 errors or incorrect behavior in the next major version.
+
+
+If you like vg you might also like &hellip;
+-------------------------------------------
+
+### [polliwog][]
+
+Polliwog is a 2D and 3D computational geometry library. Like vg, it's designed
+to scale from prototyping to production. It includes vectorized geometric
+operations, transforms, and primitives like planes, polygonal chains, and
+axis-aligned bounding boxes. Implemented in pure Python/NumPy. It is depends on
+vg and is lightweight and fast.
+
+*Note:* vg is limited in scope to dealing with 3D points and vectors. Almost
+anything more complicated is considered general computational geometry, and goes
+in polliwog instead.
+
+### [ounce][]
+
+Fast, simple, non-fancy, and non-magical package for manipulating units of
+measure. A faster and less fancy counterpart to [Pint][].
+
+[polliwog]: https://polliwog.readthedocs.io/en/latest/
+[ounce]: https://ounce.readthedocs.io/en/latest/
+[pint]: https://pint.readthedocs.io/en/stable/
