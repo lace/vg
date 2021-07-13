@@ -13,7 +13,7 @@ A **v**ery **g**ood vector-geometry toolbelt for dealing with 3D points and
 vectors. These are simple [NumPy][] operations made readable, built to scale
 from prototyping to production.
 
-See the complete API reference: https://vgpy.readthedocs.io/en/latest/
+:book: See the complete documentation: https://vgpy.readthedocs.io/en/latest/
 
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://github.com/lace/vg/blob/master/.coveragerc
@@ -70,14 +70,6 @@ angles = np.arccos(np.clip(cosines, -1.0, 1.0))
 angles = vg.angle(v1s, v2s)
 ```
 
-Features
---------
-
-All functions are optionally vectorized, meaning they accept single inputs and
-stacks of inputs interchangeably. They return The Right Thing – a single
-result or a stack of results – without the need to reshape inputs or outputs.
-With the power of NumPy, the vectorized functions are fast.
-
 Installation
 ------------
 
@@ -100,32 +92,6 @@ projected = vg.scalar_projection(
 ```
 
 
-Design principles
------------------
-
-Linear algebra is useful and it doesn't have to be dificult to use. With the
-power of abstractions, simple operations can be made simple, without poring
-through lecture slides, textbooks, inscrutable Stack Overflow answers, or
-dense NumPy docs. Code that uses linear algebra and geometric transformation
-should be readable like English, without compromising efficiency.
-
-These common operations should be abstracted for a few reasons:
-
-1. If a developer is not programming linalg every day, they might forget the
-   underlying formula. These forms are easier to remember and more easily
-   referenced.
-
-2. These forms tend to be self-documenting in a way that the NumPy forms are
-   not. If a developer is not programming linalg every day, this will again
-   come in handy.
-
-3. These implementations are more robust. They automatically inspect `ndim`
-   on their arguments, so they work equally well if the argument is a vector
-   or a stack of vectors. They are more careful about checking edge cases
-   like a zero norm or zero cross product and returning a correct result
-   or raising an appropriate error.
-
-
 Development
 -----------
 
@@ -137,14 +103,6 @@ environment with the project's dependencies.
 Subsequently, run `./dev.py install` to update the dependencies.
 
 [install poetry]: https://python-poetry.org/docs/#installation
-
-
-Versioning
-----------
-
-This library adheres to [Semantic Versioning][semver].
-
-[semver]: https://semver.org/
 
 
 Acknowledgements
