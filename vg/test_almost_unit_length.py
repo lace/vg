@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from . import core as vg
+import vg
 
 
 def test_almost_unit_length():

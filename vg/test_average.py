@@ -1,5 +1,5 @@
 import numpy as np
-from . import core as vg
+import vg
 
 
 def test_average():
