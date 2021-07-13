@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## 1.11.1 (Jul. 13, 2021)
+
+- Fix `vg.compat.v1.shape.*` and `vg.compat.v1.matrix.*`.
+
+
 ## 1.11.0 (Jul. 10, 2021)
 
 - Starting with this release, all libraries depending on `vg` are encouraged to
