@@ -6,19 +6,17 @@ vg
 [![license](https://img.shields.io/pypi/l/vg.svg?style=flat-square)][pypi]
 [![](https://img.shields.io/badge/coverage-100%25-brightgreen.svg?style=flat-square)][coverage]
 [![build](https://img.shields.io/circleci/project/github/lace/vg/master.svg?style=flat-square)][build]
-[![docs build](https://img.shields.io/readthedocs/vgpy.svg?style=flat-square)][docs build]
 [![code style](https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square)][black]
 
 A **v**ery **g**ood vector-geometry and linear-algebra toolbelt. Linear
 algebra for humans. Simple [NumPy][] operations made readable, built to
 scale from prototyping to production.
 
-See the complete API reference: https://vgpy.readthedocs.io/en/latest/
+See the complete API reference: https://vgpy.dev/
 
 [pypi]: https://pypi.org/project/vg/
 [coverage]: https://github.com/lace/vg/blob/master/.coveragerc
 [build]: https://circleci.com/gh/lace/vg/tree/master
-[docs build]: https://vgpy.readthedocs.io/en/latest/
 [black]: https://black.readthedocs.io/en/stable/
 [lace]: https://github.com/metabolize/lace
 [numpy]: https://www.numpy.org/
