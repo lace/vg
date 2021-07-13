@@ -1,3 +1,3 @@
-from .. import matrix  # noqa: F401, F403 lgtm[py/unused-import]
-from .. import shape  # noqa: F401, F403 lgtm[py/unused-import]
+from .. import matrix  # lgtm[py/unused-import] noqa: F401, F403
+from .. import shape  # lgtm[py/unused-import] noqa: F401, F403
 from ..core import *  # noqa: F401, F403
