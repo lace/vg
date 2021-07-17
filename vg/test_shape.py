@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from .shape import check, check_value, check_value_any, columnize
+from vg.shape import check, check_value, check_value_any, columnize
 
 
 def test_check_value_valid():

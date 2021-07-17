@@ -13,7 +13,7 @@ install_requires = ["numpy"]
 setup(
     name="vg",
     version=version_info["__version__"],
-    description="Linear algebra for humans: a very good vector-geometry and linear-algebra toolbelt",
+    description="A vector-geometry toolbelt for dealing with 3D points and vectors",
     long_description=readme,
     long_description_content_type="text/markdown",
     author="Metabolize, Body Labs, and other contributors",
@@ -21,7 +21,7 @@ setup(
     url="https://github.com/lace/vg",
     project_urls={
         "Issue Tracker": "https://github.com/lace/vg/issues",
-        "Documentation": "https://vgpy.readthedocs.io/en/stable/",
+        "Documentation": "https://vgpy.dev/",
     },
     packages=find_packages(),
     install_requires=install_requires,
