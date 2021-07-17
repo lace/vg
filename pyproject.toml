@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "vg"
-version = "1.10.0"
+version = "1.11.1"
 description = "Linear algebra for humans: a very good vector-geometry and linear-algebra toolbelt"
 authors = ["Paul Melnikow <github@paulmelnikow.com>", "Metabolize, Body Labs, and other contributors"]
 license = "BSD-2-Clause"
