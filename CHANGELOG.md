@@ -18,7 +18,7 @@ Changelog
 - Add v2 compatibility layer. When updating libraries to use `vg>=2.0`, ensure
   you are not using any of the functions removed in v2, and update your imports
   to `from vg.compat import v2 as vg`. Applications can do the same or
-  `import vg`. See [Future-proofing your application or libary][] for more
+  `import vg`. See [Future-proofing your application or library][] for more
   details.
 
 [Future-proofing your application or library]: https://vgpy.dev/#future-proofing-your-application-or-library
