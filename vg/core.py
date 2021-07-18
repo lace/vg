@@ -247,7 +247,7 @@ def angle(v1, v2, look=None, assume_normalized=False, units="deg"):
         input, a `(k,)` array.
     """
     if units not in ["deg", "rad"]:
-        raise ValueError("Unrecognized units {}; expected deg or rad".format(units))
+        raise ValueError(f"Unrecognized units {units}; expected deg or rad")
 
     if look is not None:
         # This is a simple approach. Since this is working in two dimensions,
@@ -327,7 +327,7 @@ def rotate(vector, around_axis, angle, units="deg", assume_normalized=False):
     if units == "deg":
         angle = math.radians(angle)
     elif units != "rad":
-        raise ValueError('Unknown units "{}"; expected "deg" or "rad"'.format(units))
+        raise ValueError(f'Unknown units "{units}"; expected "deg" or "rad"')
 
     cosine = math.cos(angle)
     sine = math.sin(angle)

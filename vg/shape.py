@@ -1,4 +1,4 @@
-def check_value(arr, shape, **kwargs):
+def check_value(arr, shape, name=None):
     """
     Check that the given argument has the expected shape. Shape dimensions can
     be ints or -1 for a wildcard. The wildcard dimensions are returned, which
@@ -31,19 +31,17 @@ def check_value(arr, shape, **kwargs):
     if any(not isinstance(dim, int) and not is_wildcard(dim) for dim in shape):
         raise ValueError("Expected shape dimensions to be int")
 
-    if "name" in kwargs:
-        preamble = "{} must be an array".format(kwargs["name"])
-    else:
+    if name is None:
         preamble = "Expected an array"
+    else:
+        preamble = f"{name} must be an array"
 
     if arr is None:
-        raise ValueError("{} with shape {}; got None".format(preamble, shape))
+        raise ValueError(f"{preamble} with shape {shape}; got None")
     try:
         len(arr.shape)
     except (AttributeError, TypeError):
-        raise ValueError(
-            "{} with shape {}; got {}".format(preamble, shape, arr.__class__.__name__)
-        )
+        raise ValueError(f"{preamble} with shape {shape}; got {arr.__class__.__name__}")
 
     # Check non-wildcard dimensions.
     if len(arr.shape) != len(shape) or any(
@@ -51,7 +49,7 @@ def check_value(arr, shape, **kwargs):
         for actual, expected in zip(arr.shape, shape)
         if not is_wildcard(expected)
     ):
-        raise ValueError("{} with shape {}; got {}".format(preamble, shape, arr.shape))
+        raise ValueError(f"{preamble} with shape {shape}; got {arr.shape}")
 
     wildcard_dims = [
         actual for actual, expected in zip(arr.shape, shape) if is_wildcard(expected)
@@ -64,8 +62,7 @@ def check_value(arr, shape, **kwargs):
         return tuple(wildcard_dims)
 
 
-# TODO-2.x: Remove kwargs hack when upgrading to Python 3.
-def check_value_any(arr, *shapes, **kwargs):
+def check_value_any(arr, *shapes, name=None):
     """
     Check that the given argument has any of the expected shapes. Shape dimensons
     can be ints or -1 for a wildcard.
@@ -94,14 +91,14 @@ def check_value_any(arr, *shapes, **kwargs):
         raise ValueError("At least one shape is required")
     for shape in shapes:
         try:
-            return check_value(arr, shape, name=kwargs.get("name", "arr"))
+            return check_value(arr, shape, name=name or "arr")
         except ValueError:
             pass
 
-    if "name" in kwargs:
-        preamble = "Expected {} to be an array".format(kwargs["name"])
-    else:
+    if name is None:
         preamble = "Expected an array"
+    else:
+        preamble = f"Expected {name} to be an array"
 
     if len(shapes) == 1:
         (shape_choices,) = shapes
@@ -111,19 +108,15 @@ def check_value_any(arr, *shapes, **kwargs):
         )
 
     if arr is None:
-        raise ValueError("{} with shape {}; got None".format(preamble, shape_choices))
+        raise ValueError(f"{preamble} with shape {shape_choices}; got None")
     else:
         try:
             len(arr.shape)
         except (AttributeError, TypeError):
             raise ValueError(
-                "{} with shape {}; got {}".format(
-                    preamble, shape_choices, arr.__class__.__name__
-                )
+                f"{preamble} with shape {shape_choices}; got {arr.__class__.__name__}"
             )
-        raise ValueError(
-            "{} with shape {}; got {}".format(preamble, shape_choices, arr.shape)
-        )
+        raise ValueError(f"{preamble} with shape {shape_choices}; got {arr.shape}")
 
 
 def check(locals_namespace, name, shape):
@@ -149,7 +142,7 @@ def check(locals_namespace, name, shape):
     Example:
         >>> def my_fun_function(points):
         ...     k = vg.shape.check(locals(), 'points', (-1, 3))
-        ...     print("my_fun_function invoked with {} points".format(k))
+        ...     print(f"my_fun_function invoked with {k} points")
 
     """
     return check_value(locals_namespace[name], shape, name=name)
