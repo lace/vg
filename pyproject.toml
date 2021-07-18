@@ -1,13 +1,30 @@
 [tool.poetry]
 name = "vg"
-version = "0.1.0"
+version = "1.11.1"
 description = "Linear algebra for humans: a very good vector-geometry and linear-algebra toolbelt"
-authors = ["Paul Melnikow <github@paulmelnikow.com>"]
-license = "BSD"
+authors = ["Paul Melnikow <github@paulmelnikow.com>", "Metabolize, Body Labs, and other contributors"]
+license = "BSD-2-Clause"
+include = ["CHANGELOG.md"]
+exclude = ["*/test_*.py"]
+homepage = "https://vgpy.readthedocs.io/en/stable"
+repository = "https://github.com/lace/vg"
+documentation = "https://vgpy.readthedocs.io/en/stable"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Manufacturing",
+    "Topic :: Artistic Software",
+    "Topic :: Multimedia :: Graphics :: 3D Modeling",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Operating System :: OS Independent",
+]
+
 
 [tool.poetry.dependencies]
 python = ">= 3.7, < 4"
-numpy = "^1.20.3"
+numpy = "*"
 
 [tool.poetry.dev-dependencies]
 executor = ">= 21.0"

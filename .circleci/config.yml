@@ -36,6 +36,14 @@ jobs:
           when: always
           command: ./dev.py black-check
 
+      - run:
+          name: Check that the build completes
+          when: always
+          command: poetry build
+
+      - store_artifacts:
+          path: dist
+
 workflows:
   version: 2
 
