@@ -31,7 +31,9 @@ def test_v1_has_matrix_transform():
     point = np.array([5.0, 0.0, 1.0])
     expected_point = np.array([15.0, 0.0, 2.0])
     with pytest.deprecated_call():
-        np.testing.assert_array_equal(vg.matrix.transform(point, transform), expected_point)
+        np.testing.assert_array_equal(
+            vg.matrix.transform(point, transform), expected_point
+        )
 
 
 def test_v1_orient_is_alias_for_aligned_with():
