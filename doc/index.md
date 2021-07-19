@@ -158,7 +158,8 @@ in any subsequent minor release.
 ### Deprecations
 
 Deprecated features will emit deprecation warnings in a minor version and cause
-errors or incorrect behavior in the next major version.
+errors or incorrect behavior in the next major version. No maintenance is
+provided on deprecated APIs.
 
 
 If you like vg you might also like &hellip;
