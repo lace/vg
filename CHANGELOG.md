@@ -1,7 +1,7 @@
 Changelog
 =========
 
-## 2.0.0rc0 (Jul. 18, 2021)
+## 2.0.0 (Jul. 19, 2021)
 
 ### BREAKING CHANGES
 
@@ -22,6 +22,11 @@ Changelog
   explanation of the forward-compatibility layer.
 
 [Future-proofing your application or library]: https://vgpy.dev/#future-proofing-your-application-or-library
+
+
+## 2.0.0rc0 (Jul. 18, 2021)
+
+See release notes for 2.0.0.
 
 
 ## 1.11.1 (Jul. 13, 2021)
