@@ -1,6 +1,7 @@
 from . import _matrix as matrix  # noqa: F401, F403
 from .. import shape  # noqa: F401, F403
 from ..core import *  # noqa: F401, F403
+from ..core import aligned_with
 
 
 def orient(vector, along, reverse=False):
