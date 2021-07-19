@@ -129,21 +129,21 @@ improve the interface over time, even if it means small breaking changes.
 
 As a result, we provide a forward compatibility layer, which all libraries
 depending on `vg` are encouraged to use. Replace `import vg` with
-`from vg.compat import v1 as vg` and use `>=1.11` as your dependency specifier.
-You can also replace 1.11 with a later version which includes a feature you
-need. The important thing is not to use `>=1.11,<2`. Since this project
-guarantees that `from vg.compat import v1 as vg` will continue to work the same
-in 2.0+, the `<2` constraint provides no stability value &ndash; and it makes
+`from vg.compat import v2 as vg` and use `>=2.0` as your dependency specifier.
+You can also replace 2.0 with a later version which includes a feature you
+need. The important thing is not to use `>=2.0,<3`. Since this project
+guarantees that `from vg.compat import v2 as vg` will continue to work the same
+in 3.0+, the `<3` constraint provides no stability value &ndash; and it makes
 things unnecessarily difficult for consumers who use multiple dependencies with
 `vg`.
 
 Applications have two options:
 
-1. Follow the recommendation for libraries: specify `>=1.11` and import using
-   `from vg.compat import v1 as vg`. This option provides better code stability
+1. Follow the recommendation for libraries: specify `>=2.0` and import using
+   `from vg.compat import v2 as vg`. This option provides better code stability
    and makes upgrades seamless.
-2. Specify `>=1.11,<2` and use `import vg` directly, and when upgrading to
-   `>=2,<3`, review the changelog and modify the calling code if necessary.
+2. Specify `>=2,<3` and use `import vg` directly, and when upgrading to
+   `>=3,<4`, review the changelog and modify the calling code if necessary.
    This option ensures you stay up to date with the recommended, friendliest
    interface for calling into `vg`.
 
