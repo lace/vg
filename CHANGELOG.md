@@ -1,6 +1,29 @@
 Changelog
 =========
 
+## 2.0.0rc0 (Jul. 18, 2021)
+
+### BREAKING CHANGES
+
+- Require Python 3.
+- Remove `vg.orient()` (replace with `vg.aligned_with()`)
+- Remove `vg.matrix.transform()` (replace with
+  [`polliwog.transform.apply_transform()`][apply_transform])
+- Remove `vg.matrix.pad_with_ones()` and `vg.matrix.unpad()` (no replacement
+  offered)
+- Remove `vg.__version__`.
+
+### New features
+
+- Add v2 forward-compatibility layer. When updating libraries to use `vg>=2.0`,
+  ensure you are not using any of the functions removed in v2, and update your
+  imports to `from vg.compat import v2 as vg`. Applications can do the same or
+  `import vg`. See [Future-proofing your application or library][] for more
+  explanation of the forward-compatibility layer.
+
+[Future-proofing your application or library]: https://vgpy.dev/#future-proofing-your-application-or-library
+
+
 ## 1.11.1 (Jul. 13, 2021)
 
 - Fix `vg.compat.v1.shape.*` and `vg.compat.v1.matrix.*`.
