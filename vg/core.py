@@ -17,7 +17,6 @@ __all__ = [
     "rotate",
     "scale_factor",
     "aligned_with",
-    "orient",
     "almost_zero",
     "almost_unit_length",
     "almost_collinear",
@@ -406,19 +405,6 @@ def aligned_with(vector, along, reverse=False):
         return -vector
     else:
         return vector
-
-
-def orient(vector, along, reverse=False):
-    """
-    Deprecated alias for `aligned_with()`. Will be removed in v2.
-    """
-    import warnings
-
-    warnings.warn(
-        "`vg.orient()` has been deprecated and will be removed in vg 2. Use `vg.aligned_with()` instead.",
-        DeprecationWarning,
-    )
-    return aligned_with(vector, along, reverse=reverse)
 
 
 def almost_zero(v, atol=1e-08):
