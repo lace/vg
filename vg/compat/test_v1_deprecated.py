@@ -19,7 +19,9 @@ def test_v1_unpad():
         with pytest.raises(
             ValueError, match=r"^Invalid shape \(3L?, 3L?\): unpad expects nx4$"
         ):
-            vg.matrix.unpad(np.array([[1.0, 2.0, 3.0], [2.0, 3.0, 4.0], [5.0, 6.0, 7.0]]))
+            vg.matrix.unpad(
+                np.array([[1.0, 2.0, 3.0], [2.0, 3.0, 4.0], [5.0, 6.0, 7.0]])
+            )
 
     with pytest.deprecated_call():
         with pytest.raises(
@@ -34,6 +36,7 @@ def test_v1_unpad():
                     [[1.0, 2.0, 3.0, 1.0], [2.0, 3.0, 4.0, 1.0], [5.0, 6.0, 7.0, 3.0]]
                 )
             )
+
 
 def test_v1_pad_with_ones():
     with pytest.deprecated_call():
@@ -85,7 +88,9 @@ def test_apply_homogeneous():
     point = np.array([5.0, 0.0, 1.0])
     expected_point = np.array([15.0, 0.0, 2.0])
     with pytest.deprecated_call():
-        np.testing.assert_array_equal(vg.matrix.transform(point, transform), expected_point)
+        np.testing.assert_array_equal(
+            vg.matrix.transform(point, transform), expected_point
+        )
 
 
 def test_apply_homogeneous_stacked():
