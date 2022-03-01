@@ -28,7 +28,7 @@ numpy = "*"
 
 [tool.poetry.dev-dependencies]
 executor = ">= 21.0"
-click = "8.0.1"
+click = "8.0.4"
 pytest = "6.2.4"
 pytest-cov = "2.12.1"
 flake8 = ">=3.7.9,<4.0"
