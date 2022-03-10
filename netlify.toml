@@ -5,5 +5,5 @@
   command = """
 pip install -q poetry==1.1.13 &&
 poetry install &&
-sphinx-build -W -b singlehtml doc doc/build
+sphinx-build -v -v -W -b singlehtml doc doc/build
 """
