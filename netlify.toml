@@ -6,7 +6,7 @@
 echo 1;
 pip install -q poetry==1.1.13 &&
 echo 2;
-python -m venv .venv &&
+poetry config experimental.new-installer false &&
 poetry install -vvv &&
 echo 3;
 sphinx-build -v -v -W -b singlehtml doc doc/build &&
