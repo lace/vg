@@ -4,10 +4,8 @@
   # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
   command = """
 echo 1;
-pip install -q --upgrade pip &&
-pip install -q poetry==1.2.0a2 &&
+pip install -q poetry==1.1.7 &&
 echo 2;
-#poetry config experimental.new-installer false &&
 poetry install -vvv &&
 echo 3;
 sphinx-build -v -v -W -b singlehtml doc doc/build &&
