@@ -4,9 +4,9 @@
   # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
   command = """
 echo 1;
-pip install -q poetry==1.1.13 &&
+pip install -q poetry==1.2.0a2 &&
 echo 2;
-poetry config experimental.new-installer false &&
+#poetry config experimental.new-installer false &&
 poetry install -vvv &&
 echo 3;
 sphinx-build -v -v -W -b singlehtml doc doc/build &&
