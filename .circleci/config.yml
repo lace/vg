@@ -3,7 +3,7 @@ version: 2
 jobs:
   main:
     docker:
-      - image: circleci/python:3
+      - image: circleci/python:3.9
 
     steps:
       - checkout
@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Install python dependencies
           command: |
-            pip install poetry==1.2.0a1
+            pip install poetry==1.1.7
             poetry --version
             poetry install --no-ansi --no-interaction
             poetry show

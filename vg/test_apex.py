@@ -50,7 +50,7 @@ def test_apex_functions():
         vg.apex_and_opposite(points, along=vg.basis.neg_z), points[[9, 3]]
     )
 
-    v = np.full(3, 1 / 3 ** 0.5)
+    v = np.full(3, 1 / 3**0.5)
     expected = points[np.argmax(points.sum(axis=1))]
     np.testing.assert_array_equal(vg.apex(points, along=v), expected)
 
