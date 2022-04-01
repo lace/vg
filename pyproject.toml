@@ -28,7 +28,7 @@ numpy = "*"
 
 [tool.poetry.dev-dependencies]
 black = "22.1.0"
-click = "8.0.4"
+click = "8.1.2"
 coverage = "6.3.2"
 executor = ">= 21.0"
 flake8 = "4.0.1"
