@@ -75,5 +75,6 @@ def publish():
 
 
 if __name__ == "__main__":
+    print(os.chdir(os.path.abspath(os.path.dirname(__file__))))
     os.chdir(os.path.abspath(os.path.dirname(__file__)))
     cli()
