@@ -59,6 +59,7 @@ def black_check():
 @cli.command()
 def doc():
     execute("rm -rf build/ doc/build/ doc/api/")
+    print("this finished")
     execute("sphinx-build -W -b singlehtml doc doc/build")
 
 
@@ -75,6 +76,5 @@ def publish():
 
 
 if __name__ == "__main__":
-    print(os.chdir(os.path.abspath(os.path.dirname(__file__))))
     os.chdir(os.path.abspath(os.path.dirname(__file__)))
     cli()
