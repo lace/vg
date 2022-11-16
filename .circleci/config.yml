@@ -11,7 +11,6 @@ jobs:
       - run:
           name: Install python dependencies
           command: |
-            sudo pip uninstall --yes poetry
             pip install poetry==1.2.2
             poetry --version
             poetry install --no-ansi --no-interaction
