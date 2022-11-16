@@ -59,7 +59,7 @@ def black_check():
 @cli.command()
 def doc():
     execute("rm -rf build/ doc/build/ doc/api/")
-    execute("sphinx-build -b singlehtml doc doc/build")
+    execute("sphinx-build -W -b singlehtml doc doc/build")
 
 
 @cli.command()
