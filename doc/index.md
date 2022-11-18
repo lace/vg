@@ -56,7 +56,7 @@ outputs. With the power of NumPy, the vectorized functions are fast.
 Constants
 ---------
 
-```{eval-rst}
+r```{eval-rst}
 .. py:currentmodule:: vg
 
 .. autodata:: basis

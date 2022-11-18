@@ -3,7 +3,7 @@
   # https://github.com/netlify/build-image/issues/221#issuecomment-504385202
   # https://github.com/netlify/build-image/issues/221#issuecomment-644662189
   command = """
-pip install -q poetry==1.1.7 &&
+pip install -q poetry==1.2.2 &&
 poetry install &&
 sphinx-build -W -b singlehtml doc doc/build
 """
