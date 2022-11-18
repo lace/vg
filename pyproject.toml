@@ -35,7 +35,7 @@ flake8 = "4.0.1"
 flake8-import-order = "^0.18.1"
 myst-parser = "0.17.2"
 pytest = "7.1.2"
-pytest-cov = "3.0.0"
+pytest-cov = "4.0.0"
 Sphinx = "4.3.2"
 sphinxcontrib-apidoc = "^0.3.0"
 
