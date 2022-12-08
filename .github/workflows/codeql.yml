@@ -29,8 +29,8 @@ jobs:
       - name: Initialize CodeQL
         uses: actions/checkout@v3
         uses: actions/setup-python@v4
-          with:
-            python-version: '3.9' 
+        with:
+          python-version: '3.9' 
         uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
