@@ -1,4 +1,4 @@
 name: "CodeQL config"
 
 paths-ignore:
-  - ".venv/**/*"
+  - .venv/lib/python3.9/site-packages/click/_compat.py
