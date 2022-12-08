@@ -37,7 +37,7 @@ jobs:
           languages: ${{ matrix.language }}
           queries: +security-and-quality
           config-file: ./.github/codeql/codeql-config.yml
-          debug: true
+          setup-python-dependencies: false
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
