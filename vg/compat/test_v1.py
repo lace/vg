@@ -1,6 +1,7 @@
 import numpy as np
 import pytest
 import vg.compat.v1 as vg
+from .._helpers import get_imported_names
 
 
 def test_v1_has_functions():
@@ -24,3 +25,41 @@ def test_v1_orient_is_alias_for_aligned_with():
         np.testing.assert_array_equal(
             vg.orient(v1, along=vg.basis.z), vg.aligned_with(v1, along=vg.basis.z)
         )
+
+
+def test_v1_namespace():
+    expected_symbols = [
+        "aligned_with",
+        "almost_collinear",
+        "almost_equal",
+        "almost_unit_length",
+        "almost_zero",
+        "angle",
+        "apex",
+        "apex_and_opposite",
+        "argapex",
+        "average",
+        "basis",
+        "cross",
+        "dot",
+        "euclidean_distance",
+        "farthest",
+        "magnitude",
+        "major_axis",
+        "matrix",
+        "nearest",
+        "normalize",
+        "orient",
+        "perpendicular",
+        "principal_components",
+        "project",
+        "reject",
+        "reject_axis",
+        "rotate",
+        "scalar_projection",
+        "scale_factor",
+        "shape",
+        "signed_angle",
+        "within",
+    ]
+    assert get_imported_names(vg) == expected_symbols

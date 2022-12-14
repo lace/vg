@@ -67,3 +67,8 @@ def _check_value_any(a, *shapes, name=None):
         raise ValueError(f"{preamble} with shape {shape_choices}; got None")
     else:
         raise ValueError(f"{preamble} with shape {shape_choices}; got {a.shape}")
+
+
+def get_imported_names(module):
+    names = module.__all__ if hasattr(module, "__all__") else dir(module)
+    return [name for name in names if not name.startswith("_")]
