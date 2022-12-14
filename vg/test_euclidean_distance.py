@@ -18,8 +18,8 @@ def test_euclidean_distance_stacked():
     expected = np.array(
         [
             math.sqrt(1**2 + 2**2 + 5**2),
-            math.sqrt(4**2 + 4**2),
-            math.sqrt(1**2 + 1**2),
+            math.hypot(4, 4),
+            math.hypot(1, 1),
         ]
     )
     np.testing.assert_array_almost_equal(vg.euclidean_distance(v1s, v2s), expected)
