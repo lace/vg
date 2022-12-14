@@ -32,7 +32,7 @@ def test_euclidean_distance_mixed():
         [
             math.sqrt(1**2 + 2**2 + 5**2),
             math.sqrt(3**2 + 1**2 + 5**2),
-            math.sqrt(2**2 + 1**2),
+            math.hypot(2, 1),
         ]
     )
     np.testing.assert_array_almost_equal(vg.euclidean_distance(v1s, v2), expected)
