@@ -62,4 +62,4 @@ def test_v1_namespace():
         "signed_angle",
         "within",
     ]
-    assert get_imported_names(vg) == expected_symbols
+    assert sorted(vg.__all__) == expected_symbols
