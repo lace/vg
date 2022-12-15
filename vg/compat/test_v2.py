@@ -1,6 +1,6 @@
 import numpy as np
 import vg.compat.v2 as vg
-from .._helpers import get_imported_names
+from ..test_helpers import get_imported_names
 
 
 def test_v2_has_functions():
