@@ -187,10 +187,6 @@ def magnitude(vector):
         raise_dimension_error(vector)
 
 
-# Alias because angle()'s parameter shadows the name.
-_normalize = normalize
-
-
 def euclidean_distance(v1, v2):
     """
     Compute Euclidean distance, which is the distance between two points in a
