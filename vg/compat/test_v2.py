@@ -1,6 +1,5 @@
 import numpy as np
 import vg.compat.v2 as vg
-from ..test_helpers import get_imported_names
 
 
 def test_v2_has_functions():
@@ -51,4 +50,4 @@ def test_v2_namespace():
         "signed_angle",
         "within",
     ]
-    assert get_imported_names(vg) == expected_symbols
+    assert sorted(vg.__all__) == expected_symbols
