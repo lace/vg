@@ -1,7 +1,6 @@
 import numpy as np
 import pytest
 import vg.compat.v1 as vg
-from ..test_helpers import get_imported_names
 
 
 def test_v1_has_functions():
